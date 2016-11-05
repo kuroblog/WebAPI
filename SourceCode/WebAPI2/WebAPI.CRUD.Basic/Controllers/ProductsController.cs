@@ -8,6 +8,7 @@ namespace WebAPI.CRUD.Basic.Controllers
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+    using WebAPI.Models;
 
     public class ProductsController : ApiController
     {

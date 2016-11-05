@@ -3,6 +3,7 @@ namespace WebAPI.CRUD.Basic.Models
 {
     using System;
     using System.Collections.Generic;
+    using WebAPI.Models;
 
     public interface IProductRepository
     {
