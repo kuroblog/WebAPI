@@ -13,6 +13,7 @@ namespace WebAPI2.AttributeRouting.Controllers
     using System;
     using DTOs;
 
+    [RoutePrefix("api/books")]
     public class BooksController : ApiController
     {
         private BooksAPIContext db = new BooksAPIContext();
@@ -29,13 +30,14 @@ namespace WebAPI2.AttributeRouting.Controllers
         //{
         //    return db.Books;
         //}
+        [Route("")]
         public IQueryable<BookDto> GetBooks()
         {
             return db.Books.Include(x => x.Author).Select(AsBookDto);
         }
 
         // GET: api/Books/5
-        [ResponseType(typeof(Book))]
+        //[ResponseType(typeof(Book))]
         //public async Task<IHttpActionResult> GetBook(int id)
         //{
         //    Book book = await db.Books.FindAsync(id);
@@ -43,9 +45,10 @@ namespace WebAPI2.AttributeRouting.Controllers
         //    {
         //        return NotFound();
         //    }
-
         //    return Ok(book);
         //}
+        [ResponseType(typeof(Book))]
+        [Route("{id:int}")]
         public async Task<IHttpActionResult> GetBook(int id)
         {
             var book = await db.Books.Include(x => x.Author).Where(x => x.BookId == id).Select(AsBookDto).FirstOrDefaultAsync();
