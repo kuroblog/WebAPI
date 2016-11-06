@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.txt = Readme.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic", "Basic", "{99AF2679-FAAA-4F22-A85D-3090E9003340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI2.AttributeRouting", "WebAPI2.AttributeRouting\WebAPI2.AttributeRouting.csproj", "{4906ACBE-8958-47CA-8B6C-0D7B0C1F7BAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,8 +42,16 @@ Global
 		{B2822656-ADA4-4B83-AE78-E50A2470349B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2822656-ADA4-4B83-AE78-E50A2470349B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2822656-ADA4-4B83-AE78-E50A2470349B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4906ACBE-8958-47CA-8B6C-0D7B0C1F7BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4906ACBE-8958-47CA-8B6C-0D7B0C1F7BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4906ACBE-8958-47CA-8B6C-0D7B0C1F7BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4906ACBE-8958-47CA-8B6C-0D7B0C1F7BAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D87650A5-96B8-48F4-8DB2-0F21E285F485} = {99AF2679-FAAA-4F22-A85D-3090E9003340}
+		{A2A890CD-8190-441D-BFCA-24923B61249C} = {99AF2679-FAAA-4F22-A85D-3090E9003340}
 	EndGlobalSection
 EndGlobal
