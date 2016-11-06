@@ -13,6 +13,12 @@ namespace WebAPI2.AttributeRouting.Controllers
     using System;
     using DTOs;
 
+    /// <summary>
+    /// 演示在WebAPI2中使用Attribute Routing
+    /// </summary>
+    /// <remarks>
+    /// https://www.asp.net/web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
+    /// </remarks>
     [RoutePrefix("api/books")]
     public class BooksController : ApiController
     {
