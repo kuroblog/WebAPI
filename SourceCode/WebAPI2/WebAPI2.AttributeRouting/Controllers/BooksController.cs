@@ -94,6 +94,12 @@ namespace WebAPI2.AttributeRouting.Controllers
             return db.Books.Include(x => x.Author).Where(x => x.AuthorId == authorId).Select(AsBookDto);
         }
 
+        [Route("date/{pubdate:datetime}")]
+        public IQueryable<BookDto> GetBooks(DateTime pubdate)
+        {
+            return db.Books.Include(x => x.Author).Where(x => DbFunctions.TruncateTime(x.PublishDate) == DbFunctions.TruncateTime(pubdate)).Select(AsBookDto);
+        }
+
         protected override void Dispose(bool disposing)
         {
             //if (disposing)
