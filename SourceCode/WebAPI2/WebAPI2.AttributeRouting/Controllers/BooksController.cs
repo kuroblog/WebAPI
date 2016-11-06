@@ -88,6 +88,12 @@ namespace WebAPI2.AttributeRouting.Controllers
             return db.Books.Include(x => x.Author).Where(x => x.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).Select(AsBookDto);
         }
 
+        [Route("~/api/authors/{authorId}/books")]
+        public IQueryable<BookDto> GetBooksByAuthor(int authorId)
+        {
+            return db.Books.Include(x => x.Author).Where(x => x.AuthorId == authorId).Select(AsBookDto);
+        }
+
         protected override void Dispose(bool disposing)
         {
             //if (disposing)
