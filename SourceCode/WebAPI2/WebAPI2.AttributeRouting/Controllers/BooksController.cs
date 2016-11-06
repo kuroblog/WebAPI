@@ -57,6 +57,17 @@ namespace WebAPI2.AttributeRouting.Controllers
             return Ok(book);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            //if (disposing)
+            //{
+            //    db.Dispose();
+            //}
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+
+        #region these methoods can not be used in this demo
         // PUT: api/Books/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutBook(int id, Book book)
@@ -123,19 +134,10 @@ namespace WebAPI2.AttributeRouting.Controllers
             return Ok(book);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            //if (disposing)
-            //{
-            //    db.Dispose();
-            //}
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-
         private bool BookExists(int id)
         {
             return db.Books.Count(e => e.BookId == id) > 0;
         }
+        #endregion
     }
 }
