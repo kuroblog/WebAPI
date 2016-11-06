@@ -1,11 +1,7 @@
 ﻿
 namespace WebAPI2.AttributeRouting.Models
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Web;
 
     public class Author
     {
