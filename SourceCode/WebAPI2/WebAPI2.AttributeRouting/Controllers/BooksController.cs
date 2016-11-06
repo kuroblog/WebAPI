@@ -9,22 +9,46 @@ namespace WebAPI2.AttributeRouting.Controllers
     using System.Web.Http;
     using System.Web.Http.Description;
     using Models;
+    using System.Linq.Expressions;
+    using System;
+    using DTOs;
 
     public class BooksController : ApiController
     {
         private BooksAPIContext db = new BooksAPIContext();
 
-        // GET: api/Books
-        public IQueryable<Book> GetBooks()
+        private static readonly Expression<Func<Book, BookDto>> AsBookDto = x => new BookDto
         {
-            return db.Books;
+            Title = x.Title,
+            Author = x.Author.Name,
+            Genre = x.Genre
+        };
+
+        // GET: api/Books
+        //public IQueryable<Book> GetBooks()
+        //{
+        //    return db.Books;
+        //}
+        public IQueryable<BookDto> GetBooks()
+        {
+            return db.Books.Include(x => x.Author).Select(AsBookDto);
         }
 
         // GET: api/Books/5
         [ResponseType(typeof(Book))]
+        //public async Task<IHttpActionResult> GetBook(int id)
+        //{
+        //    Book book = await db.Books.FindAsync(id);
+        //    if (book == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(book);
+        //}
         public async Task<IHttpActionResult> GetBook(int id)
         {
-            Book book = await db.Books.FindAsync(id);
+            var book = await db.Books.Include(x => x.Author).Where(x => x.BookId == id).Select(AsBookDto).FirstOrDefaultAsync();
             if (book == null)
             {
                 return NotFound();
@@ -101,10 +125,11 @@ namespace WebAPI2.AttributeRouting.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            //if (disposing)
+            //{
+            //    db.Dispose();
+            //}
+            db.Dispose();
             base.Dispose(disposing);
         }
 
