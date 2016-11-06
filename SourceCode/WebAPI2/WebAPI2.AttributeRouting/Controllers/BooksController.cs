@@ -94,7 +94,9 @@ namespace WebAPI2.AttributeRouting.Controllers
             return db.Books.Include(x => x.Author).Where(x => x.AuthorId == authorId).Select(AsBookDto);
         }
 
-        [Route("date/{pubdate:datetime}")]
+        //[Route("date/{pubdate:datetime}")]
+        [Route("date/{pubdate:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")]
+        [Route("date/{*pubdate:datetime:regex(\\d{4}/\\d{2}/\\d{2})}")]
         public IQueryable<BookDto> GetBooks(DateTime pubdate)
         {
             return db.Books.Include(x => x.Author).Where(x => DbFunctions.TruncateTime(x.PublishDate) == DbFunctions.TruncateTime(pubdate)).Select(AsBookDto);
