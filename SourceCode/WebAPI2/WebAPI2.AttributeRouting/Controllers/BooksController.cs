@@ -82,6 +82,12 @@ namespace WebAPI2.AttributeRouting.Controllers
             return Ok(book);
         }
 
+        [Route("{genre}")]
+        public IQueryable<BookDto> GetBooksByGenre(string genre)
+        {
+            return db.Books.Include(x => x.Author).Where(x => x.Genre.Equals(genre, StringComparison.OrdinalIgnoreCase)).Select(AsBookDto);
+        }
+
         protected override void Dispose(bool disposing)
         {
             //if (disposing)
