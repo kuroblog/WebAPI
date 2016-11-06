@@ -17,7 +17,10 @@ namespace WebAPI2.AttributeRouting.Controllers
     /// 演示在WebAPI2中使用Attribute Routing
     /// </summary>
     /// <remarks>
+    /// 如何使用
     /// https://www.asp.net/web-api/overview/web-api-routing-and-actions/create-a-rest-api-with-attribute-routing
+    /// 路由启用和设置
+    /// https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
     /// </remarks>
     [RoutePrefix("api/books")]
     public class BooksController : ApiController
