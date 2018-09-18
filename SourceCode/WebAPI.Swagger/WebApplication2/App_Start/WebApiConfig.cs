@@ -20,6 +20,8 @@ namespace WebApplication2
             //config.MapHttpAttributeRoutes();
             config.MapApiVersionRoutes();
 
+            config.EnableSwaggerSettings();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

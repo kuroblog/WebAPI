@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\ApiControllerExtensions.cs" />
+    <Compile Include="SwaggerDefaultValues.cs" />
     <Compile Include="v1\Controllers\DefaultController.cs" />
     <Compile Include="v2\Controllers\DefaultController.cs" />
     <Compile Include="VersionRouteSettings.cs" />
