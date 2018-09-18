@@ -3,6 +3,7 @@ namespace WebApplication2
 {
     using Microsoft.Web.Http.Routing;
     using Swashbuckle.Application;
+    using Swashbuckle.Examples;
     using System;
     using System.IO;
     using System.Reflection;
@@ -58,7 +59,7 @@ namespace WebApplication2
 
             config.EnableSwagger("{apiVersion}/swagger", swagger =>
             {
-                //swagger.OperationFilter<ExamplesOperationFilter>();
+                swagger.OperationFilter<ExamplesOperationFilter>();
 
                 // build a swagger document and endpoint for each discovered API version
                 swagger.MultipleApiVersions((apiDescription, version) => apiDescription.GetGroupName() == version, info =>

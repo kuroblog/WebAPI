@@ -12,5 +12,10 @@ namespace WebApplication2
         /// default api version route
         /// </summary>
         public const string DefaultApiVersion = apiVersionRoutePrefix + "default";
+
+        /// <summary>
+        /// persons api version route
+        /// </summary>
+        public const string PersonsApiVersion = apiVersionRoutePrefix + "persons";
     }
 }
