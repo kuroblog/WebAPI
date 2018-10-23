@@ -23,9 +23,11 @@ namespace WebApp.CallWebService
             services.AddOptions();
             services.Configure<HisOptions>(Configuration.GetSection(nameof(HisOptions)));
 
-            services.AddTransient<IHisSvcProxyInterface, HisSocketProxy>();
-            services.AddTransient<IHisSvcProxyInterface, HisWebSvcProxy>();
-            services.AddSingleton<ServiceFactory>();
+            services.AddScoped<IHisProxyInterface, HisSocketProxy>();
+            services.AddScoped<IHisProxyInterface, HisWebSvcProxy>();
+            services.AddScoped<ProxyFactory>();
+
+            services.AddScoped<ProxyService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

@@ -4,14 +4,15 @@ namespace WebApp.CallWebService.Controllers
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using WebApp.CallWebService.Core;
+    using WebApp.CallWebService.Models;
 
     [Route("api/[controller]")]
     [ApiController]
     public class DefaultController : ControllerBase
     {
-        private readonly IHisSvcProxyInterface svcProxy;
+        private readonly IHisProxyInterface svcProxy;
 
-        public DefaultController(ServiceFactory svcFactory)
+        public DefaultController(ProxyFactory svcFactory)
         {
             svcProxy = svcFactory.Instance;
         }
@@ -19,9 +20,9 @@ namespace WebApp.CallWebService.Controllers
         [HttpGet]
         public async Task<ActionResult<string>> Get()
         {
-            var result = await svcProxy.DoTrans(new DoTransArgs("4004", ""));
+            var result = await svcProxy.DoTrans(new DoTransRequestDto<string>("4004", ""));
 
-            return await Task.FromResult(result.JsonResult);
+            return await Task.FromResult(result.JsonFormatResult);
         }
     }
 }
