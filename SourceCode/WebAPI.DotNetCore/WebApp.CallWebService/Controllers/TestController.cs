@@ -4,6 +4,7 @@ namespace WebApp.CallWebService.Controllers
     using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
     using WebApp.CallWebService.Core;
+    using WebApp.CallWebService.Services;
 
     [Route("api/[controller]")]
     [ApiController]

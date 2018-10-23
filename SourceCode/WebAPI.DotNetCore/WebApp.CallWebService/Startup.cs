@@ -7,6 +7,7 @@ namespace WebApp.CallWebService
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using WebApp.CallWebService.Core;
+    using WebApp.CallWebService.Services;
 
     public class Startup
     {

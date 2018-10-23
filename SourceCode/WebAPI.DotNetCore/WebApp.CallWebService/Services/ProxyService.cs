@@ -1,7 +1,8 @@
 ﻿
-namespace WebApp.CallWebService.Core
+namespace WebApp.CallWebService.Services
 {
     using System.Threading.Tasks;
+    using WebApp.CallWebService.Core;
     using WebApp.CallWebService.Models;
 
     public class ProxyService
