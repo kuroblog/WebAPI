@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{28D2CED8-6B65-45D3-B7A8-3D92954725CC}"
 	ProjectSection(SolutionItems) = preProject
 		libzmq.zip = libzmq.zip
+		SunRise.HOSP.Web.zip = SunRise.HOSP.Web.zip
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flysh.HospInterface.ProxyApi", "Flysh.HospInterface.ProxyApi\Flysh.HospInterface.ProxyApi.csproj", "{587D879C-74BE-40D3-AF01-B5F2ACE9C769}"
