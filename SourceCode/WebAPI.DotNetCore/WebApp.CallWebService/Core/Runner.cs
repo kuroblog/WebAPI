@@ -6,23 +6,42 @@ namespace WebApp.CallWebService.Core
 
     public static class Runner
     {
-        public static async Task<TResult> Execute<TArgs, TResult>(Func<TArgs, Task<TResult>> func, TArgs args)
+        public static async Task<(bool hasError, Exception error, TResult data)> Execute<TArgs, TResult>(Func<TArgs, Task<TResult>> func, TArgs args)
             where TArgs : class
             where TResult : class
         {
             try
             {
-                return await func.Invoke(args);
+                var result = await func.Invoke(args);
+
+                return (false, null, result);
             }
             catch (Exception ex)
             {
                 errorHandler(ex);
 
-                return default(TResult);
+                return (true, ex, null);
             }
         }
 
-        public static Action<Exception> errorHandler = (error) =>
+        public static async Task<(bool hasError, Exception error, TResult data)> Execute<TResult>(Func<Task<TResult>> func)
+            where TResult : class
+        {
+            try
+            {
+                var result = await func.Invoke();
+
+                return (false, null, result);
+            }
+            catch (Exception ex)
+            {
+                errorHandler(ex);
+
+                return (true, ex, null);
+            }
+        }
+
+        private static Action<Exception> errorHandler = (error) =>
         {
             var color = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;

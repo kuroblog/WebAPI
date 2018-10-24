@@ -3,38 +3,46 @@ namespace WebApp.CallWebService.Extensions
 {
     using Microsoft.AspNetCore.Http;
     using Newtonsoft.Json;
+    using System;
     using System.IO;
     using System.Text;
     using System.Threading.Tasks;
+    using WebApp.CallWebService.Core;
     using WebApp.CallWebService.Models;
 
     public static class HttpRequestExtensions
     {
-        public static async Task<TResult> ParseTo<TResult>(this HttpRequest request, Encoding encoding = null)
+        public static async Task<(bool isParsed, Exception error, TResult data)> ParseTo<TResult>(this HttpRequest request, Encoding encoding = null)
+            where TResult : class
         {
-            if (encoding == null)
+            var result = await Runner.Execute(async () =>
             {
-                encoding = Encoding.UTF8;
-            }
-
-            var jsonBody = string.Empty;
-
-            if (request.Body.CanSeek)
-            {
-                if (request.Body.Position == request.ContentLength)
+                if (encoding == null)
                 {
-                    request.Body.Position = 0;
+                    encoding = Encoding.UTF8;
                 }
-            }
 
-            using (var reader = new StreamReader(request.Body, Encoding.UTF8))
-            {
-                jsonBody = reader.ReadToEnd();
-            }
+                var jsonBody = string.Empty;
 
-            var result = JsonConvert.DeserializeObject<TResult>(jsonBody);
+                if (request.Body.CanSeek)
+                {
+                    if (request.Body.Position == request.ContentLength)
+                    {
+                        request.Body.Position = 0;
+                    }
+                }
 
-            return await Task.FromResult(result);
+                using (var reader = new StreamReader(request.Body, Encoding.UTF8))
+                {
+                    jsonBody = reader.ReadToEnd();
+                }
+
+                var jsonResult = JsonConvert.DeserializeObject<TResult>(jsonBody);
+
+                return await Task.FromResult(jsonResult);
+            });
+
+            return await Task.FromResult((result.hasError == false, result.error, result.data));
         }
     }
 
