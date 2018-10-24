@@ -13,7 +13,7 @@ namespace WebApp.CallWebService.Models
         public DoTransRequestDto(string transCode, TRequest requestDto)
         {
             TransCode = transCode;
-            InJsonString = JsonConvert.SerializeObject(requestDto);
+            InJsonString = typeof(TRequest) == typeof(string) ? requestDto.ToString() : JsonConvert.SerializeObject(requestDto);
         }
 
         public DoTransRequest Body

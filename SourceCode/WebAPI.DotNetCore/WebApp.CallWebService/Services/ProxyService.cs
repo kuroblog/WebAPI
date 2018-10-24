@@ -1,14 +1,13 @@
 ﻿
 namespace WebApp.CallWebService.Services
 {
-    using Newtonsoft.Json;
     using System.Threading.Tasks;
     using WebApp.CallWebService.Core;
     using WebApp.CallWebService.Models;
 
     public interface IProxyService
     {
-        Task<dynamic> HisInterfaceTest(DoTransRequestDto<dynamic> param);
+        Task<string> HisInterfaceTest<TData>(DoTransRequestDto<TData> param);
     }
 
     public class ProxyService : IProxyService
@@ -20,12 +19,14 @@ namespace WebApp.CallWebService.Services
             service = proxyFactory.Instance;
         }
 
-        public async Task<dynamic> HisInterfaceTest(DoTransRequestDto<dynamic> param)
+        public async Task<string> HisInterfaceTest<TData>(DoTransRequestDto<TData> param)
         {
             var hisResult = await service.DoTrans(param);
-            dynamic result = JsonConvert.DeserializeObject<dynamic>(hisResult.JsonFormatResult);
 
-            return await Task.FromResult(result);
+            //dynamic result = JsonConvert.DeserializeObject<dynamic>(hisResult.JsonFormatResult);
+            //return await Task.FromResult(result);
+
+            return await Task.FromResult(hisResult.JsonFormatResult);
         }
     }
 }

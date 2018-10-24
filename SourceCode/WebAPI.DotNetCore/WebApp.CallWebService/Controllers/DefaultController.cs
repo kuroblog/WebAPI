@@ -1,28 +1,51 @@
 ﻿
 namespace WebApp.CallWebService.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
+    using Agebull.Common.Ioc;
+    using Agebull.ZeroNet.ZeroApi;
+    using Gboxt.Common.DataModel;
+    using System;
+    using System.Collections.Generic;
     using WebApp.CallWebService.Core;
+    using WebApp.CallWebService.Extensions;
     using WebApp.CallWebService.Models;
+    using WebApp.CallWebService.Services;
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DefaultController : ControllerBase
+    public class DefaultController : ZeroApiController
     {
-        private readonly IHisProxyInterface svcProxy;
+        private readonly IFoo msgSvc = IocHelper.CreateScope<IFoo>();
 
-        public DefaultController(ProxyFactory svcFactory)
+        private readonly IEnumerable<IFoo> msgSvcs = IocHelper.Create<IEnumerable<IFoo>>();
+
+        private readonly IProxyService service = IocHelper.CreateScope<IProxyService>();
+
+        //public DefaultController(IProxyService service)
+        //{
+
+        //}
+
+        [Route("api/v1/default/hello")]
+        public ApiResult Hello()
         {
-            svcProxy = svcFactory.Instance;
+            return new ApiResult<string>
+            {
+                Success = true,
+                ResultData = msgSvc.Message
+            };
         }
 
-        [HttpGet]
-        public async Task<ActionResult<string>> Get()
+        [Route("api/v1/default/test")]
+        public ApiResult Test(TestRequestDto<string> dto)
         {
-            var result = await svcProxy.DoTrans(new DoTransRequestDto<string>("4004", ""));
-
-            return await Task.FromResult(result.JsonFormatResult);
+            var result = Runner.Execute(service.HisInterfaceTest, dto.GetRequestData()).Result;
+            if (result.hasError)
+            {
+                return new ApiResult<Exception> { Success = false, ResultData = result.error };
+            }
+            else
+            {
+                return new ApiResult<string> { Success = true, ResultData = result.data };
+            }
         }
     }
 }

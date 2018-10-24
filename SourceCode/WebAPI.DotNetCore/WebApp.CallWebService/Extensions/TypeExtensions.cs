@@ -48,9 +48,9 @@ namespace WebApp.CallWebService.Extensions
 
     public static class TestRequestDtoExtensions
     {
-        public static DoTransRequestDto<TRequest> GetRequestData<TRequest>(this TestRequestDto dto)
+        public static DoTransRequestDto<TData> GetRequestData<TData>(this TestRequestDto<TData> dto)
         {
-            return new DoTransRequestDto<TRequest>(dto.code, dto.data);
+            return new DoTransRequestDto<TData>(dto.code, dto.data);
         }
     }
 }
