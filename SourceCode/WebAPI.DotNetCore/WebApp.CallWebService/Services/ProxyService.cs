@@ -1,6 +1,7 @@
 ﻿
 namespace WebApp.CallWebService.Services
 {
+    using Newtonsoft.Json;
     using System.Threading.Tasks;
     using WebApp.CallWebService.Core;
     using WebApp.CallWebService.Models;
@@ -14,15 +15,12 @@ namespace WebApp.CallWebService.Services
             service = proxyFactory.Instance;
         }
 
-        public async Task<string> GetShemaInfo(string str)
+        public async Task<dynamic> HisInterfaceTest(DoTransRequestDto<dynamic> param)
         {
-            var result = await service.DoTrans(new DoTransRequestDto<dynamic>("2003", new
-            {
-                beginDate = "2015-01-01",
-                endDate = "2015-21-01",
-                isPre = "1"
-            }));
-            return await Task.FromResult(result.JsonFormatResult);
+            var hisResult = await service.DoTrans(param);
+            dynamic result = JsonConvert.DeserializeObject<dynamic>(hisResult.JsonFormatResult);
+
+            return await Task.FromResult(result);
         }
     }
 }
