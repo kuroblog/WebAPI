@@ -5,10 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="libzmq.dll" />
+    <None Remove="libzmq.so" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="libzmq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libzmq.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="logs\20181024\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Agebull.ZeroNet.Core" Version="1.2.0.50" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />

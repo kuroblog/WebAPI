@@ -29,13 +29,13 @@ namespace WebApp.CallWebService.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
-            var parseResult = await Request.ParseTo<TestRequestDto>();
+            var parseResult = await Request.ParseTo<TestRequestDto<string>>();
             if (!parseResult.isParsed)
             {
                 return await Task.FromResult(BadRequest(parseResult.error));
             }
 
-            var result = await Runner.Execute(service.HisInterfaceTest, parseResult.data.GetRequestData<dynamic>());
+            var result = await Runner.Execute(service.HisInterfaceTest, parseResult.data.GetRequestData());
             if (result.hasError)
             {
                 return await Task.FromResult(StatusCode(500, result.error));
