@@ -6,7 +6,12 @@ namespace WebApp.CallWebService.Services
     using WebApp.CallWebService.Core;
     using WebApp.CallWebService.Models;
 
-    public class ProxyService
+    public interface IProxyService
+    {
+        Task<dynamic> HisInterfaceTest(DoTransRequestDto<dynamic> param);
+    }
+
+    public class ProxyService : IProxyService
     {
         private readonly IHisProxyInterface service;
 

@@ -28,7 +28,7 @@ namespace WebApp.CallWebService
             services.AddScoped<IHisProxyInterface, HisWebSvcProxy>();
             services.AddScoped<ProxyFactory>();
 
-            services.AddScoped<ProxyService>();
+            services.AddScoped<IProxyService, ProxyService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

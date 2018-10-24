@@ -13,9 +13,9 @@ namespace WebApp.CallWebService.Controllers
     [ApiController]
     public class TestsController : ControllerBase
     {
-        private readonly ProxyService service;
+        private readonly IProxyService service;
 
-        public TestsController(ProxyService service)
+        public TestsController(IProxyService service)
         {
             this.service = service;
         }
