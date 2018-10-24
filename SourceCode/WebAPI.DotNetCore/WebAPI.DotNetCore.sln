@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		libzmq.zip = libzmq.zip
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flysh.HospInterface.ProxyApi", "Flysh.HospInterface.ProxyApi\Flysh.HospInterface.ProxyApi.csproj", "{587D879C-74BE-40D3-AF01-B5F2ACE9C769}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{83770C80-6CE0-48EB-AE5B-EE535E9D9F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83770C80-6CE0-48EB-AE5B-EE535E9D9F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83770C80-6CE0-48EB-AE5B-EE535E9D9F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{587D879C-74BE-40D3-AF01-B5F2ACE9C769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{587D879C-74BE-40D3-AF01-B5F2ACE9C769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587D879C-74BE-40D3-AF01-B5F2ACE9C769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{587D879C-74BE-40D3-AF01-B5F2ACE9C769}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
