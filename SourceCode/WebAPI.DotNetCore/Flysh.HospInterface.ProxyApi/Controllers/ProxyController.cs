@@ -9,11 +9,18 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     using Gboxt.Common.DataModel;
     using System;
 
+    /// <summary>
+    /// his interface test
+    /// </summary>
     public class ProxyController : ZeroApiController
     {
         private readonly ITestService testService = IocHelper.CreateScope<ITestService>();
         private readonly IProxyService service = IocHelper.CreateScope<IProxyService>();
 
+        /// <summary>
+        /// hello
+        /// </summary>
+        /// <returns></returns>
         [Route("api/v1/proxy/hello")]
         public ApiResult Hello()
         {
@@ -24,6 +31,11 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
             };
         }
 
+        /// <summary>
+        /// his do-trans webmethod
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [Route("api/v1/proxy/test")]
         public ApiResult Test(HisDoTransRequest<string> request)
         {

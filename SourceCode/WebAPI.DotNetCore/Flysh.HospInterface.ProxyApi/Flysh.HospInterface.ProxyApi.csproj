@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Yuqi\Source\Repos\WebAPI\SourceCode\WebAPI.DotNetCore\Flysh.HospInterface.ProxyApi\Flysh.HospInterface.ProxyApi.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="libzmq.dll" />
     <None Remove="libzmq.so" />

@@ -1,0 +1,262 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Flysh.HospInterface.ProxyApi</name>
+    </assembly>
+    <members>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ClassesController">
+            <summary>
+            classes
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassesController.Hello">
+            <summary>
+            hello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassesController.Schedule(Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest)">
+            <summary>
+            获取排班信息
+            </summary>
+            <param name="request"><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest"/></param>
+            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse"/></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ProxyController">
+            <summary>
+            his interface test
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ProxyController.Hello">
+            <summary>
+            hello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ProxyController.Test(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{System.String})">
+            <summary>
+            his do-trans webmethod
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ValuesController">
+            <summary>
+            default controller
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ValuesController.Get">
+            <summary>
+            GET api/values
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            GET api/values/5
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            POST api/values
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            PUT api/values/5
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            DELETE api/values/5
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisProxyResult">
+            <summary>
+            his interface result
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisProxyResult.HisResult">
+            <summary>
+            his result
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisProxyResult.FormatResult">
+            <summary>
+            json format result
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.His.HisProxyResult.#ctor(System.String)">
+            <summary>
+            constructor
+            </summary>
+            <param name="hisResult"></param>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.Runner">
+            <summary>
+            runner
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.ExecuteAsync``2(System.Func{``0,System.Threading.Tasks.Task{``1}},``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TArgs"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="func"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.Execute``2(System.Func{``0,``1},``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TArgs"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="func"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.Execute``2(System.Func{``0,``1[]},``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TArgs"></typeparam>
+            <typeparam name="TResult"></typeparam>
+            <param name="func"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="func"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest">
+            <summary>
+            排班信息请求参数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest.beginDate">
+            <summary>
+            开始时间(yyyy-MM-dd)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest.endDate">
+            <summary>
+            结束时间(yyyy-MM-dd)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest.deptCode">
+            <summary>
+            科室编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest.isPre">
+            <summary>
+            是否预约(0 不预约 or 1 预约)
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse">
+            <summary>
+            排班信息
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.id">
+            <summary>
+            排班 ID
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.seeDate">
+            <summary>
+            看诊时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.week">
+            <summary>
+            星期几
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.nooncode">
+            <summary>
+            午别
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.beginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.endTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.deptCode">
+            <summary>
+            科室编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.deptName">
+            <summary>
+            科室名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.doctCode">
+            <summary>
+            医生编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.doctName">
+            <summary>
+            医生名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.regLmt">
+            <summary>
+            预约总数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.regReged">
+            <summary>
+            已经预约数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.regLevl">
+            <summary>
+            挂号等级
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.totCost">
+            <summary>
+            挂号金额
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.adress">
+            <summary>
+            科室地址
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleResponse.regType">
+            <summary>
+            挂号类别(0 普通号(PT) or 1 专家号(ZJ))
+            </summary>
+        </member>
+    </members>
+</doc>

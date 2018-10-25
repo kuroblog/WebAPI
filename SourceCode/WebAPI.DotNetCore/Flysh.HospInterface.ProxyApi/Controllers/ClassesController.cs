@@ -7,13 +7,19 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     using Flysh.HospInterface.ProxyApi.Models;
     using Flysh.HospInterface.ProxyApi.Services;
     using Gboxt.Common.DataModel;
-    using Microsoft.Extensions.Options;
 
+    /// <summary>
+    /// classes
+    /// </summary>
     public class ClassesController : ZeroApiController
     {
         private readonly ITestService testService = IocHelper.CreateScope<ITestService>();
         private readonly IProxyService service = IocHelper.CreateScope<IProxyService>();
 
+        /// <summary>
+        /// hello
+        /// </summary>
+        /// <returns></returns>
         [Route("api/v1/classes/hello")]
         public ApiResult Hello()
         {
@@ -24,24 +30,15 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
             };
         }
 
+        /// <summary>
+        /// 获取排班信息
+        /// </summary>
+        /// <param name="request"><see cref="ClassesScheduleRequest"/></param>
+        /// <returns><see cref="ClassesScheduleResponse"/></returns>
         [Route("api/v1/classes/schedule")]
-        public ApiResult<ClassesScheduleResponse[]> Schedule(ClassesScheduleRequest request)
+        public ApiArrayResult<ClassesScheduleResponse> Schedule(ClassesScheduleRequest request)
         {
-            if (request == null)
-            {
-                return ApiResult<ClassesScheduleResponse[]>.ErrorResult(1001);
-            }
-
-            var result = Runner.Execute(service.ClassesSchedule, request);
-
-            if (result.hasError)
-            {
-                return ApiResult<ClassesScheduleResponse[]>.ErrorResult(1001);
-            }
-            else
-            {
-                return new ApiResult<ClassesScheduleResponse[]> { Success = true, ResultData = result.data };
-            }
+            return Runner.Execute(service.ClassesSchedule, request);
         }
     }
 }
