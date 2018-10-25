@@ -1,7 +1,7 @@
 ﻿
 namespace Flysh.HospInterface.ProxyApi.Models
 {
-    using Flysh.HospInterface.ProxyApi.His;
+    using Flysh.HospInterface.ProxyApi.His.Dto;
     using Gboxt.Common.DataModel;
 
     public class ProxyRequestDto<TData> : IApiArgument
@@ -20,9 +20,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
 
     public static class ProxyRequestDtoExtensions
     {
-        public static DoTransRequestDto<TData> GetRequestData<TData>(this ProxyRequestDto<TData> dto)
+        public static DoTransDto<TData> GetRequestData<TData>(this ProxyRequestDto<TData> dto)
         {
-            return new DoTransRequestDto<TData>(dto.code, dto.data);
+            return new DoTransDto<TData>(dto.code, dto.data);
         }
     }
 }

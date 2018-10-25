@@ -3,16 +3,16 @@ namespace Flysh.HospInterface.ProxyApi.His
 {
     public class HisProxyResult
     {
-        public string SourceResult { get; } = string.Empty;
+        public string HisResult { get; } = string.Empty;
 
-        public string JsonFormatResult
+        public string FormatResult
         {
-            get { return SourceResult.Replace("\"[", "[").Replace("]\"", "]").Replace("\"{", "{").Replace("}\"", "}").Replace("\\\"", "\""); }
+            get { return HisResult.Replace("\"[", "[").Replace("]\"", "]").Replace("\"{", "{").Replace("}\"", "}").Replace("\\\"", "\""); }
         }
 
-        public HisProxyResult(string sourceResult)
+        public HisProxyResult(string hisResult)
         {
-            SourceResult = sourceResult;
+            HisResult = hisResult;
         }
     }
 }

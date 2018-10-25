@@ -34,7 +34,7 @@ namespace Flysh.HospInterface.ProxyApi
             IocHelper.ServiceCollection.Configure<HisOptions>(Configuration.GetSection(nameof(HisOptions)));
             IocHelper.AddScoped<IHisProxyInterface, HisSocketProxy>();
             IocHelper.AddScoped<IHisProxyInterface, HisWebSvcProxy>();
-            IocHelper.AddScoped<ProxyFactory>();
+            IocHelper.AddScoped<HisProxyFactory>();
             IocHelper.AddScoped<IProxyService, ProxyService>();
             
             ZeroApplication.Initialize();

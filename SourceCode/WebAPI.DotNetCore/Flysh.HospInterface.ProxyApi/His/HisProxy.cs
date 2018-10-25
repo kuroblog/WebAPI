@@ -1,6 +1,7 @@
 ﻿
 namespace Flysh.HospInterface.ProxyApi.His
 {
+    using Flysh.HospInterface.ProxyApi.His.Dto;
     using JHWR;
     using Microsoft.Extensions.Options;
     using System;
@@ -14,14 +15,14 @@ namespace Flysh.HospInterface.ProxyApi.His
     {
         string Name { get; }
 
-        Task<HisProxyResult> DoTrans<TRequestDto>(DoTransRequestDto<TRequestDto> requestDto);
+        Task<HisProxyResult> DoTrans<TRequestData>(DoTransDto<TRequestData> requestData);
     }
 
-    public sealed class ProxyFactory
+    public sealed class HisProxyFactory
     {
         public IHisProxyInterface Instance { get; }
 
-        public ProxyFactory(IEnumerable<IHisProxyInterface> proxyArray, IOptions<HisOptions> hisOptions)
+        public HisProxyFactory(IEnumerable<IHisProxyInterface> proxyArray, IOptions<HisOptions> hisOptions)
         {
             var hisMode = hisOptions.Value.Mode;
             Instance = proxyArray.FirstOrDefault(p => string.Compare(p.Name, hisMode) == 0);
@@ -32,7 +33,7 @@ namespace Flysh.HospInterface.ProxyApi.His
     {
         public string Name => "Socket";
 
-        public Task<HisProxyResult> DoTrans<TRequestDto>(DoTransRequestDto<TRequestDto> requestDto)
+        public Task<HisProxyResult> DoTrans<TRequestData>(DoTransDto<TRequestData> requestData)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +50,7 @@ namespace Flysh.HospInterface.ProxyApi.His
             url = hisOptions.Value.Url;
         }
 
-        private TSoap GenerateSoapClient<TSoap>()
+        private TSoapProxyService GenerateSoapClient<TSoapProxyService>()
         {
             var binding = new BasicHttpBinding
             {
@@ -65,16 +66,16 @@ namespace Flysh.HospInterface.ProxyApi.His
 
             var endpoint = new EndpointAddress(url);
 
-            var soapFactory = new ChannelFactory<TSoap>(binding, endpoint);
+            var soapFactory = new ChannelFactory<TSoapProxyService>(binding, endpoint);
             var soapClient = soapFactory.CreateChannel();
 
             return soapClient;
         }
 
-        public async Task<HisProxyResult> DoTrans<TRequestDto>(DoTransRequestDto<TRequestDto> requestDto)
+        public async Task<HisProxyResult> DoTrans<TRequestData>(DoTransDto<TRequestData> requestData)
         {
             var soapClient = GenerateSoapClient<CallServiceSoapClientJHWRSoap>();
-            var soapResult = await soapClient.DoTransAsync(requestDto.Body);
+            var soapResult = await soapClient.DoTransAsync(requestData.Body);
 
             return await Task.FromResult(new HisProxyResult(soapResult.Body.DoTransResult));
         }
