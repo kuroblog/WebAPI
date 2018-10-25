@@ -15,7 +15,7 @@ namespace Flysh.HospInterface.ProxyApi.His
     {
         string Name { get; }
 
-        Task<HisProxyResult> DoTrans<TRequestData>(DoTransDto<TRequestData> requestData);
+        Task<HisProxyResult> DoTrans<TData>(HisDoTransRequest<TData> data);
     }
 
     public sealed class HisProxyFactory
@@ -33,7 +33,7 @@ namespace Flysh.HospInterface.ProxyApi.His
     {
         public string Name => "Socket";
 
-        public Task<HisProxyResult> DoTrans<TRequestData>(DoTransDto<TRequestData> requestData)
+        public Task<HisProxyResult> DoTrans<TData>(HisDoTransRequest<TData> data)
         {
             throw new NotImplementedException();
         }
@@ -72,10 +72,13 @@ namespace Flysh.HospInterface.ProxyApi.His
             return soapClient;
         }
 
-        public async Task<HisProxyResult> DoTrans<TRequestData>(DoTransDto<TRequestData> requestData)
+        public async Task<HisProxyResult> DoTrans<TData>(HisDoTransRequest<TData> data)
         {
             var soapClient = GenerateSoapClient<CallServiceSoapClientJHWRSoap>();
-            var soapResult = await soapClient.DoTransAsync(requestData.Body);
+
+            var doTransRequest = data.GetRequestData<HisDoTransRequest<TData>, TData>();
+
+            var soapResult = await soapClient.DoTransAsync(doTransRequest);
 
             return await Task.FromResult(new HisProxyResult(soapResult.Body.DoTransResult));
         }

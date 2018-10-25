@@ -7,7 +7,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
 
     public interface IProxyService
     {
-        Task<string> HisInterfaceTest<TRequestData>(DoTransDto<TRequestData> requestData);
+        Task<string> HisInterfaceTest<TData>(HisDoTransRequest<TData> request);
     }
 
     public class ProxyService : IProxyService
@@ -19,12 +19,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
             service = proxyFactory.Instance;
         }
 
-        public async Task<string> HisInterfaceTest<TRequestData>(DoTransDto<TRequestData> requestData)
+        public async Task<string> HisInterfaceTest<TData>(HisDoTransRequest<TData> request)
         {
-            var hisResult = await service.DoTrans(requestData);
-
-            //dynamic result = JsonConvert.DeserializeObject<dynamic>(hisResult.JsonFormatResult);
-            //return await Task.FromResult(result);
+            var hisResult = await service.DoTrans(request);
 
             return await Task.FromResult(hisResult.FormatResult);
         }
