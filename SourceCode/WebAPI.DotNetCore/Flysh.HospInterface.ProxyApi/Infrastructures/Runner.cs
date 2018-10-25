@@ -6,7 +6,7 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
 
     public static class Runner
     {
-        public static async Task<(bool hasError, Exception error, TResult data)> Execute<TArgs, TResult>(Func<TArgs, Task<TResult>> func, TArgs args)
+        public static async Task<(bool hasError, Exception error, TResult data)> ExecuteAsync<TArgs, TResult>(Func<TArgs, Task<TResult>> func, TArgs args)
             where TArgs : class
             where TResult : class
         {
@@ -24,7 +24,25 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
             }
         }
 
-        public static async Task<(bool hasError, Exception error, TResult data)> Execute<TResult>(Func<Task<TResult>> func)
+        public static (bool hasError, Exception error, TResult data) Execute<TArgs, TResult>(Func<TArgs, TResult> func, TArgs args)
+            where TArgs : class
+            where TResult : class
+        {
+            try
+            {
+                var result = func.Invoke(args);
+
+                return (false, null, result);
+            }
+            catch (Exception ex)
+            {
+                errorHandler(ex);
+
+                return (true, ex, null);
+            }
+        }
+
+        public static async Task<(bool hasError, Exception error, TResult data)> ExecuteAsync<TResult>(Func<Task<TResult>> func)
             where TResult : class
         {
             try
