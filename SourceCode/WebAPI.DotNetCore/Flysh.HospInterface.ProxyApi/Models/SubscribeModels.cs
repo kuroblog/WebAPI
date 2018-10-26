@@ -145,7 +145,6 @@ namespace Flysh.HospInterface.ProxyApi.Models
                 message = ErrorMessage(() => termId);
             }
 
-
             return string.IsNullOrEmpty(message);
         }
     }

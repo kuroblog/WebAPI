@@ -2,10 +2,6 @@
 namespace Flysh.HospInterface.ProxyApi.Models
 {
     using Flysh.HospInterface.ProxyApi.Infrastructures;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// 挂号信息请求参数
@@ -250,20 +246,18 @@ namespace Flysh.HospInterface.ProxyApi.Models
         /// <returns></returns>
         public override bool Validate(out string message)
         {
+            message = string.Empty;
+
+            if (string.IsNullOrEmpty(clinicNo))
             {
-                message = string.Empty;
-
-                if (string.IsNullOrEmpty(clinicNo))
-                {
-                    message = ErrorMessage(() => clinicNo);
-                }
-                else if (string.IsNullOrEmpty(operCode))
-                {
-                    message = ErrorMessage(() => operCode);
-                }
-
-                return string.IsNullOrEmpty(message);
+                message = ErrorMessage(() => clinicNo);
             }
+            else if (string.IsNullOrEmpty(operCode))
+            {
+                message = ErrorMessage(() => operCode);
+            }
+
+            return string.IsNullOrEmpty(message);
         }
     }
 }
