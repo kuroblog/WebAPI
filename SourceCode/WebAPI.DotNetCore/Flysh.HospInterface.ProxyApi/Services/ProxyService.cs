@@ -77,7 +77,14 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, IEnumerable<FeeRegisterHistoryQueryData> data) FeeRegisterHistoryQuery(FeeRegisterHistoryQueryRequest request);
+        (bool result, string message, IEnumerable<FeeRegisterQueryData> data) FeeRegisterQuery(FeeRegisterQueryRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, IEnumerable<ReportQueryData> data) ReportQuery(ReportQueryRequest request);
     }
 
     /// <summary>
@@ -291,7 +298,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisFeeRegInfo, FeeRegisterHistoryQueryData> hisFeeRegInfoParser = (h) => new FeeRegisterHistoryQueryData
+        private Func<HisFeeRegInfo, FeeRegisterQueryData> hisFeeRegInfoParser = (h) => new FeeRegisterQueryData
         {
             doctDeptName = h.DocDept_Name,
             doctName = h.Doc_Name,
@@ -320,9 +327,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, IEnumerable<FeeRegisterHistoryQueryData> data) FeeRegisterHistoryQuery(FeeRegisterHistoryQueryRequest request)
+        public (bool result, string message, IEnumerable<FeeRegisterQueryData> data) FeeRegisterQuery(FeeRegisterQueryRequest request)
         {
-            var data = new HisDoTransRequest<FeeRegisterHistoryQueryRequest>("3006", request);
+            var data = new HisDoTransRequest<FeeRegisterQueryRequest>("3006", request);
 
             var hisResultSource = service.DoTrans(data);
             var hisResult = JsonConvert.DeserializeObject<BaseHisDataResponse<HisFeeRegInfo[]>>(hisResultSource.FormatResult);
@@ -330,6 +337,35 @@ namespace Flysh.HospInterface.ProxyApi.Services
             var rValue = verifyHisResult(hisResult.result);
             var mValue = hisResult.message;
             var dValue = hisResult.data?.Select(hisFeeRegInfoParser)?.ToArray();
+
+            return (rValue, mValue, dValue);
+        }
+
+
+        private Func<HisReportInfo, ReportQueryData> hisReportInfoParser = (h) => new ReportQueryData
+        {
+            checkType = h.checkType,
+            itemName = h.itemName,
+            realName = h.realName,
+            reportId = h.queryId,
+            status = h.status
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, IEnumerable<ReportQueryData> data) ReportQuery(ReportQueryRequest request)
+        {
+            var data = new HisDoTransRequest<ReportQueryRequest>("5001", request);
+
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<BaseHisDataResponse<HisReportInfo[]>>(hisResultSource.FormatResult);
+
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisResult.data?.Select(hisReportInfoParser)?.ToArray();
 
             return (rValue, mValue, dValue);
         }

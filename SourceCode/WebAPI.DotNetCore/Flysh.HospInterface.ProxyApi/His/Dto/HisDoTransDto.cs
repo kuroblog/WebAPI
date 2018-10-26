@@ -400,4 +400,35 @@ namespace Flysh.HospInterface.ProxyApi.His.Dto
         /// </summary>
         public string InvoiceNo { get; set; }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class HisReportInfo
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string queryId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string itemName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string realName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string checkType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string status { get; set; }
+    }
 }

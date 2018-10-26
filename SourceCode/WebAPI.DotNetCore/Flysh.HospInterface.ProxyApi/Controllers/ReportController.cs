@@ -11,7 +11,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     /// <summary>
     /// 排班
     /// </summary>
-    public class RegisterController : ZeroApiController
+    public class ReportController : ZeroApiController
     {
         private readonly ITestService testService = IocHelper.CreateScope<ITestService>();
         private readonly IProxyService service = IocHelper.CreateScope<IProxyService>();
@@ -20,7 +20,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// hello
         /// </summary>
         /// <returns></returns>
-        [Route("api/v1/register/hello")]
+        [Route("api/v1/report/hello")]
         public ApiResult Hello()
         {
             return new ApiResult<string>
@@ -31,25 +31,14 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         }
 
         /// <summary>
-        /// 挂号
+        /// 报告列表查询
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Route("api/v1/register/submit")]
-        public ApiResult<RegisterSubmitData> Submit(RegisterSubmitRequest request)
+        [Route("api/v1/report/query")]
+        public ApiArrayResult<ReportQueryData> Query(ReportQueryRequest request)
         {
-            return Runner.Execute(service.RegisterSubmit, request);
-        }
-
-        /// <summary>
-        /// 挂号取消
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [Route("api/v1/register/cancel")]
-        public ApiResult<bool> Cancel(RegisterCancelRequest request)
-        {
-            return Runner.Execute(service.RegisterCancel, request);
+            return Runner.Execute(service.ReportQuery, request);
         }
     }
 }

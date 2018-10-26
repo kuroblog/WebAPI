@@ -51,12 +51,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.FeeController.Schedule(Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.FeeController.RegisterQuery(Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest)">
             <summary>
             挂号缴费记录查询
             </summary>
-            <param name="request"><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest"/></param>
-            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData"/></returns>
+            <param name="request"></param>
+            <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ProxyController">
             <summary>
@@ -97,6 +97,24 @@
         <member name="M:Flysh.HospInterface.ProxyApi.Controllers.RegisterController.Cancel(Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest)">
             <summary>
             挂号取消
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ReportController">
+            <summary>
+            排班
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ReportController.Hello">
+            <summary>
+            hello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ReportController.Query(Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest)">
+            <summary>
+            报告列表查询
             </summary>
             <param name="request"></param>
             <returns></returns>
@@ -534,6 +552,36 @@
             
             </summary>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.queryId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.itemName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.realName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.checkType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.status">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.His.HisOptions">
             <summary>
             
@@ -894,124 +942,124 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryRequest">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest">
             <summary>
             挂号缴费记录请求参数
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryRequest.pactCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest.pactCode">
             <summary>
             合同单位
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryRequest.Validate(System.String@)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest.Validate(System.String@)">
             <summary>
             
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData">
             <summary>
             挂号缴费记录
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.recipeId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.recipeId">
             <summary>
             唯一号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.recipeNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.recipeNo">
             <summary>
             处方号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.seqNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.seqNo">
             <summary>
             处方内序号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.transType">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.transType">
             <summary>
             交易类型
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.feeCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.feeCode">
             <summary>
             最小费用代码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.drugFlag">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.drugFlag">
             <summary>
             是否是药品
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.itemCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.itemCode">
             <summary>
             项目编码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.itemName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.itemName">
             <summary>
             项目名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.ybItemInfo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.ybItemInfo">
             <summary>
             医保项目相关参数 多个#分隔
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.qty">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.qty">
             <summary>
             数量
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.unitPrice">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.unitPrice">
             <summary>
             单价
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.unit">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.unit">
             <summary>
             单位
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.totCost">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.totCost">
             <summary>
             总额
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.doctName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.doctName">
             <summary>
             开方医生
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.doctDeptName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.doctDeptName">
             <summary>
             开方医生所在科室
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.execDeptCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.execDeptCode">
             <summary>
             执行科室
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.execDeptName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.execDeptName">
             <summary>
             执行科室名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.moDate">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.moDate">
             <summary>
             开立时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.payFlag">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.payFlag">
             <summary>
             是否收费
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryData.invoiceNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryData.invoiceNo">
             <summary>
             发票号
             </summary>
@@ -1194,6 +1242,58 @@
             </summary>
             <param name="message"></param>
             <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest">
+            <summary>
+            报告列表查询参数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest.realName">
+            <summary>
+            就诊人姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest.cardNo">
+            <summary>
+            就诊人卡号
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ReportQueryData">
+            <summary>
+            报告列表信息
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryData.reportId">
+            <summary>
+            key?
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryData.itemName">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryData.realName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryData.checkType">
+            <summary>
+            1-检验 2-检查
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryData.status">
+            <summary>
+            0-检查中 1-检查完成
+            </summary>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest">
             <summary>
@@ -1441,7 +1541,14 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.FeeRegisterHistoryQuery(Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.FeeRegisterQuery(Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.ReportQuery(Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest)">
             <summary>
             
             </summary>
@@ -1516,7 +1623,14 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.FeeRegisterHistoryQuery(Flysh.HospInterface.ProxyApi.Models.FeeRegisterHistoryQueryRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.FeeRegisterQuery(Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.ReportQuery(Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest)">
             <summary>
             
             </summary>

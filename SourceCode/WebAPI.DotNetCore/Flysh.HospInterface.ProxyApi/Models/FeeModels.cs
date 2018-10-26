@@ -6,7 +6,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 挂号缴费记录请求参数
     /// </summary>
-    public class FeeRegisterHistoryQueryRequest : BaseApiRequest
+    public class FeeRegisterQueryRequest : BaseApiRequest
     {
         /// <summary>
         /// 合同单位
@@ -34,7 +34,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 挂号缴费记录
     /// </summary>
-    public class FeeRegisterHistoryQueryData
+    public class FeeRegisterQueryData
     {
         /// <summary>
         /// 唯一号

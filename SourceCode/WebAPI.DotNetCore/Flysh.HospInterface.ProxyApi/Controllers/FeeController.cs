@@ -33,23 +33,12 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// <summary>
         /// 挂号缴费记录查询
         /// </summary>
-        /// <param name="request"><see cref="ClassScheduleRequest"/></param>
-        /// <returns><see cref="ClassScheduleData"/></returns>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [Route("api/v1/fee/register/query")]
-        public ApiArrayResult<FeeRegisterHistoryQueryData> Schedule(FeeRegisterHistoryQueryRequest request)
+        public ApiArrayResult<FeeRegisterQueryData> RegisterQuery(FeeRegisterQueryRequest request)
         {
-            return Runner.Execute(service.FeeRegisterHistoryQuery, request);
+            return Runner.Execute(service.FeeRegisterQuery, request);
         }
-
-        ///// <summary>
-        ///// 预约时间点信息
-        ///// </summary>
-        ///// <param name="request"></param>
-        ///// <returns></returns>
-        //[Route("api/v1/class/point")]
-        //public ApiArrayResult<string> Point(ClassPointRequest request)
-        //{
-        //    return Runner.Execute(service.ClassPoint, request);
-        //}
     }
 }
