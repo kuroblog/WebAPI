@@ -11,7 +11,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     /// <summary>
     /// 排班
     /// </summary>
-    public class ClassesController : ZeroApiController
+    public class ClassController : ZeroApiController
     {
         private readonly ITestService testService = IocHelper.CreateScope<ITestService>();
         private readonly IProxyService service = IocHelper.CreateScope<IProxyService>();
@@ -20,7 +20,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// hello
         /// </summary>
         /// <returns></returns>
-        [Route("api/v1/classes/hello")]
+        [Route("api/v1/class/hello")]
         public ApiResult Hello()
         {
             return new ApiResult<string>
@@ -33,12 +33,12 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// <summary>
         /// 排班信息
         /// </summary>
-        /// <param name="request"><see cref="ClassesScheduleRequest"/></param>
-        /// <returns><see cref="ClassesScheduleData"/></returns>
-        [Route("api/v1/classes/schedule")]
-        public ApiArrayResult<ClassesScheduleData> Schedule(ClassesScheduleRequest request)
+        /// <param name="request"><see cref="ClassScheduleRequest"/></param>
+        /// <returns><see cref="ClassScheduleData"/></returns>
+        [Route("api/v1/class/schedule")]
+        public ApiArrayResult<ClassScheduleData> Schedule(ClassScheduleRequest request)
         {
-            return Runner.Execute(service.ClassesSchedule, request);
+            return Runner.Execute(service.ClassSchedule, request);
         }
 
         /// <summary>
@@ -46,10 +46,10 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Route("api/v1/classes/point")]
-        public ApiArrayResult<string> Point(ClassesPointRequest request)
+        [Route("api/v1/class/point")]
+        public ApiArrayResult<string> Point(ClassPointRequest request)
         {
-            return Runner.Execute(service.ClassesPoint, request);
+            return Runner.Execute(service.ClassPoint, request);
         }
     }
 }

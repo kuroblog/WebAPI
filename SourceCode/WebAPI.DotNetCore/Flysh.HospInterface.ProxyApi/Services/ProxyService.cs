@@ -28,14 +28,14 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, IEnumerable<ClassesScheduleData> data) ClassesSchedule(ClassesScheduleRequest request);
+        (bool result, string message, IEnumerable<ClassScheduleData> data) ClassSchedule(ClassScheduleRequest request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, IEnumerable<string> data) ClassesPoint(ClassesPointRequest request);
+        (bool result, string message, IEnumerable<string> data) ClassPoint(ClassPointRequest request);
 
         /// <summary>
         /// 
@@ -71,6 +71,13 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <param name="request"></param>
         /// <returns></returns>
         (bool result, string message, bool data) RegisterCancel(RegisterCancelRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, IEnumerable<FeeRegisterHistoryQueryData> data) FeeRegisterHistoryQuery(FeeRegisterHistoryQueryRequest request);
     }
 
     /// <summary>
@@ -106,24 +113,24 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisShemaInfo, ClassesScheduleData> hisShemaInfoParser = (his) => new ClassesScheduleData
+        private Func<HisShemaInfo, ClassScheduleData> hisShemaInfoParser = (h) => new ClassScheduleData
         {
-            adress = his.ADRESS,
-            beginTime = his.BEGIN_TIME,
-            deptCode = his.DEPT_CODE,
-            deptName = his.DEPT_NAME,
-            doctCode = his.DOCT_CODE,
-            doctName = his.DOCT_NAME,
-            endTime = his.END_TIME,
-            classId = his.ID,
-            nooncode = his.NOONCODE,
-            regLevl = his.REGLEVL_NAME,
-            regLmt = his.REG_LMT,
-            regReged = his.REG_REGED,
-            regType = his.REGISTRATION_TYPE,
-            seeDate = his.SEE_DATE,
-            totCost = his.TOT_COST,
-            week = his.WEEK
+            adress = h.ADRESS,
+            beginTime = h.BEGIN_TIME,
+            deptCode = h.DEPT_CODE,
+            deptName = h.DEPT_NAME,
+            doctCode = h.DOCT_CODE,
+            doctName = h.DOCT_NAME,
+            endTime = h.END_TIME,
+            classId = h.ID,
+            nooncode = h.NOONCODE,
+            regLevl = h.REGLEVL_NAME,
+            regLmt = h.REG_LMT,
+            regReged = h.REG_REGED,
+            regType = h.REGISTRATION_TYPE,
+            seeDate = h.SEE_DATE,
+            totCost = h.TOT_COST,
+            week = h.WEEK
         };
 
         /// <summary>
@@ -131,9 +138,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, IEnumerable<ClassesScheduleData> data) ClassesSchedule(ClassesScheduleRequest request)
+        public (bool result, string message, IEnumerable<ClassScheduleData> data) ClassSchedule(ClassScheduleRequest request)
         {
-            var data = new HisDoTransRequest<ClassesScheduleRequest>("2003", request);
+            var data = new HisDoTransRequest<ClassScheduleRequest>("2003", request);
 
             var hisResultSource = service.DoTrans(data);
             var hisResult = JsonConvert.DeserializeObject<HisDoTransResponse<HisShemaInfo[]>>(hisResultSource.FormatResult);
@@ -150,9 +157,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, IEnumerable<string> data) ClassesPoint(ClassesPointRequest request)
+        public (bool result, string message, IEnumerable<string> data) ClassPoint(ClassPointRequest request)
         {
-            var data = new HisDoTransRequest<ClassesPointRequest>("2004", request);
+            var data = new HisDoTransRequest<ClassPointRequest>("2004", request);
 
             var hisResultSource = service.DoTrans(data);
             var hisResult = JsonConvert.DeserializeObject<HisShemaPointResponse>(hisResultSource.FormatResult);
@@ -164,11 +171,11 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisSaveBookingInfo, SubscribeSubmitData> hisSaveBookingInfoParser = (his) => new SubscribeSubmitData
+        private Func<HisSaveBookingInfo, SubscribeSubmitData> hisSaveBookingInfoParser = (h) => new SubscribeSubmitData
         {
-            clinicNo = his.clinicNo,
-            seeNo = his.seeNo,
-            subscribeId = his.bookingNo
+            clinicNo = h.clinicNo,
+            seeNo = h.seeNo,
+            subscribeId = h.bookingNo
         };
 
         /// <summary>
@@ -209,10 +216,10 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisBookingInfoResponse, SubscribeQueryData> hisBookingInfoParser = (his) => new SubscribeQueryData
+        private Func<HisBookingInfoResponse, SubscribeQueryData> hisBookingInfoParser = (h) => new SubscribeQueryData
         {
-            deptName = his.deptName,
-            state = his.state
+            deptName = h.deptName,
+            state = h.state
         };
 
         /// <summary>
@@ -234,16 +241,16 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisRegisterInfo, RegisterSubmitData> hisRegisterInfoParser = (his) => new RegisterSubmitData
+        private Func<HisRegisterInfo, RegisterSubmitData> hisRegisterInfoParser = (h) => new RegisterSubmitData
         {
-            clinicNo = his.clinicNo,
-            seeNo = his.seeNo,
-            tradeNo = his.tradeNo,
-            address = his.address,
-            deptName = his.deptName,
-            registerHisId = his.registerHisId,
-            registerId = his.registerId,
-            vancy = his.vancy
+            clinicNo = h.clinicNo,
+            seeNo = h.seeNo,
+            tradeNo = h.tradeNo,
+            address = h.address,
+            deptName = h.deptName,
+            registerHisId = h.registerHisId,
+            registerId = h.registerId,
+            vancy = h.vancy
         };
 
         /// <summary>
@@ -281,7 +288,50 @@ namespace Flysh.HospInterface.ProxyApi.Services
             var mValue = hisResult.message;
             var dValue = rValue;
 
-            return (rValue, mValue, rValue);
+            return (rValue, mValue, dValue);
+        }
+
+        private Func<HisFeeRegInfo, FeeRegisterHistoryQueryData> hisFeeRegInfoParser = (h) => new FeeRegisterHistoryQueryData
+        {
+            doctDeptName = h.DocDept_Name,
+            doctName = h.Doc_Name,
+            drugFlag = h.Drug_Flag,
+            execDeptCode = h.Exec_DeptCode,
+            execDeptName = h.Exec_DeptName,
+            feeCode = h.Fee_Code,
+            invoiceNo = h.InvoiceNo,
+            itemCode = h.Item_Code,
+            itemName = h.Item_Name,
+            moDate = h.Mo_Date,
+            payFlag = h.Pay_Flag,
+            qty = h.Qty,
+            recipeId = h.Recipe_Key,
+            recipeNo = h.Recipe_No,
+            seqNo = h.SeqNo,
+            totCost = h.Tot_Cost,
+            transType = h.Trans_Type,
+            unit = h.UNIT,
+            unitPrice = h.Unit_Price,
+            ybItemInfo = h.Yb_Item_Info
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, IEnumerable<FeeRegisterHistoryQueryData> data) FeeRegisterHistoryQuery(FeeRegisterHistoryQueryRequest request)
+        {
+            var data = new HisDoTransRequest<FeeRegisterHistoryQueryRequest>("3006", request);
+
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<BaseHisDataResponse<HisFeeRegInfo[]>>(hisResultSource.FormatResult);
+
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisResult.data?.Select(hisFeeRegInfoParser)?.ToArray();
+
+            return (rValue, mValue, dValue);
         }
 
         private Func<string, bool> verifyHisResult = (result) =>

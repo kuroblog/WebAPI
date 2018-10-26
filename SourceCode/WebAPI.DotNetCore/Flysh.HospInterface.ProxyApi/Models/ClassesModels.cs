@@ -6,7 +6,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 排班信息请求参数
     /// </summary>
-    public class ClassesScheduleRequest : BaseApiRequest
+    public class ClassScheduleRequest : BaseApiRequest
     {
         /// <summary>
         /// 开始时间(yyyy-MM-dd)
@@ -57,7 +57,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 排班信息
     /// </summary>
-    public class ClassesScheduleData
+    public class ClassScheduleData
     {
         /// <summary>
         /// 排班 ID
@@ -143,7 +143,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 可预约时间点信息请求参数
     /// </summary>
-    public class ClassesPointRequest : BaseApiRequest
+    public class ClassPointRequest : BaseApiRequest
     {
         /// <summary>
         /// 排班编号（his主键）

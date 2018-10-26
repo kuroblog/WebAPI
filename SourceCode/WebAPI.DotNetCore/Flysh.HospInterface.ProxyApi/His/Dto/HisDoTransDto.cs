@@ -294,4 +294,110 @@ namespace Flysh.HospInterface.ProxyApi.His.Dto
         /// </summary>
         public string deptName { get; set; }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class HisFeeRegInfo
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Recipe_Key { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Recipe_No { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string SeqNo { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Trans_Type { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Fee_Code { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Drug_Flag { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Item_Code { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Item_Name { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Yb_Item_Info { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Qty { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Unit_Price { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string UNIT { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Tot_Cost { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Doc_Name { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string DocDept_Name { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Exec_DeptCode { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Exec_DeptName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Mo_Date { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Pay_Flag { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string InvoiceNo { get; set; }
+    }
 }
