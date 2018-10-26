@@ -446,4 +446,49 @@ namespace Flysh.HospInterface.ProxyApi.Models
             return string.IsNullOrEmpty(message);
         }
     }
+
+    /// <summary>
+    /// 预约查询
+    /// </summary>
+    public class ClassesSubscribeQueryRequest : BaseApiRequest
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string subscribeId { get; set; }
+
+        /// <summary>
+        /// 患者卡号
+        /// </summary>
+        public string cardNo { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public override bool Validate(out string message)
+        {
+            message = string.Empty;
+
+            if (string.IsNullOrEmpty(subscribeId))
+            {
+                message = ErrorMessage(() => subscribeId);
+            }
+            else if (string.IsNullOrEmpty(cardNo))
+            {
+                message = ErrorMessage(() => cardNo);
+            }
+
+            return string.IsNullOrEmpty(message);
+        }
+    }
+
+    /// <summary>
+    /// 预约查询
+    /// </summary>
+    public class ClassesSubscribeQueryData
+    {
+
+    }
 }

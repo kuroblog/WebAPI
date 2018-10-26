@@ -12,31 +12,23 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
     /// </summary>
     public static class Runner
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TArgs"></typeparam>
-        /// <typeparam name="TResult"></typeparam>
-        /// <param name="func"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        public static async Task<(bool hasError, Exception error, TResult data)> ExecuteAsync<TArgs, TResult>(Func<TArgs, Task<TResult>> func, TArgs args)
-            where TArgs : class
-            where TResult : class
-        {
-            try
-            {
-                var result = await func.Invoke(args);
+        //public static async Task<(bool hasError, Exception error, TResult data)> ExecuteAsync<TArgs, TResult>(Func<TArgs, Task<TResult>> func, TArgs args)
+        //    where TArgs : class
+        //    where TResult : class
+        //{
+        //    try
+        //    {
+        //        var result = await func.Invoke(args);
 
-                return (false, null, result);
-            }
-            catch (Exception ex)
-            {
-                errorHandler(ex);
+        //        return (false, null, result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorHandler(ex);
 
-                return (true, ex, null);
-            }
-        }
+        //        return (true, ex, null);
+        //    }
+        //}
 
         //public static (bool hasError, Exception error, TResult data) Execute<TArgs, TResult>(Func<TArgs, TResult> func, TArgs args)
         //    where TArgs : class
@@ -61,6 +53,48 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
         //    }
         //}
 
+        //public static async Task<(bool hasError, Exception error, TResult data)> ExecuteAsync<TResult>(Func<Task<TResult>> func)
+        //    where TResult : class
+        //{
+        //    try
+        //    {
+        //        var result = await func.Invoke();
+
+        //        return (false, null, result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        errorHandler(ex);
+
+        //        return (true, ex, null);
+        //    }
+        //}
+
+        private static Action<Exception> errorHandler = (error) =>
+        {
+            var color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine(error.Message);
+
+            Console.ForegroundColor = color;
+        };
+
+        private static ApiResult<TResult> ApiResultGenerator<TResult>((bool result, string message, TResult data) hisResult, string message = "", string httpCode = "200")
+        {
+            return new ApiResult<TResult>
+            {
+                Success = hisResult.result,
+                ResultData = hisResult.data,
+                Status = new OperatorStatus
+                {
+                    InnerMessage = hisResult.message,
+                    HttpCode = httpCode,
+                    ClientMessage = message
+                }
+            };
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +103,7 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
         /// <param name="func"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static ApiResult<TResult> Execute<TArgs, TResult>(Func<TArgs, TResult> func, TArgs args)
+        public static ApiResult<TResult> Execute<TArgs, TResult>(Func<TArgs, (bool result, string message, TResult data)> func, TArgs args)
             where TArgs : class
             //where TResult : class
         {
@@ -84,36 +118,35 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
 
                 var result = func.Invoke(args);
 
-                apiResult = new ApiResult<TResult> { Success = true, ResultData = result };
+                apiResult = ApiResultGenerator(result);
             }
             catch (ArgumentNullException exArg)
             {
                 errorHandler(exArg);
-                apiResult = new ApiResult<TResult>
-                {
-                    Success = false,
-                    Status = new OperatorStatus
-                    {
-                        HttpCode = "400",
-                        ClientMessage = exArg.Message
-                    }
-                };
+                apiResult = ApiResultGenerator((result: false, message: "", data: default(TResult)), exArg.Message, "400");
             }
             catch (Exception ex)
             {
                 errorHandler(ex);
-                apiResult = new ApiResult<TResult>
-                {
-                    Success = false,
-                    Status = new OperatorStatus
-                    {
-                        HttpCode = "500",
-                        ClientMessage = ex.Message
-                    }
-                };
+                apiResult = ApiResultGenerator((result: false, message: "", data: default(TResult)), ex.Message, "500");
             }
 
             return apiResult;
+        }
+
+        private static ApiArrayResult<TResult> ApiArrayResultGenerator<TResult>((bool result, string message, IEnumerable<TResult> data) hisResult, string message = "", string httpCode = "200")
+        {
+            return new ApiArrayResult<TResult>
+            {
+                Success = hisResult.result,
+                ResultData = hisResult.data?.ToList(),
+                Status = new OperatorStatus
+                {
+                    InnerMessage = hisResult.message,
+                    HttpCode = httpCode,
+                    ClientMessage = message
+                }
+            };
         }
 
         /// <summary>
@@ -124,11 +157,11 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
         /// <param name="func"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static Gboxt.Common.DataModel.ApiArrayResult<TResult> Execute<TArgs, TResult>(Func<TArgs, IEnumerable<TResult>> func, TArgs args)
+        public static ApiArrayResult<TResult> Execute<TArgs, TResult>(Func<TArgs, (bool result, string message, IEnumerable<TResult> data)> func, TArgs args)
             where TArgs : class
-            where TResult : class
+            //where TResult : class
         {
-            Gboxt.Common.DataModel.ApiArrayResult<TResult> apiResult = null;
+            ApiArrayResult<TResult> apiResult = null;
 
             try
             {
@@ -139,69 +172,20 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
 
                 var result = func.Invoke(args);
 
-                apiResult = new ApiArrayResult<TResult> { Success = true, ResultData = result?.ToList() };
+                apiResult = ApiArrayResultGenerator(result);
             }
             catch (ArgumentNullException exArg)
             {
                 errorHandler(exArg);
-                apiResult = new ApiArrayResult<TResult>
-                {
-                    Success = false,
-                    Status = new OperatorStatus
-                    {
-                        HttpCode = "400",
-                        ClientMessage = exArg.Message
-                    }
-                };
+                apiResult = ApiArrayResultGenerator((result: false, message: "", data: default(IEnumerable<TResult>)), exArg.Message, "400");
             }
             catch (Exception ex)
             {
                 errorHandler(ex);
-                apiResult = new ApiArrayResult<TResult>
-                {
-                    Success = false,
-                    Status = new OperatorStatus
-                    {
-                        HttpCode = "500",
-                        ClientMessage = ex.Message
-                    }
-                };
+                apiResult = ApiArrayResultGenerator((result: false, message: "", data: default(IEnumerable<TResult>)), ex.Message, "500");
             }
 
             return apiResult;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TResult"></typeparam>
-        /// <param name="func"></param>
-        /// <returns></returns>
-        public static async Task<(bool hasError, Exception error, TResult data)> ExecuteAsync<TResult>(Func<Task<TResult>> func)
-            where TResult : class
-        {
-            try
-            {
-                var result = await func.Invoke();
-
-                return (false, null, result);
-            }
-            catch (Exception ex)
-            {
-                errorHandler(ex);
-
-                return (true, ex, null);
-            }
-        }
-
-        private static Action<Exception> errorHandler = (error) =>
-        {
-            var color = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-
-            Console.WriteLine(error.Message);
-
-            Console.ForegroundColor = color;
-        };
     }
 }

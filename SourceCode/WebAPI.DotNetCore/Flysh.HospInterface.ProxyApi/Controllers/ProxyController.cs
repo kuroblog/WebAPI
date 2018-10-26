@@ -7,7 +7,6 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     using Flysh.HospInterface.ProxyApi.Infrastructures;
     using Flysh.HospInterface.ProxyApi.Services;
     using Gboxt.Common.DataModel;
-    using System;
 
     /// <summary>
     /// his interface test
@@ -37,17 +36,9 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [Route("api/v1/proxy/test")]
-        public ApiResult Test(HisDoTransRequest<string> request)
+        public ApiResult<string> Test(HisDoTransRequest<string> request)
         {
-            var result = Runner.ExecuteAsync(service.HisInterfaceTest, request).Result;
-            if (result.hasError)
-            {
-                return new ApiResult<Exception> { Success = false, ResultData = result.error };
-            }
-            else
-            {
-                return new ApiResult<string> { Success = true, ResultData = result.data };
-            }
+            return Runner.Execute(service.HisInterfaceTest, request);
         }
     }
 }

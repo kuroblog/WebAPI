@@ -98,6 +98,205 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.#ctor(System.String,`0)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequestExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequestExtensions.GetRequestData``2(``0)">
+            <summary>
+            
+            </summary>
+            <typeparam name="THisDoTransRequest"></typeparam>
+            <typeparam name="TData"></typeparam>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisResponse.result">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisResponse.message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisDataResponse`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisDataResponse`1.data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransResponse`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransResponse`1.funName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransResponse`1.outString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.ID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.SEE_DATE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.WEEK">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.NOONCODE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.BEGIN_TIME">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.END_TIME">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DEPT_CODE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DEPT_NAME">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DOCT_CODE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DOCT_NAME">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REG_LMT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REG_REGED">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REGLEVL_NAME">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.TOT_COST">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.ADRESS">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REGISTRATION_TYPE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaPointResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaPointResponse.timeinfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo.bookingNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo.clinicNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo.seeNo">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.His.HisProxyResult">
             <summary>
             his interface result
@@ -124,7 +323,7 @@
             runner
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.ExecuteAsync``2(System.Func{``0,System.Threading.Tasks.Task{``1}},``0)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.Execute``2(System.Func{``0,System.ValueTuple{System.Boolean,System.String,``1}},``0)">
             <summary>
             
             </summary>
@@ -134,7 +333,7 @@
             <param name="args"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.Execute``2(System.Func{``0,``1},``0)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.Execute``2(System.Func{``0,System.ValueTuple{System.Boolean,System.String,System.Collections.Generic.IEnumerable{``1}}},``0)">
             <summary>
             
             </summary>
@@ -142,24 +341,6 @@
             <typeparam name="TResult"></typeparam>
             <param name="func"></param>
             <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.Execute``2(System.Func{``0,System.Collections.Generic.IEnumerable{``1}},``0)">
-            <summary>
-            
-            </summary>
-            <typeparam name="TArgs"></typeparam>
-            <typeparam name="TResult"></typeparam>
-            <param name="func"></param>
-            <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.Runner.ExecuteAsync``1(System.Func{System.Threading.Tasks.Task{``0}})">
-            <summary>
-            
-            </summary>
-            <typeparam name="TResult"></typeparam>
-            <param name="func"></param>
             <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.PropertySupport">
@@ -458,6 +639,33 @@
             </summary>
             <param name="message"></param>
             <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest">
+            <summary>
+            预约查询
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest.subscribeId">
+            <summary>
+            预约唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest.cardNo">
+            <summary>
+            患者卡号
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryData">
+            <summary>
+            预约查询
+            </summary>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Services.IProxyService">
             <summary>

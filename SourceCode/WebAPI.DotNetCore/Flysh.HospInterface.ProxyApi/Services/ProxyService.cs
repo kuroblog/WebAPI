@@ -21,35 +21,35 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <typeparam name="TData"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        Task<string> HisInterfaceTest<TData>(HisDoTransRequest<TData> request);
+        (bool result, string message, string data) HisInterfaceTest<TData>(HisDoTransRequest<TData> request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        IEnumerable<ClassesScheduleData> ClassesSchedule(ClassesScheduleRequest request);
+        (bool result, string message, IEnumerable<ClassesScheduleData> data) ClassesSchedule(ClassesScheduleRequest request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        IEnumerable<string> ClassesPoint(ClassesPointRequest request);
+        (bool result, string message, IEnumerable<string> data) ClassesPoint(ClassesPointRequest request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        ClassesSubscribeData ClassesSubscribe(ClassesSubscribeRequest request);
+        (bool result, string message, ClassesSubscribeData data) ClassesSubscribe(ClassesSubscribeRequest request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        bool ClassesSubscribeCancel(ClassesSubscribeCancelRequest request);
+        (bool result, string message, bool data) ClassesSubscribeCancel(ClassesSubscribeCancelRequest request);
     }
 
     /// <summary>
@@ -74,11 +74,15 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <typeparam name="TData"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<string> HisInterfaceTest<TData>(HisDoTransRequest<TData> request)
+        public (bool result, string message, string data) HisInterfaceTest<TData>(HisDoTransRequest<TData> request)
         {
-            var hisResult = await service.DoTransAsync(request);
+            var hisResultSource = service.DoTrans(request);
 
-            return await Task.FromResult(hisResult.FormatResult);
+            var rValue = true;
+            var mValue = "";
+            var dValue = hisResultSource.HisResult;
+
+            return (rValue, mValue, dValue);
         }
 
         private Func<HisShemaInfo, ClassesScheduleData> hisShemaInfoParser = (his) => new ClassesScheduleData
@@ -106,19 +110,18 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public IEnumerable<ClassesScheduleData> ClassesSchedule(ClassesScheduleRequest request)
+        public (bool result, string message, IEnumerable<ClassesScheduleData> data) ClassesSchedule(ClassesScheduleRequest request)
         {
-            var data = new HisDoTransRequest<ClassesScheduleRequest>
-            {
-                code = "2003",
-                data = request
-            };
+            var data = new HisDoTransRequest<ClassesScheduleRequest>("2003", request);
 
-            var hisResult = service.DoTrans(data);
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<HisDoTransResponse<HisShemaInfo[]>>(hisResultSource.FormatResult);
 
-            var hisFormatResult = JsonConvert.DeserializeObject<HisDoTransResponse<HisShemaInfo[]>>(hisResult.FormatResult);
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisResult.data?.Select(hisShemaInfoParser)?.ToArray();
 
-            return hisFormatResult?.data?.Select(hisShemaInfoParser)?.ToArray();
+            return (rValue, mValue, dValue);
         }
 
         /// <summary>
@@ -126,19 +129,18 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public IEnumerable<string> ClassesPoint(ClassesPointRequest request)
+        public (bool result, string message, IEnumerable<string> data) ClassesPoint(ClassesPointRequest request)
         {
-            var data = new HisDoTransRequest<ClassesPointRequest>
-            {
-                code = "2004",
-                data = request
-            };
+            var data = new HisDoTransRequest<ClassesPointRequest>("2004", request);
 
-            var hisResult = service.DoTrans(data);
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<HisShemaPointResponse>(hisResultSource.FormatResult);
 
-            var hisFormatResult = JsonConvert.DeserializeObject<HisShemaPointInfo>(hisResult.FormatResult);
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisResult.timeinfo?.Split(",");
 
-            return hisFormatResult?.timeinfo?.Split(",");
+            return (rValue, mValue, dValue);
         }
 
         private Func<HisSaveBookingInfo, ClassesSubscribeData> hisSaveBookingInfoParser = (his) => new ClassesSubscribeData
@@ -153,19 +155,18 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public ClassesSubscribeData ClassesSubscribe(ClassesSubscribeRequest request)
+        public (bool result, string message, ClassesSubscribeData data) ClassesSubscribe(ClassesSubscribeRequest request)
         {
-            var data = new HisDoTransRequest<ClassesSubscribeRequest>
-            {
-                code = "2008",
-                data = request
-            };
+            var data = new HisDoTransRequest<ClassesSubscribeRequest>("2008", request);
 
-            var hisResult = service.DoTrans(data);
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<BaseHisDataResponse<HisSaveBookingInfo>>(hisResultSource.FormatResult);
 
-            var hisFormatResult = JsonConvert.DeserializeObject<BaseHisDataResponse<HisSaveBookingInfo>>(hisResult.FormatResult);
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisSaveBookingInfoParser(hisResult.data);
 
-            return hisSaveBookingInfoParser(hisFormatResult.data);
+            return (rValue, mValue, dValue);
         }
 
         /// <summary>
@@ -173,19 +174,23 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public bool ClassesSubscribeCancel(ClassesSubscribeCancelRequest request)
+        public (bool result, string message, bool data) ClassesSubscribeCancel(ClassesSubscribeCancelRequest request)
         {
-            var data = new HisDoTransRequest<ClassesSubscribeCancelRequest>
-            {
-                code = "2007",
-                data = request
-            };
+            var data = new HisDoTransRequest<ClassesSubscribeCancelRequest>("2007", request);
 
-            var hisResult = service.DoTrans(data);
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<BaseHisResponse>(hisResultSource.FormatResult);
 
-            var hisFormatResult = JsonConvert.DeserializeObject<BaseHisResponse>(hisResult.FormatResult);
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = rValue;
 
-            return hisFormatResult.result.ToLower() == "success";
+            return (rValue, mValue, dValue);
         }
+
+        private Func<string, bool> verifyHisResult = (result) =>
+        {
+            return string.IsNullOrEmpty(result) ? false : result.ToLower() == "success";
+        };
     }
 }
