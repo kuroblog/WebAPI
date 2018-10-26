@@ -6,10 +6,17 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     using Flysh.HospInterface.ProxyApi.Services;
     using Gboxt.Common.DataModel;
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class DefaultController : ZeroApiController
     {
         private readonly ITestService testService = IocHelper.CreateScope<ITestService>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Route("api/v1/default/hello")]
         public ApiResult Hello()
         {

@@ -489,6 +489,14 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// </summary>
     public class ClassesSubscribeQueryData
     {
+        /// <summary>
+        /// 状态：预约 or 取消预约 or 预约转挂号
+        /// </summary>
+        public string state { get; set; }
 
+        /// <summary>
+        /// 科室信息
+        /// </summary>
+        public string deptName { get; set; }
     }
 }

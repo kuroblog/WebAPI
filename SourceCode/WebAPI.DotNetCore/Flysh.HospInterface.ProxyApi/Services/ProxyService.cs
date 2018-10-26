@@ -50,6 +50,13 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <param name="request"></param>
         /// <returns></returns>
         (bool result, string message, bool data) ClassesSubscribeCancel(ClassesSubscribeCancelRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, ClassesSubscribeQueryData data) ClassesSubscribeQuery(ClassesSubscribeQueryRequest request);
     }
 
     /// <summary>
@@ -184,6 +191,31 @@ namespace Flysh.HospInterface.ProxyApi.Services
             var rValue = verifyHisResult(hisResult.result);
             var mValue = hisResult.message;
             var dValue = rValue;
+
+            return (rValue, mValue, dValue);
+        }
+
+        private Func<HisBookingInfoResponse, ClassesSubscribeQueryData> hisBookingInfoParser = (his) => new ClassesSubscribeQueryData
+        {
+            deptName = his.deptName,
+            state = his.state
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, ClassesSubscribeQueryData data) ClassesSubscribeQuery(ClassesSubscribeQueryRequest request)
+        {
+            var data = new HisDoTransRequest<ClassesSubscribeQueryRequest>("2005", request);
+
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<HisBookingInfoResponse>(hisResultSource.FormatResult);
+
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisBookingInfoParser(hisResult);
 
             return (rValue, mValue, dValue);
         }

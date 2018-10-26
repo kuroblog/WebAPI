@@ -233,8 +233,19 @@ namespace Flysh.HospInterface.ProxyApi.His.Dto
         public string seeNo { get; set; }
     }
 
-    //public class HisSaveBookingInfo : BaseHisResponse
-    //{
-    //    public string bookingNo { get; set; }
-    //}
+    /// <summary>
+    /// 
+    /// </summary>
+    public class HisBookingInfoResponse : BaseHisResponse
+    {
+        /// <summary>
+        /// 状态：预约 or 取消预约 or 预约转挂号
+        /// </summary>
+        public string state { get; set; }
+
+        /// <summary>
+        /// 科室信息
+        /// </summary>
+        public string deptName { get; set; }
+    }
 }

@@ -73,5 +73,16 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         {
             return Runner.Execute(service.ClassesSubscribeCancel, request);
         }
+
+        /// <summary>
+        /// 预约查询
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/classes/subscribe/query")]
+        public ApiResult<ClassesSubscribeQueryData> SubscribeQuery(ClassesSubscribeQueryRequest request)
+        {
+            return Runner.Execute(service.ClassesSubscribeQuery, request);
+        }
     }
 }
