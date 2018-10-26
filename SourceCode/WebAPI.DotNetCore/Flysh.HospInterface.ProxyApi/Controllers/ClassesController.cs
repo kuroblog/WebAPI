@@ -9,7 +9,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     using Gboxt.Common.DataModel;
 
     /// <summary>
-    /// classes
+    /// 排班
     /// </summary>
     public class ClassesController : ZeroApiController
     {
@@ -31,14 +31,47 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         }
 
         /// <summary>
-        /// 获取排班信息
+        /// 排班信息
         /// </summary>
         /// <param name="request"><see cref="ClassesScheduleRequest"/></param>
-        /// <returns><see cref="ClassesScheduleResponse"/></returns>
+        /// <returns><see cref="ClassesScheduleData"/></returns>
         [Route("api/v1/classes/schedule")]
-        public ApiArrayResult<ClassesScheduleResponse> Schedule(ClassesScheduleRequest request)
+        public ApiArrayResult<ClassesScheduleData> Schedule(ClassesScheduleRequest request)
         {
             return Runner.Execute(service.ClassesSchedule, request);
+        }
+
+        /// <summary>
+        /// 预约时间点信息
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/classes/point")]
+        public ApiArrayResult<string> Point(ClassesPointRequest request)
+        {
+            return Runner.Execute(service.ClassesPoint, request);
+        }
+
+        /// <summary>
+        /// 预约
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/classes/subscribe")]
+        public ApiResult<ClassesSubscribeData> Subscribe(ClassesSubscribeRequest request)
+        {
+            return Runner.Execute(service.ClassesSubscribe, request);
+        }
+
+        /// <summary>
+        /// 预约取消
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/classes/subscribe/cancel")]
+        public ApiResult<bool> SubscribeCancel(ClassesSubscribeCancelRequest request)
+        {
+            return Runner.Execute(service.ClassesSubscribeCancel, request);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
 {
     using Gboxt.Common.DataModel;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -70,7 +71,7 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
         /// <returns></returns>
         public static ApiResult<TResult> Execute<TArgs, TResult>(Func<TArgs, TResult> func, TArgs args)
             where TArgs : class
-            where TResult : class
+            //where TResult : class
         {
             ApiResult<TResult> apiResult = null;
 
@@ -123,7 +124,7 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
         /// <param name="func"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static Gboxt.Common.DataModel.ApiArrayResult<TResult> Execute<TArgs, TResult>(Func<TArgs, TResult[]> func, TArgs args)
+        public static Gboxt.Common.DataModel.ApiArrayResult<TResult> Execute<TArgs, TResult>(Func<TArgs, IEnumerable<TResult>> func, TArgs args)
             where TArgs : class
             where TResult : class
         {

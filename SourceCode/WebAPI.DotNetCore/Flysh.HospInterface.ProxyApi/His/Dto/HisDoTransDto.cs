@@ -30,13 +30,25 @@ namespace Flysh.HospInterface.ProxyApi.His.Dto
         }
     }
 
-    public class HisDoTransResponse<TData>
+    public class BaseHisResponse
     {
-        public string result { get; set; }
+        public virtual string result { get; set; }
 
-        public string message { get; set; }
+        public virtual string message { get; set; }
+    }
 
-        public TData data { get; set; }
+    public class BaseHisDataResponse<TData> : BaseHisResponse
+    {
+        public virtual TData data { get; set; }
+    }
+
+    public class HisDoTransResponse<TData> : BaseHisDataResponse<TData>
+    {
+        //public string result { get; set; }
+
+        //public string message { get; set; }
+
+        //public TData data { get; set; }
 
         public string funName { get; set; }
 
@@ -77,4 +89,23 @@ namespace Flysh.HospInterface.ProxyApi.His.Dto
 
         public string REGISTRATION_TYPE { get; set; }
     }
+
+    public class HisShemaPointInfo : BaseHisResponse
+    {
+        public string timeinfo { get; set; }
+    }
+
+    public class HisSaveBookingInfo
+    {
+        public string bookingNo { get; set; }
+
+        public string clinicNo { get; set; }
+
+        public string seeNo { get; set; }
+    }
+
+    //public class HisSaveBookingInfo : BaseHisResponse
+    //{
+    //    public string bookingNo { get; set; }
+    //}
 }
