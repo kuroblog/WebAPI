@@ -21,7 +21,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <typeparam name="TData"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, string data) HisInterfaceTest<TData>(HisDoTransRequest<TData> request);
+        (bool result, string message, string data) HisTest<TData>(HisDoTransRequest<TData> request);
 
         /// <summary>
         /// 
@@ -42,21 +42,21 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, ClassesSubscribeData data) ClassesSubscribe(ClassesSubscribeRequest request);
+        (bool result, string message, SubscribeSubmitData data) SubscribeSubmit(SubscribeSubmitRequest request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, bool data) ClassesSubscribeCancel(ClassesSubscribeCancelRequest request);
+        (bool result, string message, bool data) SubscribeCancel(SubscribeCancelRequest request);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, ClassesSubscribeQueryData data) ClassesSubscribeQuery(ClassesSubscribeQueryRequest request);
+        (bool result, string message, SubscribeQueryData data) SubscribeQuery(SubscribeQueryRequest request);
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <typeparam name="TData"></typeparam>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, string data) HisInterfaceTest<TData>(HisDoTransRequest<TData> request)
+        public (bool result, string message, string data) HisTest<TData>(HisDoTransRequest<TData> request)
         {
             var hisResultSource = service.DoTrans(request);
 
@@ -150,7 +150,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisSaveBookingInfo, ClassesSubscribeData> hisSaveBookingInfoParser = (his) => new ClassesSubscribeData
+        private Func<HisSaveBookingInfo, SubscribeSubmitData> hisSaveBookingInfoParser = (his) => new SubscribeSubmitData
         {
             clinicNo = his.clinicNo,
             seeNo = his.seeNo,
@@ -162,9 +162,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, ClassesSubscribeData data) ClassesSubscribe(ClassesSubscribeRequest request)
+        public (bool result, string message, SubscribeSubmitData data) SubscribeSubmit(SubscribeSubmitRequest request)
         {
-            var data = new HisDoTransRequest<ClassesSubscribeRequest>("2008", request);
+            var data = new HisDoTransRequest<SubscribeSubmitRequest>("2008", request);
 
             var hisResultSource = service.DoTrans(data);
             var hisResult = JsonConvert.DeserializeObject<BaseHisDataResponse<HisSaveBookingInfo>>(hisResultSource.FormatResult);
@@ -181,9 +181,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, bool data) ClassesSubscribeCancel(ClassesSubscribeCancelRequest request)
+        public (bool result, string message, bool data) SubscribeCancel(SubscribeCancelRequest request)
         {
-            var data = new HisDoTransRequest<ClassesSubscribeCancelRequest>("2007", request);
+            var data = new HisDoTransRequest<SubscribeCancelRequest>("2007", request);
 
             var hisResultSource = service.DoTrans(data);
             var hisResult = JsonConvert.DeserializeObject<BaseHisResponse>(hisResultSource.FormatResult);
@@ -195,7 +195,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisBookingInfoResponse, ClassesSubscribeQueryData> hisBookingInfoParser = (his) => new ClassesSubscribeQueryData
+        private Func<HisBookingInfoResponse, SubscribeQueryData> hisBookingInfoParser = (his) => new SubscribeQueryData
         {
             deptName = his.deptName,
             state = his.state
@@ -206,9 +206,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, ClassesSubscribeQueryData data) ClassesSubscribeQuery(ClassesSubscribeQueryRequest request)
+        public (bool result, string message, SubscribeQueryData data) SubscribeQuery(SubscribeQueryRequest request)
         {
-            var data = new HisDoTransRequest<ClassesSubscribeQueryRequest>("2005", request);
+            var data = new HisDoTransRequest<SubscribeQueryRequest>("2005", request);
 
             var hisResultSource = service.DoTrans(data);
             var hisResult = JsonConvert.DeserializeObject<HisBookingInfoResponse>(hisResultSource.FormatResult);

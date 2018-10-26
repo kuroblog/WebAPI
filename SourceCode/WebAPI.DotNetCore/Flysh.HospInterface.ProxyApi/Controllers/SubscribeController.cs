@@ -11,7 +11,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
     /// <summary>
     /// 排班
     /// </summary>
-    public class ClassesController : ZeroApiController
+    public class SubscribeController : ZeroApiController
     {
         private readonly ITestService testService = IocHelper.CreateScope<ITestService>();
         private readonly IProxyService service = IocHelper.CreateScope<IProxyService>();
@@ -20,7 +20,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// hello
         /// </summary>
         /// <returns></returns>
-        [Route("api/v1/classes/hello")]
+        [Route("api/v1/subscribe/hello")]
         public ApiResult Hello()
         {
             return new ApiResult<string>
@@ -31,25 +31,36 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         }
 
         /// <summary>
-        /// 排班信息
-        /// </summary>
-        /// <param name="request"><see cref="ClassesScheduleRequest"/></param>
-        /// <returns><see cref="ClassesScheduleData"/></returns>
-        [Route("api/v1/classes/schedule")]
-        public ApiArrayResult<ClassesScheduleData> Schedule(ClassesScheduleRequest request)
-        {
-            return Runner.Execute(service.ClassesSchedule, request);
-        }
-
-        /// <summary>
-        /// 预约时间点信息
+        /// 预约
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Route("api/v1/classes/point")]
-        public ApiArrayResult<string> Point(ClassesPointRequest request)
+        [Route("api/v1/subscribe/submit")]
+        public ApiResult<SubscribeSubmitData> Submit(SubscribeSubmitRequest request)
         {
-            return Runner.Execute(service.ClassesPoint, request);
+            return Runner.Execute(service.SubscribeSubmit, request);
+        }
+
+        /// <summary>
+        /// 预约取消
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/subscribe/cancel")]
+        public ApiResult<bool> Cancel(SubscribeCancelRequest request)
+        {
+            return Runner.Execute(service.SubscribeCancel, request);
+        }
+
+        /// <summary>
+        /// 预约查询
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/subscribe/query")]
+        public ApiResult<SubscribeQueryData> Query(SubscribeQueryRequest request)
+        {
+            return Runner.Execute(service.SubscribeQuery, request);
         }
     }
 }

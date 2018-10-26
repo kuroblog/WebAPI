@@ -29,27 +29,6 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassesController.Subscribe(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest)">
-            <summary>
-            预约
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassesController.SubscribeCancel(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest)">
-            <summary>
-            预约取消
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassesController.SubscribeQuery(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest)">
-            <summary>
-            预约查询
-            </summary>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Controllers.DefaultController">
             <summary>
             
@@ -75,6 +54,38 @@
         <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ProxyController.Test(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{System.String})">
             <summary>
             his do-trans webmethod
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.SubscribeController">
+            <summary>
+            排班
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.SubscribeController.Hello">
+            <summary>
+            hello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.SubscribeController.Submit(Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest)">
+            <summary>
+            预约
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.SubscribeController.Cancel(Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest)">
+            <summary>
+            预约取消
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.SubscribeController.Query(Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest)">
+            <summary>
+            预约查询
             </summary>
             <param name="request"></param>
             <returns></returns>
@@ -351,6 +362,19 @@
             </summary>
             <param name="hisResult"></param>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.PropertySupport">
+            <summary>
+            property helper class
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.PropertySupport.ExtractPropertyName``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyExpression"></param>
+            <returns></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.Runner">
             <summary>
             runner
@@ -374,19 +398,6 @@
             <typeparam name="TResult"></typeparam>
             <param name="func"></param>
             <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.PropertySupport">
-            <summary>
-            property helper class
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.PropertySupport.ExtractPropertyName``1(System.Linq.Expressions.Expression{System.Func{``0}})">
-            <summary>
-            
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="propertyExpression"></param>
             <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.BaseApiRequest">
@@ -544,168 +555,168 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest">
             <summary>
             预约信息请求参数
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.classId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.classId">
             <summary>
             排班编号/专家挂号必填
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.cardNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.cardNo">
             <summary>
             患者卡号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.realName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.realName">
             <summary>
             患者姓名
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.isExpert">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.isExpert">
             <summary>
             是否专家挂号(1 专家 or 0 不是专家)
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.deptCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.deptCode">
             <summary>
             科室代码/不是专家必填
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.preTime">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.preTime">
             <summary>
             预约时间 yyyy-MM-ddHH:mi:ss
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.isFee">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.isFee">
             <summary>
             是否支付 0 未支付 or 1 账户支付 or 2 已经支付
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.clinicFee">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.clinicFee">
             <summary>
             总费用
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.subSource">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.subSource">
             <summary>
             预约来源 标识厂商
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.subType">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.subType">
             <summary>
             1 预约挂号取号 or 2 预约挂号直接就诊
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.feeSource">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.feeSource">
             <summary>
             支付方式 CA 现金 or ZB 支付宝 or WX 微信
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.tradeNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.tradeNo">
             <summary>
             第三方订单流水号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.identifyCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.identifyCode">
             <summary>
             取号验证码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.operCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.operCode">
             <summary>
             操作员
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.termId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.termId">
             <summary>
             自助机终端号
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest.Validate(System.String@)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.Validate(System.String@)">
             <summary>
             
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeData">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitData">
             <summary>
             预约信息
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeData.subscribeId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitData.subscribeId">
             <summary>
             预约唯一号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeData.clinicNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitData.clinicNo">
             <summary>
             就诊唯一号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeData.seeNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitData.seeNo">
             <summary>
             unknown
             </summary>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest">
             <summary>
             预约取消
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest.subscribeId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest.subscribeId">
             <summary>
             预约唯一号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest.operCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest.operCode">
             <summary>
             操作员
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest.Validate(System.String@)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest.Validate(System.String@)">
             <summary>
             
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest">
             <summary>
             预约查询
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest.subscribeId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest.subscribeId">
             <summary>
             预约唯一号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest.cardNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest.cardNo">
             <summary>
             患者卡号
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest.Validate(System.String@)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest.Validate(System.String@)">
             <summary>
             
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryData">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryData">
             <summary>
             预约查询
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryData.state">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryData.state">
             <summary>
             状态：预约 or 取消预约 or 预约转挂号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryData.deptName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryData.deptName">
             <summary>
             科室信息
             </summary>
@@ -715,7 +726,7 @@
             
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.HisInterfaceTest``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.HisTest``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
             <summary>
             
             </summary>
@@ -737,21 +748,21 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.ClassesSubscribe(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.SubscribeSubmit(Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest)">
             <summary>
             
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.ClassesSubscribeCancel(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.SubscribeCancel(Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest)">
             <summary>
             
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.ClassesSubscribeQuery(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.SubscribeQuery(Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest)">
             <summary>
             
             </summary>
@@ -769,7 +780,7 @@
             </summary>
             <param name="proxyFactory"></param>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.HisInterfaceTest``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.HisTest``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
             <summary>
             
             </summary>
@@ -791,21 +802,21 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.ClassesSubscribe(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.SubscribeSubmit(Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest)">
             <summary>
             
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.ClassesSubscribeCancel(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeCancelRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.SubscribeCancel(Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest)">
             <summary>
             
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.ClassesSubscribeQuery(Flysh.HospInterface.ProxyApi.Models.ClassesSubscribeQueryRequest)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.SubscribeQuery(Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest)">
             <summary>
             
             </summary>

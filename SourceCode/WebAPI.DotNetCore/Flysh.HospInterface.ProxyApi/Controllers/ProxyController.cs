@@ -38,7 +38,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         [Route("api/v1/proxy/test")]
         public ApiResult<string> Test(HisDoTransRequest<string> request)
         {
-            return Runner.Execute(service.HisInterfaceTest, request);
+            return Runner.Execute(service.HisTest, request);
         }
     }
 }
