@@ -57,6 +57,20 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <param name="request"></param>
         /// <returns></returns>
         (bool result, string message, SubscribeQueryData data) SubscribeQuery(SubscribeQueryRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, RegisterSubmitData data) RegisterSubmit(RegisterSubmitRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, bool data) RegisterCancel(RegisterCancelRequest request);
     }
 
     /// <summary>
@@ -218,6 +232,56 @@ namespace Flysh.HospInterface.ProxyApi.Services
             var dValue = hisBookingInfoParser(hisResult);
 
             return (rValue, mValue, dValue);
+        }
+
+        private Func<HisRegisterInfo, RegisterSubmitData> hisRegisterInfoParser = (his) => new RegisterSubmitData
+        {
+            clinicNo = his.clinicNo,
+            seeNo = his.seeNo,
+            tradeNo = his.tradeNo,
+            address = his.address,
+            deptName = his.deptName,
+            registerHisId = his.registerHisId,
+            registerId = his.registerId,
+            vancy = his.vancy
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, RegisterSubmitData data) RegisterSubmit(RegisterSubmitRequest request)
+        {
+            var data = new HisDoTransRequest<RegisterSubmitRequest>("3004", request);
+
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<HisDoTransResponse<HisRegisterInfo>>(hisResultSource.FormatResult);
+
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = hisRegisterInfoParser(hisResult.data);
+
+            return (rValue, mValue, dValue);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, bool data) RegisterCancel(RegisterCancelRequest request)
+        {
+            var data = new HisDoTransRequest<RegisterCancelRequest>("3005", request);
+
+            var hisResultSource = service.DoTrans(data);
+            var hisResult = JsonConvert.DeserializeObject<BaseHisResponse>(hisResultSource.FormatResult);
+
+            var rValue = verifyHisResult(hisResult.result);
+            var mValue = hisResult.message;
+            var dValue = rValue;
+
+            return (rValue, mValue, rValue);
         }
 
         private Func<string, bool> verifyHisResult = (result) =>

@@ -248,4 +248,50 @@ namespace Flysh.HospInterface.ProxyApi.His.Dto
         /// </summary>
         public string deptName { get; set; }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class HisRegisterInfo
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string clinicNo { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string seeNo { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string tradeNo { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string registerId { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string registerHisId { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string vancy { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string address { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string deptName { get; set; }
+    }
 }

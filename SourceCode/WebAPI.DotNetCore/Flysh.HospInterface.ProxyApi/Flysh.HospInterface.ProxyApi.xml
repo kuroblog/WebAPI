@@ -58,6 +58,31 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.RegisterController">
+            <summary>
+            排班
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.RegisterController.Hello">
+            <summary>
+            hello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.RegisterController.Submit(Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest)">
+            <summary>
+            挂号
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.RegisterController.Cancel(Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest)">
+            <summary>
+            挂号取消
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Controllers.SubscribeController">
             <summary>
             排班
@@ -341,6 +366,51 @@
             科室信息
             </summary>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.clinicNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.seeNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.tradeNo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.registerId">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.registerHisId">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.vancy">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.address">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.deptName">
+            <summary>
+            unknown
+            </summary>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.His.HisProxyResult">
             <summary>
             his interface result
@@ -361,6 +431,27 @@
             constructor
             </summary>
             <param name="hisResult"></param>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.BaseApiRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.BaseApiRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.BaseApiRequest.ErrorMessage``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TProperty"></typeparam>
+            <param name="propertyExpression"></param>
+            <param name="errorMessageForamt"></param>
+            <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.PropertySupport">
             <summary>
@@ -398,27 +489,6 @@
             <typeparam name="TResult"></typeparam>
             <param name="func"></param>
             <param name="args"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.BaseApiRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.BaseApiRequest.Validate(System.String@)">
-            <summary>
-            
-            </summary>
-            <param name="message"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Models.BaseApiRequest.ErrorMessage``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
-            <summary>
-            
-            </summary>
-            <typeparam name="TProperty"></typeparam>
-            <param name="propertyExpression"></param>
-            <param name="errorMessageForamt"></param>
             <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassesScheduleRequest">
@@ -549,6 +619,185 @@
             </summary>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Models.ClassesPointRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest">
+            <summary>
+            挂号信息请求参数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.classId">
+            <summary>
+            排班编号（可为空）专家号必填
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.realName">
+            <summary>
+            就诊人真实姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.cardNo">
+            <summary>
+            就诊人卡号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.deptName">
+            <summary>
+            挂号科室名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.deptCode">
+            <summary>
+            挂号科室编号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.doctName">
+            <summary>
+            医生名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.doctCode">
+            <summary>
+            医生编号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.regLevel">
+            <summary>
+            挂号级别
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.noonCode">
+            <summary>
+            挂号午别
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.regType">
+            <summary>
+            门诊类型 PT 普通门诊 ZJ 专家门诊
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.regDate">
+            <summary>
+            挂号日期 yyyy-MM-dd
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.regTime">
+            <summary>
+            挂号时间段 08:00 如果挂号不到时间点 默认为空
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.clinicFee">
+            <summary>
+            挂号费用（单位:元）
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.pactCode">
+            <summary>
+            自费医保病人标识
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.termId">
+            <summary>
+            自助机机器编号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.operCode">
+            <summary>
+            操作员工号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.isFee">
+            <summary>
+            是否支付 0未支付 1账户支付 2已经支付
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.feeSource">
+            <summary>
+            支付方式 （支付必填）ZB 支付宝 WX 微信 CA 现金 CD 银行卡
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.tradeNo">
+            <summary>
+            支付流水号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.siInfo">
+            <summary>
+            医保结算参数 多个#分隔
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData">
+            <summary>
+            挂号信息
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.clinicNo">
+            <summary>
+            就诊唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.tradeNo">
+            <summary>
+            HIS交易发票号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.seeNo">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.registerId">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.registerHisId">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.vancy">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.address">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitData.deptName">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest">
+            <summary>
+            取消挂号请求参数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest.clinicNo">
+            <summary>
+            挂号唯一号（his）
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest.operCode">
+            <summary>
+            操作员工号
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest.Validate(System.String@)">
             <summary>
             
             </summary>
@@ -769,6 +1018,20 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.RegisterSubmit(Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.RegisterCancel(Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Services.ProxyService">
             <summary>
             
@@ -817,6 +1080,20 @@
             <returns></returns>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.SubscribeQuery(Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.RegisterSubmit(Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.RegisterCancel(Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest)">
             <summary>
             
             </summary>

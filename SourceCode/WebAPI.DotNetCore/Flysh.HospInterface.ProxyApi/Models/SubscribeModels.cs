@@ -1,6 +1,8 @@
 ﻿
 namespace Flysh.HospInterface.ProxyApi.Models
 {
+    using Flysh.HospInterface.ProxyApi.Infrastructures;
+
     /// <summary>
     /// 预约信息请求参数
     /// </summary>
