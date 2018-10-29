@@ -8,7 +8,7 @@ namespace Flysh.HospInterface.ProxyApi.Infrastructures
     /// <summary>
     /// 
     /// </summary>
-    public abstract class BaseApiRequest : IApiArgument
+    public abstract class ApiRequestBase : IApiArgument
     {
         /// <summary>
         /// 

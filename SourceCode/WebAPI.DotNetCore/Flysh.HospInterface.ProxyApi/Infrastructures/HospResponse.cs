@@ -1,31 +1,31 @@
 ﻿
-namespace Flysh.HospInterface.ProxyApi.His
+namespace Flysh.HospInterface.ProxyApi.Infrastructures
 {
     /// <summary>
     /// his interface result
     /// </summary>
-    public class HisProxyResult
+    public class HospResponse
     {
         /// <summary>
         /// his result
         /// </summary>
-        public string HisResult { get; } = string.Empty;
+        public string Result { get; } = string.Empty;
 
         /// <summary>
         /// json format result
         /// </summary>
         public string FormatResult
         {
-            get { return HisResult.Replace("\"[", "[").Replace("]\"", "]").Replace("\"{", "{").Replace("}\"", "}").Replace("\\\"", "\""); }
+            get { return Result.Replace("\"[", "[").Replace("]\"", "]").Replace("\"{", "{").Replace("}\"", "}").Replace("\\\"", "\""); }
         }
 
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="hisResult"></param>
-        public HisProxyResult(string hisResult)
+        public HospResponse(string hisResult)
         {
-            HisResult = hisResult;
+            Result = hisResult;
         }
     }
 }

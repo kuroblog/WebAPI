@@ -4,9 +4,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     using Flysh.HospInterface.ProxyApi.Infrastructures;
 
     /// <summary>
-    /// 挂号缴费记录请求参数
+    /// 挂号缴费记录 request [3006]
     /// </summary>
-    public class FeeRegisterQueryRequest : BaseApiRequest
+    public class FeeRegisterQueryRequest : ApiRequestBase
     {
         /// <summary>
         /// 合同单位

@@ -4,9 +4,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     using Flysh.HospInterface.ProxyApi.Infrastructures;
 
     /// <summary>
-    /// 排班信息请求参数
+    /// 排班信息 request [2003]
     /// </summary>
-    public class ClassScheduleRequest : BaseApiRequest
+    public class ClassScheduleRequest : ApiRequestBase
     {
         /// <summary>
         /// 开始时间(yyyy-MM-dd)
@@ -57,7 +57,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 排班信息
     /// </summary>
-    public class ClassScheduleData
+    public class ClassScheduleItem
     {
         /// <summary>
         /// 排班 ID
@@ -138,12 +138,27 @@ namespace Flysh.HospInterface.ProxyApi.Models
         /// 挂号类别(0 普通号(PT) or 1 专家号(ZJ))
         /// </summary>
         public string regType { get; set; }
+
+        /// <summary>
+        /// HIS项目编码(根据此字段1005查询医保中心对应的项目编码和医院的自付比率)
+        /// </summary>
+        public string itemCode { get; set; }
+
+        /// <summary>
+        /// 排序ID
+        /// </summary>
+        public string sortId { get; set; }
+
+        /// <summary>
+        /// 剩余挂号数
+        /// </summary>
+        public string hasReg { get; set; }
     }
 
     /// <summary>
-    /// 可预约时间点信息请求参数
+    /// 可预约时间点信息 request [2004]
     /// </summary>
-    public class ClassPointRequest : BaseApiRequest
+    public class ClassPointRequest : ApiRequestBase
     {
         /// <summary>
         /// 排班编号（his主键）

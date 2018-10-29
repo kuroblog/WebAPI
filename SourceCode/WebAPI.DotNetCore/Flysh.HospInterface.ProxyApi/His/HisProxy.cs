@@ -1,93 +1,57 @@
 ﻿
 namespace Flysh.HospInterface.ProxyApi.His
 {
-    using Flysh.HospInterface.ProxyApi.His.Dto;
+    using Flysh.HospInterface.ProxyApi.Infrastructures;
     using JHWR;
     using Microsoft.Extensions.Options;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.ServiceModel;
-    using System.Threading.Tasks;
     using System.Xml;
 
     /// <summary>
-    /// 
+    /// his proxy factory
     /// </summary>
-    public interface IHisProxyInterface
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        HisInterfaceModes HisInterfaceMode { get; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TData"></typeparam>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        Task<HisProxyResult> DoTransAsync<TData>(HisDoTransRequest<TData> data);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TData"></typeparam>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        HisProxyResult DoTrans<TData>(HisDoTransRequest<TData> data);
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <remarks>
+    /// create webservice or socket instance
+    /// </remarks>
     public sealed class HisProxyFactory
     {
         /// <summary>
-        /// 
+        /// his proxy instance
         /// </summary>
-        public IHisProxyInterface Instance { get; }
+        public IHospProxyInterface Instance { get; }
 
         /// <summary>
-        /// 
+        /// construct
         /// </summary>
-        /// <param name="proxyArray"></param>
-        /// <param name="hisOptions"></param>
-        public HisProxyFactory(IEnumerable<IHisProxyInterface> proxyArray, IOptions<HisOptions> hisOptions)
+        /// <param name="proxies">proxy array</param>
+        /// <param name="proxySettings">proxy settings</param>
+        public HisProxyFactory(IEnumerable<IHospProxyInterface> proxies, IOptions<HospProxySettings> proxySettings)
         {
-            var hisInterfaceMode = hisOptions.Value.Mode;
-            Instance = proxyArray.FirstOrDefault(p => p.HisInterfaceMode == hisInterfaceMode);
+            var hisInterfaceMode = proxySettings.Value.Mode;
+            Instance = proxies.FirstOrDefault(p => p.HisInterfaceMode == hisInterfaceMode);
         }
     }
 
     /// <summary>
-    /// 
+    /// his socket proxy
     /// </summary>
-    public class HisSocketProxy : IHisProxyInterface
+    public class HisSocketProxy : IHospProxyInterface
     {
         /// <summary>
-        /// 
+        /// proxy mode
         /// </summary>
-        public HisInterfaceModes HisInterfaceMode => HisInterfaceModes.Socket;
+        public HospProxyModes HisInterfaceMode => HospProxyModes.Socket;
 
         /// <summary>
-        /// 
+        /// invoke service method
         /// </summary>
-        /// <typeparam name="TData"></typeparam>
-        /// <param name="data"></param>
+        /// <typeparam name="TData">request</typeparam>
+        /// <param name="data">request data</param>
         /// <returns></returns>
-        public Task<HisProxyResult> DoTransAsync<TData>(HisDoTransRequest<TData> data)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TData"></typeparam>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public HisProxyResult DoTrans<TData>(HisDoTransRequest<TData> data)
+        public HospResponse Invoke<TData>(HospRequest<TData> data)
         {
             throw new NotImplementedException();
         }
@@ -96,22 +60,22 @@ namespace Flysh.HospInterface.ProxyApi.His
     /// <summary>
     /// 
     /// </summary>
-    public class HisWebSvcProxy : IHisProxyInterface
+    public class HisWebSvcProxy : IHospProxyInterface
     {
         /// <summary>
         /// 
         /// </summary>
-        public HisInterfaceModes HisInterfaceMode => HisInterfaceModes.WebService;
+        public HospProxyModes HisInterfaceMode => HospProxyModes.WebService;
 
         private readonly string url = string.Empty;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="hisOptions"></param>
-        public HisWebSvcProxy(IOptions<HisOptions> hisOptions)
+        /// <param name="proxySettings"></param>
+        public HisWebSvcProxy(IOptions<HospProxySettings> proxySettings)
         {
-            url = hisOptions.Value.Url;
+            url = proxySettings.Value.Url;
         }
 
         private TSoapProxyService GenerateSoapClient<TSoapProxyService>()
@@ -136,24 +100,14 @@ namespace Flysh.HospInterface.ProxyApi.His
             return soapClient;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TData"></typeparam>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public async Task<HisProxyResult> DoTransAsync<TData>(HisDoTransRequest<TData> data)
-        {
-            //var soapClient = GenerateSoapClient<CallServiceSoapClientJHWRSoap>();
-
-            //var doTransRequest = data.GetRequestData<HisDoTransRequest<TData>, TData>();
-
-            //var soapResult = await soapClient.DoTransAsync(doTransRequest);
-
-            //return await Task.FromResult(new HisProxyResult(soapResult.Body.DoTransResult));
-
-            return await Task.FromResult(DoTrans(data));
-        }
+        //public async Task<HospResponse> DoTransAsync<TData>(HospRequest<TData> data)
+        //{
+        //    //var soapClient = GenerateSoapClient<CallServiceSoapClientJHWRSoap>();
+        //    //var doTransRequest = data.GetRequestData<HisDoTransRequest<TData>, TData>();
+        //    //var soapResult = await soapClient.DoTransAsync(doTransRequest);
+        //    //return await Task.FromResult(new HisProxyResult(soapResult.Body.DoTransResult));
+        //    return await Task.FromResult(Invoke(data));
+        //}
 
         /// <summary>
         /// 
@@ -161,15 +115,13 @@ namespace Flysh.HospInterface.ProxyApi.His
         /// <typeparam name="TData"></typeparam>
         /// <param name="data"></param>
         /// <returns></returns>
-        public HisProxyResult DoTrans<TData>(HisDoTransRequest<TData> data)
+        public HospResponse Invoke<TData>(HospRequest<TData> data)
         {
             var soapClient = GenerateSoapClient<CallServiceSoapClientJHWRSoap>();
+            var request = data.GetRequestData<HospRequest<TData>, TData>();
+            var soapResult = soapClient.DoTransAsync(request).Result;
 
-            var doTransRequest = data.GetRequestData<HisDoTransRequest<TData>, TData>();
-
-            var soapResult = soapClient.DoTransAsync(doTransRequest).Result;
-
-            return new HisProxyResult(soapResult.Body.DoTransResult);
+            return new HospResponse(soapResult.Body.DoTransResult);
         }
     }
 }

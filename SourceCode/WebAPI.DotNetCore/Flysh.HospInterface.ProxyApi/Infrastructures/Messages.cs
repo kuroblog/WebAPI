@@ -1,8 +1,6 @@
 ﻿
 namespace Flysh.HospInterface.ProxyApi.Infrastructures
 {
-    using System;
-    using System.Collections.Generic;
 
     //public class Messages
     //{

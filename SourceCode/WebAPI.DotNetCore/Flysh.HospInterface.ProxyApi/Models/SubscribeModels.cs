@@ -4,9 +4,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     using Flysh.HospInterface.ProxyApi.Infrastructures;
 
     /// <summary>
-    /// 预约信息请求参数
+    /// 预约信息 request [2008]
     /// </summary>
-    public class SubscribeSubmitRequest : BaseApiRequest
+    public class SubscribeSubmitRequest : ApiRequestBase
     {
         /// <summary>
         /// 排班编号/专家挂号必填
@@ -171,9 +171,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     }
 
     /// <summary>
-    /// 预约取消
+    /// 预约取消 request [2007]
     /// </summary>
-    public class SubscribeCancelRequest : BaseApiRequest
+    public class SubscribeCancelRequest : ApiRequestBase
     {
         /// <summary>
         /// 预约唯一号
@@ -208,9 +208,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     }
 
     /// <summary>
-    /// 预约查询
+    /// 预约查询 request [2005]
     /// </summary>
-    public class SubscribeQueryRequest : BaseApiRequest
+    public class SubscribeQueryRequest : ApiRequestBase
     {
         /// <summary>
         /// 预约唯一号

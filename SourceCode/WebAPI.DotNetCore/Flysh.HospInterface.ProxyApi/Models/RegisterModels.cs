@@ -4,9 +4,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     using Flysh.HospInterface.ProxyApi.Infrastructures;
 
     /// <summary>
-    /// 挂号信息请求参数
+    /// 挂号 request [3004]
     /// </summary>
-    public class RegisterSubmitRequest : BaseApiRequest
+    public class RegisterSubmitRequest : ApiRequestBase
     {
         /// <summary>
         /// 排班编号（可为空）专家号必填
@@ -72,6 +72,56 @@ namespace Flysh.HospInterface.ProxyApi.Models
         /// 挂号费用（单位:元）
         /// </summary>
         public string clinicFee { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string totCost { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string patientCard { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string pubCost { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string payCost { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string ownCost { get; set; }
+
+        /// <summary>
+        /// 社保卡基本信息
+        /// </summary>
+        public string siCardInfo { get; set; }
+
+        /// <summary>
+        /// 社保卡余额
+        /// </summary>
+        public string siBalanceInfo { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string siReg { get; set; }
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string siRegInfo { get; set; }
+
+        /// <summary>
+        /// 32位的社会保障卡号
+        /// </summary>
+        public string siCode { get; set; }
 
         /// <summary>
         /// 自费医保病人标识
@@ -225,9 +275,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     }
 
     /// <summary>
-    /// 取消挂号请求参数
+    /// 取消挂号 request [3005]
     /// </summary>
-    public class RegisterCancelRequest : BaseApiRequest
+    public class RegisterCancelRequest : ApiRequestBase
     {
         /// <summary>
         /// 挂号唯一号（his）

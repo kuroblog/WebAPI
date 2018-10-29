@@ -3,7 +3,6 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
 {
     using Agebull.Common.Ioc;
     using Agebull.ZeroNet.ZeroApi;
-    using Flysh.HospInterface.ProxyApi.His.Dto;
     using Flysh.HospInterface.ProxyApi.Infrastructures;
     using Flysh.HospInterface.ProxyApi.Services;
     using Gboxt.Common.DataModel;
@@ -36,7 +35,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [Route("api/v1/proxy/test")]
-        public ApiResult<string> Test(HisDoTransRequest<string> request)
+        public ApiResult<string> Test(HospRequest<string> request)
         {
             return Runner.Execute(service.HisTest, request);
         }

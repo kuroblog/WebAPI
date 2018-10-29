@@ -4,9 +4,9 @@ namespace Flysh.HospInterface.ProxyApi.Models
     using Flysh.HospInterface.ProxyApi.Infrastructures;
 
     /// <summary>
-    /// 报告列表查询参数
+    /// 报告列表查询参数 request [5001]
     /// </summary>
-    public class ReportQueryRequest : BaseApiRequest
+    public class ReportQueryRequest : ApiRequestBase
     {
         /// <summary>
         /// 就诊人姓名

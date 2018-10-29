@@ -20,7 +20,7 @@
             排班信息
             </summary>
             <param name="request"><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest"/></param>
-            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData"/></returns>
+            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem"/></returns>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassController.Point(Flysh.HospInterface.ProxyApi.Models.ClassPointRequest)">
             <summary>
@@ -69,7 +69,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ProxyController.Test(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{System.String})">
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ProxyController.Test(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{System.String})">
             <summary>
             his do-trans webmethod
             </summary>
@@ -188,497 +188,42 @@
             </summary>
             <param name="id"></param>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.code">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.data">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.#ctor(System.String,`0)">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest`1.Validate(System.String@)">
-            <summary>
-            
-            </summary>
-            <param name="message"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequestExtensions">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequestExtensions.GetRequestData``2(``0)">
-            <summary>
-            
-            </summary>
-            <typeparam name="THisDoTransRequest"></typeparam>
-            <typeparam name="TData"></typeparam>
-            <param name="request"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisResponse">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisResponse.result">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisResponse.message">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisDataResponse`1">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.BaseHisDataResponse`1.data">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransResponse`1">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransResponse`1.funName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransResponse`1.outString">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.ID">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.SEE_DATE">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.WEEK">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.NOONCODE">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.BEGIN_TIME">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.END_TIME">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DEPT_CODE">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DEPT_NAME">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DOCT_CODE">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.DOCT_NAME">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REG_LMT">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REG_REGED">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REGLEVL_NAME">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.TOT_COST">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.ADRESS">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaInfo.REGISTRATION_TYPE">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaPointResponse">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisShemaPointResponse.timeinfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo.bookingNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo.clinicNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisSaveBookingInfo.seeNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisBookingInfoResponse">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisBookingInfoResponse.state">
-            <summary>
-            状态：预约 or 取消预约 or 预约转挂号
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisBookingInfoResponse.deptName">
-            <summary>
-            科室信息
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.clinicNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.seeNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.tradeNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.registerId">
-            <summary>
-            unknown
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.registerHisId">
-            <summary>
-            unknown
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.vancy">
-            <summary>
-            unknown
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.address">
-            <summary>
-            unknown
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisRegisterInfo.deptName">
-            <summary>
-            unknown
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Recipe_Key">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Recipe_No">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.SeqNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Trans_Type">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Fee_Code">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Drug_Flag">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Item_Code">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Item_Name">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Yb_Item_Info">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Qty">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Unit_Price">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.UNIT">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Tot_Cost">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Doc_Name">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.DocDept_Name">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Exec_DeptCode">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Exec_DeptName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Mo_Date">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.Pay_Flag">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisFeeRegInfo.InvoiceNo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.queryId">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.itemName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.realName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.checkType">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.Dto.HisReportInfo.status">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.HisOptions">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisOptions.Mode">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisOptions.Url">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.HisInterfaceModes">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Flysh.HospInterface.ProxyApi.His.HisInterfaceModes.WebService">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Flysh.HospInterface.ProxyApi.His.HisInterfaceModes.Socket">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.IHisProxyInterface">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.IHisProxyInterface.HisInterfaceMode">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.IHisProxyInterface.DoTransAsync``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.IHisProxyInterface.DoTrans``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.His.HisProxyFactory">
             <summary>
-            
+            his proxy factory
             </summary>
+            <remarks>
+            create webservice or socket instance
+            </remarks>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.His.HisProxyFactory.Instance">
             <summary>
-            
+            his proxy instance
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisProxyFactory.#ctor(System.Collections.Generic.IEnumerable{Flysh.HospInterface.ProxyApi.His.IHisProxyInterface},Microsoft.Extensions.Options.IOptions{Flysh.HospInterface.ProxyApi.His.HisOptions})">
+        <member name="M:Flysh.HospInterface.ProxyApi.His.HisProxyFactory.#ctor(System.Collections.Generic.IEnumerable{Flysh.HospInterface.ProxyApi.Infrastructures.IHospProxyInterface},Microsoft.Extensions.Options.IOptions{Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings})">
             <summary>
-            
+            construct
             </summary>
-            <param name="proxyArray"></param>
-            <param name="hisOptions"></param>
+            <param name="proxies">proxy array</param>
+            <param name="proxySettings">proxy settings</param>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.His.HisSocketProxy">
             <summary>
-            
+            his socket proxy
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.His.HisSocketProxy.HisInterfaceMode">
             <summary>
-            
+            proxy mode
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisSocketProxy.DoTransAsync``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
+        <member name="M:Flysh.HospInterface.ProxyApi.His.HisSocketProxy.Invoke``1(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{``0})">
             <summary>
-            
+            invoke service method
             </summary>
-            <typeparam name="TData"></typeparam>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisSocketProxy.DoTrans``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-            <param name="data"></param>
+            <typeparam name="TData">request</typeparam>
+            <param name="data">request data</param>
             <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy">
@@ -691,21 +236,13 @@
             
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.#ctor(Microsoft.Extensions.Options.IOptions{Flysh.HospInterface.ProxyApi.His.HisOptions})">
+        <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.#ctor(Microsoft.Extensions.Options.IOptions{Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings})">
             <summary>
             
             </summary>
-            <param name="hisOptions"></param>
+            <param name="proxySettings"></param>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.DoTransAsync``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
-            <summary>
-            
-            </summary>
-            <typeparam name="TData"></typeparam>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.DoTrans``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
+        <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.Invoke``1(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{``0})">
             <summary>
             
             </summary>
@@ -713,26 +250,386 @@
             <param name="data"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.HisProxyResult">
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisDoTransRequestExtensions">
             <summary>
-            his interface result
+            
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisProxyResult.HisResult">
+        <member name="M:Flysh.HospInterface.ProxyApi.His.HisDoTransRequestExtensions.GetRequestData``2(``0)">
             <summary>
-            his result
+            
+            </summary>
+            <typeparam name="IHospRequest"></typeparam>
+            <typeparam name="TData"></typeparam>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisResponseBase">
+            <summary>
+            
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisProxyResult.FormatResult">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisResponseBase.result">
             <summary>
-            json format result
+            
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.His.HisProxyResult.#ctor(System.String)">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisResponseBase.message">
             <summary>
-            constructor
+            
             </summary>
-            <param name="hisResult"></param>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisDataResponse`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisDataResponse`1.data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisDataResponse2`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisDataResponse2`1.funName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisDataResponse2`1.outString">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisShemaPointResponse">
+            <summary>
+            可预约时间点信息 result [2004]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaPointResponse.timeinfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisBookingInfoResponse">
+            <summary>
+            预约查询 result [2005]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisBookingInfoResponse.state">
+            <summary>
+            状态：预约 or 取消预约 or 预约转挂号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisBookingInfoResponse.deptName">
+            <summary>
+            科室信息
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisShemaInfo">
+            <summary>
+            排班信息 result [2003]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.ID">
+            <summary>
+            排班ID
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.SEE_DATE">
+            <summary>
+            看诊时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.WEEK">
+            <summary>
+            星期几
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.NOONCODE">
+            <summary>
+            午别
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.BEGIN_TIME">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.END_TIME">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.DEPT_CODE">
+            <summary>
+            科室编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.DEPT_NAME">
+            <summary>
+            科室名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.DOCT_CODE">
+            <summary>
+            医生编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.DOCT_NAME">
+            <summary>
+            医生名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.BOOKING_LMT">
+            <summary>
+            预约总数 REG_LMT
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.TEL_REGED">
+            <summary>
+            已经预约数 REG_REGED
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.REGLEVL_CODE">
+            <summary>
+            挂号等级代码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.REGLEVL_NAME">
+            <summary>
+            挂号等级
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.TOT_COST">
+            <summary>
+            挂号金额
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.ADRESS">
+            <summary>
+            科室地址
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.REGISTRATION_TYPE">
+            <summary>
+            0 普通号(PT) 1 专家号(ZJ)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.ITEMCODE">
+            <summary>
+            HIS项目编码(根据此字段1005查询医保中心对应的项目编码和医院的自付比率)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.SORTID">
+            <summary>
+            排序ID
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisShemaInfo.HASREG">
+            <summary>
+            剩余挂号数
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisSaveBookingInfo">
+            <summary>
+            预约挂号 result [2008]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisSaveBookingInfo.bookingNo">
+            <summary>
+            预约唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisSaveBookingInfo.clinicNo">
+            <summary>
+            就诊唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisSaveBookingInfo.seeNo">
+            <summary>
+            就诊序号
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo">
+            <summary>
+            挂号 result [3004]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.seeNo">
+            <summary>
+            就诊序号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.tradeNo">
+            <summary>
+            HIS交易发票号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.registerId">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.hisRegisterId">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.vancy">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.address">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegisterInfo.deptName">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo">
+            <summary>
+            挂号缴费列表 result [3006]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Recipe_Key">
+            <summary>
+            唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Recipe_No">
+            <summary>
+            处方号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.SeqNo">
+            <summary>
+            处方内序号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Trans_Type">
+            <summary>
+            交易类型
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Fee_Code">
+            <summary>
+            最小费用代码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Drug_Flag">
+            <summary>
+            是否是药品
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Item_Code">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Item_Name">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Yb_Item_Info">
+            <summary>
+            医保项目相关参数 多个#分隔
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Unit_Price">
+            <summary>
+            单价
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.UNIT">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Tot_Cost">
+            <summary>
+            总额
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Doc_Name">
+            <summary>
+            开方医生
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.DocDept_Name">
+            <summary>
+            开方医生所在科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Exec_DeptCode">
+            <summary>
+            执行科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Exec_DeptName">
+            <summary>
+            执行科室名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Mo_Date">
+            <summary>
+            开立时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Pay_Flag">
+            <summary>
+            是否收费
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.InvoiceNo">
+            <summary>
+            发票号
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisReportInfo">
+            <summary>
+            查询检验、检查报告列表 result [5001]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisReportInfo.queryId">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisReportInfo.itemName">
+            <summary>
+            项目名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisReportInfo.realName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisReportInfo.checkType">
+            <summary>
+            1-检验 2-检查
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisReportInfo.status">
+            <summary>
+            0-检查中 1-检查完成
+            </summary>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister">
             <summary>
@@ -749,25 +646,122 @@
             
             </summary>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.BaseApiRequest">
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.ApiRequestBase">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.BaseApiRequest.Validate(System.String@)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.ApiRequestBase.Validate(System.String@)">
             <summary>
             
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.BaseApiRequest.ErrorMessage``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.ApiRequestBase.ErrorMessage``1(System.Linq.Expressions.Expression{System.Func{``0}},System.String)">
             <summary>
             
             </summary>
             <typeparam name="TProperty"></typeparam>
             <param name="propertyExpression"></param>
             <param name="errorMessageForamt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings.Mode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings.Url">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxyModes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxyModes.WebService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxyModes.Socket">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest`1.code">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest`1.data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest`1.#ctor(System.String,`0)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest`1.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.HospResponse">
+            <summary>
+            his interface result
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.HospResponse.Result">
+            <summary>
+            his result
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.HospResponse.FormatResult">
+            <summary>
+            json format result
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.HospResponse.#ctor(System.String)">
+            <summary>
+            constructor
+            </summary>
+            <param name="hisResult"></param>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.IHospProxyInterface">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Infrastructures.IHospProxyInterface.HisInterfaceMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.IHospProxyInterface.Invoke``1(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="TData"></typeparam>
+            <param name="data"></param>
             <returns></returns>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.PropertySupport">
@@ -810,7 +804,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest">
             <summary>
-            排班信息请求参数
+            排班信息 request [2003]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest.beginDate">
@@ -840,94 +834,109 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem">
             <summary>
             排班信息
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.classId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.classId">
             <summary>
             排班 ID
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.seeDate">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.seeDate">
             <summary>
             看诊时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.week">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.week">
             <summary>
             星期几
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.nooncode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.nooncode">
             <summary>
             午别
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.beginTime">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.beginTime">
             <summary>
             开始时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.endTime">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.endTime">
             <summary>
             结束时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.deptCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.deptCode">
             <summary>
             科室编码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.deptName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.deptName">
             <summary>
             科室名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.doctCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.doctCode">
             <summary>
             医生编码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.doctName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.doctName">
             <summary>
             医生名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regLmt">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regLmt">
             <summary>
             预约总数
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regReged">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regReged">
             <summary>
             已经预约数
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regLevl">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regLevl">
             <summary>
             挂号等级
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.totCost">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.totCost">
             <summary>
             挂号金额
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.adress">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.adress">
             <summary>
             科室地址
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regType">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regType">
             <summary>
             挂号类别(0 普通号(PT) or 1 专家号(ZJ))
             </summary>
         </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.itemCode">
+            <summary>
+            HIS项目编码(根据此字段1005查询医保中心对应的项目编码和医院的自付比率)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.sortId">
+            <summary>
+            排序ID
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.hasReg">
+            <summary>
+            剩余挂号数
+            </summary>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassPointRequest">
             <summary>
-            可预约时间点信息请求参数
+            可预约时间点信息 request [2004]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassPointRequest.classId">
@@ -944,7 +953,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest">
             <summary>
-            挂号缴费记录请求参数
+            挂号缴费记录 request [3006]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.FeeRegisterQueryRequest.pactCode">
@@ -1066,7 +1075,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest">
             <summary>
-            挂号信息请求参数
+            挂号 request [3004]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.classId">
@@ -1132,6 +1141,56 @@
         <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.clinicFee">
             <summary>
             挂号费用（单位:元）
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.totCost">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.patientCard">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.pubCost">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.payCost">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.ownCost">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.siCardInfo">
+            <summary>
+            社保卡基本信息
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.siBalanceInfo">
+            <summary>
+            社保卡余额
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.siReg">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.siRegInfo">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.siCode">
+            <summary>
+            32位的社会保障卡号
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterSubmitRequest.pactCode">
@@ -1223,7 +1282,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest">
             <summary>
-            取消挂号请求参数
+            取消挂号 request [3005]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterCancelRequest.clinicNo">
@@ -1245,7 +1304,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest">
             <summary>
-            报告列表查询参数
+            报告列表查询参数 request [5001]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest.realName">
@@ -1297,7 +1356,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest">
             <summary>
-            预约信息请求参数
+            预约信息 request [2008]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeSubmitRequest.classId">
@@ -1404,7 +1463,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest">
             <summary>
-            预约取消
+            预约取消 request [2007]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeCancelRequest.subscribeId">
@@ -1426,7 +1485,7 @@
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest">
             <summary>
-            预约查询
+            预约查询 request [2005]
             </summary>
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.Models.SubscribeQueryRequest.subscribeId">
@@ -1484,7 +1543,7 @@
             
             </summary>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.HisTest``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.HisTest``1(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{``0})">
             <summary>
             
             </summary>
@@ -1566,7 +1625,7 @@
             </summary>
             <param name="proxyFactory"></param>
         </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.HisTest``1(Flysh.HospInterface.ProxyApi.His.Dto.HisDoTransRequest{``0})">
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.HisTest``1(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{``0})">
             <summary>
             
             </summary>

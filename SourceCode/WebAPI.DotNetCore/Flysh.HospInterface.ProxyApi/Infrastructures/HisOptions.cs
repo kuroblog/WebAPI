@@ -1,17 +1,17 @@
 ﻿
-namespace Flysh.HospInterface.ProxyApi.His
+namespace Flysh.HospInterface.ProxyApi.Infrastructures
 {
     /// <summary>
     /// 
     /// </summary>
-    public class HisOptions
+    public class HospProxySettings
     {
         //public string Mode { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public HisInterfaceModes Mode { get; set; }
+        public HospProxyModes Mode { get; set; }
 
         /// <summary>
         /// 
@@ -22,7 +22,7 @@ namespace Flysh.HospInterface.ProxyApi.His
     /// <summary>
     /// 
     /// </summary>
-    public enum HisInterfaceModes
+    public enum HospProxyModes
     {
         /// <summary>
         /// 
