@@ -17,7 +17,7 @@
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Controllers.CardController.Query(Flysh.HospInterface.ProxyApi.Models.CardQueryRequest)">
             <summary>
-            排班信息
+            卡号查询
             </summary>
             <param name="request"><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest"/></param>
             <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData"/></returns>

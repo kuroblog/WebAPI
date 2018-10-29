@@ -31,7 +31,7 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         }
 
         /// <summary>
-        /// 排班信息
+        /// 卡号查询
         /// </summary>
         /// <param name="request"><see cref="ClassScheduleRequest"/></param>
         /// <returns><see cref="ClassScheduleData"/></returns>
