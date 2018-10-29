@@ -101,6 +101,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.RegisterController.Query(Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest)">
+            <summary>
+            挂号查询
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ReportController">
             <summary>
             排班
@@ -496,107 +503,107 @@
             unknown
             </summary>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo">
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo">
             <summary>
             挂号缴费列表 result [3006]
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Recipe_Key">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Recipe_Key">
             <summary>
             唯一号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Recipe_No">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Recipe_No">
             <summary>
             处方号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.SeqNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.SeqNo">
             <summary>
             处方内序号
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Trans_Type">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Trans_Type">
             <summary>
             交易类型
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Fee_Code">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Fee_Code">
             <summary>
             最小费用代码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Drug_Flag">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Drug_Flag">
             <summary>
             是否是药品
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Item_Code">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Item_Code">
             <summary>
             项目编码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Item_Name">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Item_Name">
             <summary>
             项目名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Yb_Item_Info">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Yb_Item_Info">
             <summary>
             医保项目相关参数 多个#分隔
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Qty">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Qty">
             <summary>
             数量
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Unit_Price">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Unit_Price">
             <summary>
             单价
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.UNIT">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.UNIT">
             <summary>
             单位
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Tot_Cost">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Tot_Cost">
             <summary>
             总额
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Doc_Name">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Doc_Name">
             <summary>
             开方医生
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.DocDept_Name">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.DocDept_Name">
             <summary>
             开方医生所在科室
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Exec_DeptCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Exec_DeptCode">
             <summary>
             执行科室
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Exec_DeptName">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Exec_DeptName">
             <summary>
             执行科室名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Mo_Date">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Mo_Date">
             <summary>
             开立时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.Pay_Flag">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.Pay_Flag">
             <summary>
             是否收费
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRegInfo.InvoiceNo">
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisFeeRecInfo.InvoiceNo">
             <summary>
             发票号
             </summary>
@@ -629,6 +636,244 @@
         <member name="P:Flysh.HospInterface.ProxyApi.His.HisReportInfo.status">
             <summary>
             0-检查中 1-检查完成
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisRegListInfo">
+            <summary>
+            病人挂号信息 result [4000]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.Name">
+            <summary>
+            String	是	患者姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.Reg_Date">
+            <summary>
+            String	是	挂号时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.Dept_Name">
+            <summary>
+            String	是	挂号科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.Doct_Name">
+            <summary>
+            String	是	挂号医生
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.YnSee">
+            <summary>
+            String	是	未看诊 已看诊
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.CLINIC_CODE">
+            <summary>
+            String	是	挂号流水号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.YBRate">
+            <summary>
+            医保比例
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegListInfo.YBCode">
+            <summary>
+            医保中心代码
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Recipe_Key">
+            <summary>
+            String	是	唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Recipe_No">
+            String	是	处方号
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.SeqNo">
+            <summary>
+            String	是	处方内序号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Trans_Type">
+            <summary>
+            String	是	交易类型
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Fee_Code">
+            <summary>
+            String	是	最小费用代码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Drug_Flag">
+            <summary>
+            	String	是	是否是药品
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Item_Code">
+            <summary>
+            String	是	项目编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Item_Name">
+             <summary>
+            String	是	项目名称
+             </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Yb_Item_Info">
+            <summary>
+            String	是	医保项目相关参数 多个#分隔
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Qty">
+            <summary>
+            String	是	数量
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Spec">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Pack_Qty">
+            <summary>
+            包装数量
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Days">
+            <summary>
+            天数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Ff">
+            <summary>
+            复方标识
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Unit_Price">
+            <summary>
+            String	是	单价
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.UNIT">
+            <summary>
+            String	是	单位
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Tot_Cost">
+            <summary>
+            String	是	总额
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Doc_Name">
+            <summary>
+            String	是	开方医生
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Doc_Code">
+            <summary>
+            开单科室医生编号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.DocDept_Name">
+            <summary>
+            String	是	开方医生所在科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Exec_DeptCode">
+            <summary>
+            String	是	执行科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Exec_DeptName">
+            <summary>
+            String	是	执行科室名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Mo_Date">
+            <summary>
+            String	是	开立时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Pay_Flag">
+            <summary>
+            	String	是	是否收费
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.InvoiceNo">
+            <summary>
+            String	是	发票号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.CLINIC_CODE">
+            <summary>
+            挂号流水号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Dose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.OnceDose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.Frequency">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.recipeSeq">
+            <summary>
+            分方
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.icdType">
+            <summary>
+            特慢病标识(0 普通 1特病  2 慢病)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.icdCode">
+            <summary>
+            诊断编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.HasSaved">
+            <summary>
+            0  普通(不可报销)  1  可报销
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.icdName">
+            <summary>
+            诊断名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.markno">
+            <summary>
+            物理卡号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.proCode">
+            <summary>
+            病种审批单号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisRegItemInfo.classCode">
+            <summary>
+            值为PCC,是草药
             </summary>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.ApiRequestBase">
@@ -1302,6 +1547,271 @@
             <param name="message"></param>
             <returns></returns>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest">
+            <summary>
+            挂号查询 request [4000]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest.realName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest.patientCard">
+            <summary>
+            就诊人卡号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest.queryType">
+            <summary>
+            查询方式  0 所以有效记录 1 存在未收费的记录
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData">
+            <summary>
+            挂号查询结果
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.name">
+            <summary>
+            患者姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.regDate">
+            <summary>
+            挂号时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.deptName">
+            <summary>
+            挂号科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.doctName">
+            <summary>
+            挂号医生
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.ynSee">
+            <summary>
+            未看诊 已看诊
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.clinicCode">
+            <summary>
+            挂号流水号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.datas">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.ybRate">
+            <summary>
+            医保比例
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryData.ybCode">
+            <summary>
+            医保中心代码
+            </summary>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.recipeId">
+            <summary>
+            唯一号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.recipeNo">
+            处方号
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.seqNo">
+            <summary>
+            处方内序号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.transType">
+            <summary>
+            交易类型
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.feeCode">
+            <summary>
+            最小费用代码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.drugFlag">
+            <summary>
+            是否是药品
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.itemCode">
+            <summary>
+            项目编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.itemName">
+             <summary>
+            项目名称
+             </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.ybItemInfo">
+            <summary>
+            医保项目相关参数 多个#分隔
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.qty">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.spec">
+            <summary>
+            规格
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.packQty">
+            <summary>
+            包装数量
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.days">
+            <summary>
+            天数
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.ff">
+            <summary>
+            复方标识
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.unitPrice">
+            <summary>
+            单价
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.unit">
+            <summary>
+            单位
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.totCost">
+            <summary>
+            总额
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.doctName">
+            <summary>
+            开方医生
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.doctCode">
+            <summary>
+            开单科室医生编号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.doctDeptName">
+            <summary>
+            开方医生所在科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.execDeptCode">
+            <summary>
+            执行科室
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.execDeptName">
+            <summary>
+            执行科室名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.moDate">
+            <summary>
+            开立时间
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.payFlag">
+            <summary>
+            	是否收费
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.invoiceNo">
+            <summary>
+            发票号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.clinicCode">
+            <summary>
+            挂号流水号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.dose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.onceDose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.frequency">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.recipeSeq">
+            <summary>
+            分方
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.icdType">
+            <summary>
+            特慢病标识(0 普通 1特病  2 慢病)
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.icdCode">
+            <summary>
+            诊断编码
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.hasSaved">
+            <summary>
+            0  普通(不可报销)  1  可报销
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.icdName">
+            <summary>
+            诊断名称
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.markno">
+            <summary>
+            物理卡号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.proCode">
+            <summary>
+            病种审批单号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.RegisterQueryItem.classCode">
+            <summary>
+            值为PCC,是草药
+            </summary>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest">
             <summary>
             报告列表查询参数 request [5001]
@@ -1614,6 +2124,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.RegisterQuery(Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Services.ProxyService">
             <summary>
             
@@ -1690,6 +2207,13 @@
             <returns></returns>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.ReportQuery(Flysh.HospInterface.ProxyApi.Models.ReportQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.RegisterQuery(Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest)">
             <summary>
             
             </summary>

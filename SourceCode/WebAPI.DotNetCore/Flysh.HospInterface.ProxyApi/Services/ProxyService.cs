@@ -84,6 +84,13 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <param name="request"></param>
         /// <returns></returns>
         (bool result, string message, IEnumerable<ReportQueryData> data) ReportQuery(ReportQueryRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, IEnumerable<RegisterQueryData> data) RegisterQuery(RegisterQueryRequest request);
     }
 
     /// <summary>
@@ -255,7 +262,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (result.flag, result.msg, result.flag);
         }
 
-        private Func<HisFeeRegInfo, FeeRecipeQueryData> hisFeeRegInfoParser = (h) => new FeeRecipeQueryData
+        private Func<HisFeeRecInfo, FeeRecipeQueryData> hisFeeRegInfoParser = (h) => new FeeRecipeQueryData
         {
             doctDeptName = h.DocDept_Name,
             doctName = h.Doc_Name,
@@ -286,7 +293,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, IEnumerable<FeeRecipeQueryData> data) FeeRegisterQuery(FeeRecipeQueryRequest request)
         {
-            var result = Invoke<FeeRecipeQueryRequest, HisDataResponse<HisFeeRegInfo[]>>("3006", request);
+            var result = Invoke<FeeRecipeQueryRequest, HisDataResponse<HisFeeRecInfo[]>>("3006", request);
             var data = result.json.data?.Select(hisFeeRegInfoParser)?.ToArray();
 
             return (result.flag, result.msg, data);
@@ -329,5 +336,70 @@ namespace Flysh.HospInterface.ProxyApi.Services
         {
             return string.IsNullOrEmpty(result) ? false : result.ToLower() == "success";
         };
+
+        private Func<HisRegListInfo, RegisterQueryData> hisFeeRecInfoParser = (h) => new RegisterQueryData
+        {
+            clinicCode = h.CLINIC_CODE,
+            datas = h.data?.Select(p => new RegisterQueryItem
+            {
+                classCode = p.classCode,
+                clinicCode = p.CLINIC_CODE,
+                days = p.Days,
+                doctCode = p.Doc_Code,
+                doctDeptName = p.DocDept_Name,
+                doctName = p.Doc_Name,
+                dose = p.Dose,
+                drugFlag = p.Drug_Flag,
+                execDeptCode = p.Exec_DeptCode,
+                execDeptName = p.Exec_DeptName,
+                feeCode = p.Fee_Code,
+                ff = p.Ff,
+                frequency = p.Frequency,
+                hasSaved = p.HasSaved,
+                icdCode = p.icdCode,
+                icdName = p.icdName,
+                icdType = p.icdType,
+                invoiceNo = p.InvoiceNo,
+                itemCode = p.Item_Code,
+                itemName = p.Item_Name,
+                markno = p.markno,
+                moDate = p.Mo_Date,
+                onceDose = p.OnceDose,
+                packQty = p.Pack_Qty,
+                payFlag = p.Pay_Flag,
+                proCode = p.proCode,
+                qty = p.Qty,
+                recipeId = p.Recipe_Key,
+                recipeNo = p.Recipe_No,
+                recipeSeq = p.recipeSeq,
+                seqNo = p.SeqNo,
+                spec = p.Spec,
+                totCost = p.Tot_Cost,
+                transType = p.Trans_Type,
+                unit = p.UNIT,
+                unitPrice = p.Unit_Price,
+                ybItemInfo = p.Yb_Item_Info
+            })?.ToArray(),
+            deptName = h.Dept_Name,
+            doctName = h.Doct_Name,
+            name = h.Name,
+            regDate = h.Reg_Date,
+            ybCode = h.YBCode,
+            ybRate = h.YBRate,
+            ynSee = h.YnSee
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, IEnumerable<RegisterQueryData> data) RegisterQuery(RegisterQueryRequest request)
+        {
+            var result = Invoke<RegisterQueryRequest, HisDataResponse<HisRegListInfo[]>>("4000", request);
+            var data = result.json.data?.Select(hisFeeRecInfoParser)?.ToArray();
+
+            return (result.flag, result.msg, data);
+        }
     }
 }

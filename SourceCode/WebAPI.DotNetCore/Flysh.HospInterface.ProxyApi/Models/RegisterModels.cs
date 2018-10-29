@@ -310,4 +310,289 @@ namespace Flysh.HospInterface.ProxyApi.Models
             return string.IsNullOrEmpty(message);
         }
     }
+
+    /// <summary>
+    /// 挂号查询 request [4000]
+    /// </summary>
+    public class RegisterQueryRequest : ApiRequestBase
+    {
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; }
+
+        /// <summary>
+        /// 就诊人卡号
+        /// </summary>
+        public string patientCard { get; set; }
+
+        /// <summary>
+        /// 查询方式  0 所以有效记录 1 存在未收费的记录
+        /// </summary>
+        public string queryType { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public override bool Validate(out string message)
+        {
+            message = string.Empty;
+
+            if (string.IsNullOrEmpty(realName))
+            {
+                message = ErrorMessage(() => realName);
+            }
+            else if (string.IsNullOrEmpty(patientCard))
+            {
+                message = ErrorMessage(() => patientCard);
+            }
+            else if (string.IsNullOrEmpty(queryType))
+            {
+                message = ErrorMessage(() => queryType);
+            }
+
+            return string.IsNullOrEmpty(message);
+        }
+    }
+
+    /// <summary>
+    /// 挂号查询结果
+    /// </summary>
+    public class RegisterQueryData
+    {
+        /// <summary>
+        /// 患者姓名
+        /// </summary>
+        public string name { get; set; }
+
+        /// <summary>
+        /// 挂号时间
+        /// </summary>
+        public string regDate { get; set; }
+
+        /// <summary>
+        /// 挂号科室
+        /// </summary>
+        public string deptName { get; set; }
+
+        /// <summary>
+        /// 挂号医生
+        /// </summary>
+        public string doctName { get; set; }
+
+        /// <summary>
+        /// 未看诊 已看诊
+        /// </summary>
+        public string ynSee { get; set; }
+
+        /// <summary>
+        /// 挂号流水号
+        /// </summary>
+        public string clinicCode { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RegisterQueryItem[] datas { get; set; }
+
+        /// <summary>
+        /// 医保比例
+        /// </summary>
+        public string ybRate { get; set; }
+
+        /// <summary>
+        /// 医保中心代码
+        /// </summary>
+        public string ybCode { get; set; }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class RegisterQueryItem
+    {
+        /// <summary>
+        /// 唯一号
+        /// </summary>
+        public string recipeId { get; set; }
+
+        ///处方号
+        public string recipeNo { get; set; }
+
+        /// <summary>
+        /// 处方内序号
+        /// </summary>
+        public string seqNo { get; set; }
+
+        /// <summary>
+        /// 交易类型
+        /// </summary>
+        public string transType { get; set; }
+
+        /// <summary>
+        /// 最小费用代码
+        /// </summary>
+        public string feeCode { get; set; }
+
+        /// <summary>
+        /// 是否是药品
+        /// </summary>
+        public string drugFlag { get; set; }
+
+        /// <summary>
+        /// 项目编码
+        /// </summary>
+        public string itemCode { get; set; }
+
+        /// <summary>
+        ///项目名称
+        /// </summary>
+        public string itemName { get; set; }
+
+        /// <summary>
+        /// 医保项目相关参数 多个#分隔
+        /// </summary>
+        public string ybItemInfo { get; set; }
+
+        /// <summary>
+        /// 数量
+        /// </summary>
+        public string qty { get; set; }
+
+        /// <summary>
+        /// 规格
+        /// </summary>
+        public string spec { get; set; }
+
+        /// <summary>
+        /// 包装数量
+        /// </summary>
+        public string packQty { get; set; }
+
+        /// <summary>
+        /// 天数
+        /// </summary>
+        public string days { get; set; }
+
+        /// <summary>
+        /// 复方标识
+        /// </summary>
+        public string ff { get; set; }
+
+        /// <summary>
+        /// 单价
+        /// </summary>
+        public string unitPrice { get; set; }
+
+        /// <summary>
+        /// 单位
+        /// </summary>
+        public string unit { get; set; }
+
+        /// <summary>
+        /// 总额
+        /// </summary>
+        public string totCost { get; set; }
+
+        /// <summary>
+        /// 开方医生
+        /// </summary>
+        public string doctName { get; set; }
+
+        /// <summary>
+        /// 开单科室医生编号
+        /// </summary>
+        public string doctCode { get; set; }
+        /// <summary>
+        /// 开方医生所在科室
+        /// </summary>
+        public string doctDeptName { get; set; }
+
+        /// <summary>
+        /// 执行科室
+        /// </summary>
+        public string execDeptCode { get; set; }
+
+        /// <summary>
+        /// 执行科室名称
+        /// </summary>
+        public string execDeptName { get; set; }
+
+        /// <summary>
+        /// 开立时间
+        /// </summary>
+        public string moDate { get; set; }
+
+        /// <summary>
+        /// 	是否收费
+        /// </summary>
+        public string payFlag { get; set; }
+
+        /// <summary>
+        /// 发票号
+        /// </summary>
+        public string invoiceNo { get; set; }
+
+        /// <summary>
+        /// 挂号流水号
+        /// </summary>
+        public string clinicCode { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string dose { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string onceDose { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string frequency { get; set; }
+
+        /// <summary>
+        /// 分方
+        /// </summary>
+        public string recipeSeq { get; set; }
+
+        /// <summary>
+        /// 特慢病标识(0 普通 1特病  2 慢病)
+        /// </summary>
+        public string icdType { get; set; }
+
+        /// <summary>
+        /// 诊断编码
+        /// </summary>
+        public string icdCode { get; set; }
+
+        /// <summary>
+        /// 0  普通(不可报销)  1  可报销
+        /// </summary>
+        public string hasSaved { get; set; }
+
+        /// <summary>
+        /// 诊断名称
+        /// </summary>
+        public string icdName { get; set; }
+
+        /// <summary>
+        /// 物理卡号
+        /// </summary>
+        public string markno { get; set; }
+
+        /// <summary>
+        /// 病种审批单号
+        /// </summary>
+        public string proCode { get; set; }
+
+        /// <summary>
+        /// 值为PCC,是草药
+        /// </summary>
+        public string classCode { get; set; }
+    }
 }

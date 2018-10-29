@@ -6,6 +6,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>D:\Yuqi\Source\Repos\WebAPI\SourceCode\WebAPI.DotNetCore\Flysh.HospInterface.ProxyApi\Flysh.HospInterface.ProxyApi.xml</DocumentationFile>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

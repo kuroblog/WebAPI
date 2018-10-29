@@ -1,6 +1,7 @@
 ﻿
 namespace Flysh.HospInterface.ProxyApi.His
 {
+    using Agebull.Common.Logging;
     using Flysh.HospInterface.ProxyApi.Infrastructures;
     using JHWR;
     using Microsoft.Extensions.Options;
@@ -121,7 +122,14 @@ namespace Flysh.HospInterface.ProxyApi.His
             var request = data.GetRequestData<HospRequest<TData>, TData>();
             var soapResult = soapClient.DoTransAsync(request).Result;
 
-            return new HospResponse(soapResult.Body.DoTransResult);
+            var result = new HospResponse(soapResult.Body.DoTransResult);
+            // LogRecorder.BeginMonitor("kaishi");
+
+            Console.WriteLine(result.FormatResult);
+
+            // LogRecorder.EndMonitor();
+
+            return result;
         }
     }
 }

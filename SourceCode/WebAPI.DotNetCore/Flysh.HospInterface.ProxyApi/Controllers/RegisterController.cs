@@ -51,5 +51,16 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         {
             return Runner.Execute(service.RegisterCancel, request);
         }
+
+        /// <summary>
+        /// 挂号查询
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [Route("api/v1/register/query")]
+        public ApiArrayResult<RegisterQueryData> Query(RegisterQueryRequest request)
+        {
+            return Runner.Execute(service.RegisterQuery, request);
+        }
     }
 }
