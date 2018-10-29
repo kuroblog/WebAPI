@@ -652,4 +652,59 @@ namespace Flysh.HospInterface.ProxyApi.His
         /// </summary>
         public string classCode { get; set; }
     }
+
+    /// <summary>
+    /// 病人卡号信息 result [1002]
+    /// </summary>
+    public class HisPatientCardInfo
+    {
+        /// <summary>
+        /// 0000096874
+        /// </summary>
+        public string cardNo { get; set; }
+        /// <summary>
+        /// 毛萍
+        /// </summary>
+        public string name { get; set; }
+        /// <summary>
+        /// Vacancy
+        /// </summary>
+        public string vacancy { get; set; }
+        /// <summary>
+        /// 女
+        /// </summary>
+        public string sex { get; set; }
+        /// <summary>
+        /// 1988-07-09
+        /// </summary>
+        public string birthday { get; set; }
+        /// <summary>
+        /// Linkman_name
+        /// </summary>
+        public string linkman_name { get; set; }
+        /// <summary>
+        /// Linkman_add
+        /// </summary>
+        public string linkman_add { get; set; }
+        /// <summary>
+        /// Linkman_tel
+        /// </summary>
+        public string linkman_tel { get; set; }
+        /// <summary>
+        /// BingliCost
+        /// </summary>
+        public string bingliCost { get; set; }
+        /// <summary>
+        /// PactCode
+        /// </summary>
+        public string pactCode { get; set; }
+        /// <summary>
+        /// 18869906650
+        /// </summary>
+        public string idno { get; set; }
+        /// <summary>
+        /// Idno2
+        /// </summary>
+        public string idno2 { get; set; }
+    }
 }

@@ -4,6 +4,24 @@
         <name>Flysh.HospInterface.ProxyApi</name>
     </assembly>
     <members>
+        <member name="T:Flysh.HospInterface.ProxyApi.Controllers.CardController">
+            <summary>
+            卡号
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.CardController.Hello">
+            <summary>
+            hello
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Controllers.CardController.Query(Flysh.HospInterface.ProxyApi.Models.CardQueryRequest)">
+            <summary>
+            排班信息
+            </summary>
+            <param name="request"><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest"/></param>
+            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData"/></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Controllers.ClassController">
             <summary>
             排班
@@ -876,6 +894,71 @@
             值为PCC,是草药
             </summary>
         </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo">
+            <summary>
+            病人卡号信息 result [1002]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.cardNo">
+            <summary>
+            0000096874
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.name">
+            <summary>
+            毛萍
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.vacancy">
+            <summary>
+            Vacancy
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.sex">
+            <summary>
+            女
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.birthday">
+            <summary>
+            1988-07-09
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.linkman_name">
+            <summary>
+            Linkman_name
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.linkman_add">
+            <summary>
+            Linkman_add
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.linkman_tel">
+            <summary>
+            Linkman_tel
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.bingliCost">
+            <summary>
+            BingliCost
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.pactCode">
+            <summary>
+            PactCode
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.idno">
+            <summary>
+            18869906650
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.His.HisPatientCardInfo.idno2">
+            <summary>
+            Idno2
+            </summary>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.ApiRequestBase">
             <summary>
             
@@ -1046,6 +1129,108 @@
             <param name="func"></param>
             <param name="args"></param>
             <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest">
+            <summary>
+            卡号查询 request [1002]
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest.realName">
+            <summary>
+            就诊人姓名
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest.idCard">
+            <summary>
+            就诊人身份证
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest.mCardNo">
+            <summary>
+            建档卡号
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest.mType">
+            <summary>
+            建档卡号类型 5身份证 6医保卡  7银行卡
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest.queryType">
+            <summary>
+            查询方式 0 自费患者查询  姓名和身份证  1 物理卡号查询
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Models.CardQueryRequest.Validate(System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.CardQueryData">
+            <summary>
+            卡号信息
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.cardNo">
+            <summary>
+            0000096874
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.vacancy">
+            <summary>
+            Vacancy
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.sex">
+            <summary>
+            女
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.birthday">
+            <summary>
+            1988-07-09
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.linkmanName">
+            <summary>
+            Linkman_name
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.linkmanAdd">
+            <summary>
+            Linkman_add
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.linkmanTel">
+            <summary>
+            Linkman_tel
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.bingliCost">
+            <summary>
+            BingliCost
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.pactCode">
+            <summary>
+            PactCode
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.idno">
+            <summary>
+            18869906650
+            </summary>
+        </member>
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.CardQueryData.idno2">
+            <summary>
+            Idno2
+            </summary>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest">
             <summary>
@@ -2131,6 +2316,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.IProxyService.CardQuery(Flysh.HospInterface.ProxyApi.Models.CardQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Services.ProxyService">
             <summary>
             
@@ -2214,6 +2406,13 @@
             <returns></returns>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.RegisterQuery(Flysh.HospInterface.ProxyApi.Models.RegisterQueryRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Services.ProxyService.CardQuery(Flysh.HospInterface.ProxyApi.Models.CardQueryRequest)">
             <summary>
             
             </summary>

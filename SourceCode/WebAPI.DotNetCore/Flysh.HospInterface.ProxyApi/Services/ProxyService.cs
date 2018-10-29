@@ -91,6 +91,13 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <param name="request"></param>
         /// <returns></returns>
         (bool result, string message, IEnumerable<RegisterQueryData> data) RegisterQuery(RegisterQueryRequest request);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        (bool result, string message, CardQueryData data) CardQuery(CardQueryRequest request);
     }
 
     /// <summary>
@@ -398,6 +405,35 @@ namespace Flysh.HospInterface.ProxyApi.Services
         {
             var result = Invoke<RegisterQueryRequest, HisDataResponse<HisRegListInfo[]>>("4000", request);
             var data = result.json.data?.Select(hisFeeRecInfoParser)?.ToArray();
+
+            return (result.flag, result.msg, data);
+        }
+
+        private Func<HisPatientCardInfo, CardQueryData> hisPatientCardInfoParser = (h) => new CardQueryData
+        {
+            bingliCost = h.bingliCost,
+            birthday = h.birthday,
+            cardNo = h.cardNo,
+            idno = h.idno,
+            idno2 = h.idno2,
+            linkmanAdd = h.linkman_add,
+            linkmanName = h.linkman_name,
+            linkmanTel = h.linkman_tel,
+            name = h.name,
+            pactCode = h.pactCode,
+            sex = h.sex,
+            vacancy = h.vacancy
+        };
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public (bool result, string message, CardQueryData data) CardQuery(CardQueryRequest request)
+        {
+            var result = Invoke<CardQueryRequest, HisDataResponse<HisPatientCardInfo>>("1002", request);
+            var data = hisPatientCardInfoParser(result.json.data);
 
             return (result.flag, result.msg, data);
         }
