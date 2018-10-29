@@ -27,7 +27,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, IEnumerable<ClassScheduleItem> data) ClassSchedule(ClassScheduleRequest request);
+        (bool result, string message, IEnumerable<ClassScheduleData> data) ClassSchedule(ClassScheduleRequest request);
 
         /// <summary>
         /// 
@@ -119,7 +119,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (rValue, mValue, dValue);
         }
 
-        private Func<HisShemaInfo, ClassScheduleItem> hisShemaInfoParser = (h) => new ClassScheduleItem
+        private Func<HisShemaInfo, ClassScheduleData> hisShemaInfoParser = (h) => new ClassScheduleData
         {
             adress = h.ADRESS,
             beginTime = h.BEGIN_TIME,
@@ -147,18 +147,12 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, IEnumerable<ClassScheduleItem> data) ClassSchedule(ClassScheduleRequest request)
+        public (bool result, string message, IEnumerable<ClassScheduleData> data) ClassSchedule(ClassScheduleRequest request)
         {
-            var data = new HospRequest<ClassScheduleRequest>("2003", request);
+            var result = Invoke<ClassScheduleRequest, HisDataResponse2<HisShemaInfo[]>>("2003", request);
+            var data = result.json.data?.Select(hisShemaInfoParser)?.ToArray();
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisDataResponse2<HisShemaInfo[]>>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisResult.data?.Select(hisShemaInfoParser)?.ToArray();
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, data);
         }
 
         /// <summary>
@@ -168,16 +162,10 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, IEnumerable<string> data) ClassPoint(ClassPointRequest request)
         {
-            var data = new HospRequest<ClassPointRequest>("2004", request);
+            var result = Invoke<ClassPointRequest, HisShemaPointResponse>("2004", request);
+            var data = result.json.timeinfo?.Split(",");
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisShemaPointResponse>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisResult.timeinfo?.Split(",");
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, data);
         }
 
         private Func<HisSaveBookingInfo, SubscribeSubmitData> hisSaveBookingInfoParser = (h) => new SubscribeSubmitData
@@ -194,16 +182,10 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, SubscribeSubmitData data) SubscribeSubmit(SubscribeSubmitRequest request)
         {
-            var data = new HospRequest<SubscribeSubmitRequest>("2008", request);
+            var result = Invoke<SubscribeSubmitRequest, HisDataResponse<HisSaveBookingInfo>>("2008", request);
+            var data = hisSaveBookingInfoParser(result.json.data);
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisDataResponse<HisSaveBookingInfo>>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisSaveBookingInfoParser(hisResult.data);
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, data);
         }
 
         /// <summary>
@@ -213,16 +195,8 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, bool data) SubscribeCancel(SubscribeCancelRequest request)
         {
-            var data = new HospRequest<SubscribeCancelRequest>("2007", request);
-
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisResponseBase>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = rValue;
-
-            return (rValue, mValue, dValue);
+            var result = Invoke<SubscribeCancelRequest, HisResponseBase>("2007", request);
+            return (result.flag, result.msg, result.flag);
         }
 
         private Func<HisBookingInfoResponse, SubscribeQueryData> hisBookingInfoParser = (h) => new SubscribeQueryData
@@ -238,16 +212,10 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, SubscribeQueryData data) SubscribeQuery(SubscribeQueryRequest request)
         {
-            var data = new HospRequest<SubscribeQueryRequest>("2005", request);
+            var result = Invoke<SubscribeQueryRequest, HisBookingInfoResponse>("2005", request);
+            var data = hisBookingInfoParser(result.json);
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisBookingInfoResponse>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisBookingInfoParser(hisResult);
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, data);
         }
 
         private Func<HisRegisterInfo, RegisterSubmitData> hisRegisterInfoParser = (h) => new RegisterSubmitData
@@ -269,16 +237,10 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, RegisterSubmitData data) RegisterSubmit(RegisterSubmitRequest request)
         {
-            var data = new HospRequest<RegisterSubmitRequest>("3004", request);
+            var result = Invoke<RegisterSubmitRequest, HisDataResponse2<HisRegisterInfo>>("3004", request);
+            var data = hisRegisterInfoParser(result.json.data);
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisDataResponse2<HisRegisterInfo>>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisRegisterInfoParser(hisResult.data);
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, data);
         }
 
         /// <summary>
@@ -288,16 +250,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, bool data) RegisterCancel(RegisterCancelRequest request)
         {
-            var data = new HospRequest<RegisterCancelRequest>("3005", request);
+            var result = Invoke<RegisterCancelRequest, HisResponseBase>("3005", request);
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisResponseBase>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = rValue;
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, result.flag);
         }
 
         private Func<HisFeeRegInfo, FeeRegisterQueryData> hisFeeRegInfoParser = (h) => new FeeRegisterQueryData
@@ -331,18 +286,11 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, IEnumerable<FeeRegisterQueryData> data) FeeRegisterQuery(FeeRegisterQueryRequest request)
         {
-            var data = new HospRequest<FeeRegisterQueryRequest>("3006", request);
+            var result = Invoke<FeeRegisterQueryRequest, HisDataResponse<HisFeeRegInfo[]>>("3006", request);
+            var data = result.json.data?.Select(hisFeeRegInfoParser)?.ToArray();
 
-            var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisDataResponse<HisFeeRegInfo[]>>(hisResultSource.FormatResult);
-
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisResult.data?.Select(hisFeeRegInfoParser)?.ToArray();
-
-            return (rValue, mValue, dValue);
+            return (result.flag, result.msg, data);
         }
-
 
         private Func<HisReportInfo, ReportQueryData> hisReportInfoParser = (h) => new ReportQueryData
         {
@@ -360,16 +308,21 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// <returns></returns>
         public (bool result, string message, IEnumerable<ReportQueryData> data) ReportQuery(ReportQueryRequest request)
         {
-            var data = new HospRequest<ReportQueryRequest>("5001", request);
+            var result = Invoke<ReportQueryRequest, HisDataResponse<HisReportInfo[]>>("5001", request);
+            var data = result.json.data?.Select(hisReportInfoParser)?.ToArray();
+
+            return (result.flag, result.msg, data);
+        }
+
+        private (bool flag, string msg, TJsonResult json) Invoke<TRequest, TJsonResult>(string code, TRequest request)
+            where TJsonResult : HisResponseBase
+        {
+            var data = new HospRequest<TRequest>(code, request);
 
             var hisResultSource = service.Invoke(data);
-            var hisResult = JsonConvert.DeserializeObject<HisDataResponse<HisReportInfo[]>>(hisResultSource.FormatResult);
+            var hisResult = JsonConvert.DeserializeObject<TJsonResult>(hisResultSource.FormatResult);
 
-            var rValue = verifyHisResult(hisResult.result);
-            var mValue = hisResult.message;
-            var dValue = hisResult.data?.Select(hisReportInfoParser)?.ToArray();
-
-            return (rValue, mValue, dValue);
+            return (verifyHisResult(hisResult.result), hisResult.message, hisResult);
         }
 
         private Func<string, bool> verifyHisResult = (result) =>

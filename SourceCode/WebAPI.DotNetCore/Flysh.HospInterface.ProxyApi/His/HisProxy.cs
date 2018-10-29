@@ -63,14 +63,14 @@ namespace Flysh.HospInterface.ProxyApi.His
     public class HisWebSvcProxy : IHospProxyInterface
     {
         /// <summary>
-        /// 
+        /// proxy mode
         /// </summary>
         public HospProxyModes HisInterfaceMode => HospProxyModes.WebService;
 
         private readonly string url = string.Empty;
 
         /// <summary>
-        /// 
+        /// construct
         /// </summary>
         /// <param name="proxySettings"></param>
         public HisWebSvcProxy(IOptions<HospProxySettings> proxySettings)
@@ -110,7 +110,7 @@ namespace Flysh.HospInterface.ProxyApi.His
         //}
 
         /// <summary>
-        /// 
+        /// invoke service method
         /// </summary>
         /// <typeparam name="TData"></typeparam>
         /// <param name="data"></param>

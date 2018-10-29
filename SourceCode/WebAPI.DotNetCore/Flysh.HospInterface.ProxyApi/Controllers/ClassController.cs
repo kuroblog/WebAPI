@@ -34,9 +34,9 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// 排班信息
         /// </summary>
         /// <param name="request"><see cref="ClassScheduleRequest"/></param>
-        /// <returns><see cref="ClassScheduleItem"/></returns>
+        /// <returns><see cref="ClassScheduleData"/></returns>
         [Route("api/v1/class/schedule")]
-        public ApiArrayResult<ClassScheduleItem> Schedule(ClassScheduleRequest request)
+        public ApiArrayResult<ClassScheduleData> Schedule(ClassScheduleRequest request)
         {
             return Runner.Execute(service.ClassSchedule, request);
         }

@@ -20,7 +20,7 @@
             排班信息
             </summary>
             <param name="request"><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleRequest"/></param>
-            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem"/></returns>
+            <returns><see cref="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData"/></returns>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.Controllers.ClassController.Point(Flysh.HospInterface.ProxyApi.Models.ClassPointRequest)">
             <summary>
@@ -233,18 +233,18 @@
         </member>
         <member name="P:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.HisInterfaceMode">
             <summary>
-            
+            proxy mode
             </summary>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.#ctor(Microsoft.Extensions.Options.IOptions{Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings})">
             <summary>
-            
+            construct
             </summary>
             <param name="proxySettings"></param>
         </member>
         <member name="M:Flysh.HospInterface.ProxyApi.His.HisWebSvcProxy.Invoke``1(Flysh.HospInterface.ProxyApi.Infrastructures.HospRequest{``0})">
             <summary>
-            
+            invoke service method
             </summary>
             <typeparam name="TData"></typeparam>
             <param name="data"></param>
@@ -631,21 +631,6 @@
             0-检查中 1-检查完成
             </summary>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister.Initialize">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister.AutoRegist">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.ApiRequestBase">
             <summary>
             
@@ -666,6 +651,21 @@
             <param name="propertyExpression"></param>
             <param name="errorMessageForamt"></param>
             <returns></returns>
+        </member>
+        <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister.Initialize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Flysh.HospInterface.ProxyApi.Infrastructures.AutoRegister.AutoRegist">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Flysh.HospInterface.ProxyApi.Infrastructures.HospProxySettings">
             <summary>
@@ -834,102 +834,102 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem">
+        <member name="T:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData">
             <summary>
             排班信息
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.classId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.classId">
             <summary>
             排班 ID
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.seeDate">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.seeDate">
             <summary>
             看诊时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.week">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.week">
             <summary>
             星期几
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.nooncode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.nooncode">
             <summary>
             午别
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.beginTime">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.beginTime">
             <summary>
             开始时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.endTime">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.endTime">
             <summary>
             结束时间
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.deptCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.deptCode">
             <summary>
             科室编码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.deptName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.deptName">
             <summary>
             科室名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.doctCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.doctCode">
             <summary>
             医生编码
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.doctName">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.doctName">
             <summary>
             医生名称
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regLmt">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regLmt">
             <summary>
             预约总数
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regReged">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regReged">
             <summary>
             已经预约数
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regLevl">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regLevl">
             <summary>
             挂号等级
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.totCost">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.totCost">
             <summary>
             挂号金额
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.adress">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.adress">
             <summary>
             科室地址
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.regType">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.regType">
             <summary>
             挂号类别(0 普通号(PT) or 1 专家号(ZJ))
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.itemCode">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.itemCode">
             <summary>
             HIS项目编码(根据此字段1005查询医保中心对应的项目编码和医院的自付比率)
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.sortId">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.sortId">
             <summary>
             排序ID
             </summary>
         </member>
-        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleItem.hasReg">
+        <member name="P:Flysh.HospInterface.ProxyApi.Models.ClassScheduleData.hasReg">
             <summary>
             剩余挂号数
             </summary>

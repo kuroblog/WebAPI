@@ -57,7 +57,7 @@ namespace Flysh.HospInterface.ProxyApi.Models
     /// <summary>
     /// 排班信息
     /// </summary>
-    public class ClassScheduleItem
+    public class ClassScheduleData
     {
         /// <summary>
         /// 排班 ID
