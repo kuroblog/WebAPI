@@ -76,7 +76,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        (bool result, string message, IEnumerable<FeeRegisterQueryData> data) FeeRegisterQuery(FeeRegisterQueryRequest request);
+        (bool result, string message, IEnumerable<FeeRecipeQueryData> data) FeeRegisterQuery(FeeRecipeQueryRequest request);
 
         /// <summary>
         /// 
@@ -255,7 +255,7 @@ namespace Flysh.HospInterface.ProxyApi.Services
             return (result.flag, result.msg, result.flag);
         }
 
-        private Func<HisFeeRegInfo, FeeRegisterQueryData> hisFeeRegInfoParser = (h) => new FeeRegisterQueryData
+        private Func<HisFeeRegInfo, FeeRecipeQueryData> hisFeeRegInfoParser = (h) => new FeeRecipeQueryData
         {
             doctDeptName = h.DocDept_Name,
             doctName = h.Doc_Name,
@@ -284,9 +284,9 @@ namespace Flysh.HospInterface.ProxyApi.Services
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public (bool result, string message, IEnumerable<FeeRegisterQueryData> data) FeeRegisterQuery(FeeRegisterQueryRequest request)
+        public (bool result, string message, IEnumerable<FeeRecipeQueryData> data) FeeRegisterQuery(FeeRecipeQueryRequest request)
         {
-            var result = Invoke<FeeRegisterQueryRequest, HisDataResponse<HisFeeRegInfo[]>>("3006", request);
+            var result = Invoke<FeeRecipeQueryRequest, HisDataResponse<HisFeeRegInfo[]>>("3006", request);
             var data = result.json.data?.Select(hisFeeRegInfoParser)?.ToArray();
 
             return (result.flag, result.msg, data);

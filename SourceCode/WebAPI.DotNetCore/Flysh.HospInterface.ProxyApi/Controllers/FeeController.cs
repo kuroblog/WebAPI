@@ -35,8 +35,8 @@ namespace Flysh.HospInterface.ProxyApi.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [Route("api/v1/fee/register/query")]
-        public ApiArrayResult<FeeRegisterQueryData> RegisterQuery(FeeRegisterQueryRequest request)
+        [Route("api/v1/fee/recipe/query")]
+        public ApiArrayResult<FeeRecipeQueryData> RegisterQuery(FeeRecipeQueryRequest request)
         {
             return Runner.Execute(service.FeeRegisterQuery, request);
         }
