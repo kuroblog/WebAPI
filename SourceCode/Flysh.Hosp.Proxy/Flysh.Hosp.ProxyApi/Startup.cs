@@ -24,6 +24,12 @@ namespace Flysh.Hosp.ProxyApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            Agebull.Common.Ioc.IocHelper.ServiceCollection.Configure<HospProxySettings>(Configuration.GetSection(nameof(HospProxySettings)));
+
+            Agebull.Common.Ioc.IocHelper.AddScoped<Controllers.ITestService, Controllers.TestService>();
+            Agebull.Common.Ioc.IocHelper.AddScoped<IHospProxyService, HospWebProxyService>();
+            Agebull.Common.Ioc.IocHelper.AddScoped<IProxyService, ProxyService>();
+
             Agebull.ZeroNet.Core.ZeroApplication.Initialize();
 
             var iar = new AutoRegister();
