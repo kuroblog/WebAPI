@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using Agebull.Common.Ioc;
+using Agebull.ZeroNet.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.Tasks;
 
 namespace Flysh.Hosp.ProxyApi
 {
@@ -14,7 +16,7 @@ namespace Flysh.Hosp.ProxyApi
             Configuration = configuration;
 
             Agebull.Common.Configuration.ConfigurationManager.SetConfiguration(configuration);
-            Agebull.ZeroNet.Core.ZeroApplication.CheckOption();
+            ZeroApplication.CheckOption();
         }
 
         public IConfiguration Configuration { get; }
@@ -24,13 +26,13 @@ namespace Flysh.Hosp.ProxyApi
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            Agebull.Common.Ioc.IocHelper.ServiceCollection.Configure<HospProxySettings>(Configuration.GetSection(nameof(HospProxySettings)));
+            IocHelper.ServiceCollection.Configure<HospProxySettings>(Configuration.GetSection(nameof(HospProxySettings)));
 
-            Agebull.Common.Ioc.IocHelper.AddScoped<Controllers.ITestService, Controllers.TestService>();
-            Agebull.Common.Ioc.IocHelper.AddScoped<IHospProxyService, HospWebProxyService>();
-            Agebull.Common.Ioc.IocHelper.AddScoped<IProxyService, ProxyService>();
+            IocHelper.AddScoped<Controllers.ITestService, Controllers.TestService>();
+            IocHelper.AddScoped<IHospProxyService, HospWebProxyService>();
+            IocHelper.AddScoped<IProxyService, ProxyService>();
 
-            Agebull.ZeroNet.Core.ZeroApplication.Initialize();
+            ZeroApplication.Initialize();
 
             var iar = new AutoRegister();
             iar.Initialize();
@@ -54,7 +56,7 @@ namespace Flysh.Hosp.ProxyApi
 #endif
             app.UseMvc();
 
-            Task.Factory.StartNew(Agebull.ZeroNet.Core.ZeroApplication.Run);
+            Task.Factory.StartNew(ZeroApplication.Run);
         }
     }
 }

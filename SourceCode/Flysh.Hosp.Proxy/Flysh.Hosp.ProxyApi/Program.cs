@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore;
+﻿using Agebull.ZeroNet.Core;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Flysh.Hosp.ProxyApi
@@ -9,7 +10,7 @@ namespace Flysh.Hosp.ProxyApi
         {
             CreateWebHostBuilder(args).Build().Run();
 
-            Agebull.ZeroNet.Core.ZeroApplication.Shutdown();
+            ZeroApplication.Shutdown();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
