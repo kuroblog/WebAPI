@@ -234,6 +234,60 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
 
     /// <summary>
+    /// 4003 request
+    /// </summary>
+    public class Hosp4003Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// String 	是	唯一号 多个 | 分隔
+        /// </summary>
+        public string recipe_Key { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	就诊人姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	门诊流水号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	缴费操作员
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+    }
+
+    public class Hosp4003ResponseData
+    {
+        /// <summary>
+        /// String	是	总费用
+        /// </summary>
+        public string totCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	报销费用
+        /// </summary>
+        public string pubCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	个人卡内费用
+        /// </summary>
+        public string payCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	自费费用
+        /// </summary>
+        public string ownCost { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 4003 response
+    /// </summary>
+    public class Hosp4003Response : HospResponseModelBase<Hosp4003ResponseData> { }
+
+    /// <summary>
     /// 预约取号入参
     /// </summary>
     public class Hosp2011Request : HospRequestModelBase
