@@ -11,7 +11,7 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
         [Route("api/v1/register/cancel")]
-        public ApiResult<RegisterCancelResponseModel> RegisterCancel(RegisterCancelRequestModel request)
+        public ApiResult<RegisterCancelResponse> RegisterCancel(RegisterCancelRequest request)
         {
             var hisRequest = new HModels.Hosp3005Request
             {
@@ -19,14 +19,14 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
                 operCode = request.operCode
             };
 
-            var result = proxyService.Do<HModels.Hosp3005Request, HModels.Hosp3005Response, RegisterCancelResponseModel>(
+            var result = proxyService.Do<HModels.Hosp3005Request, HModels.Hosp3005Response, RegisterCancelResponse>(
                 hisRequest,
-                (p) => new RegisterCancelResponseModel
+                (p) => new RegisterCancelResponse
                 {
                     state = p.data == null ? 0 : p.data.state
                 });
 
-            return new ApiResult<RegisterCancelResponseModel>
+            return new ApiResult<RegisterCancelResponse>
             {
                 Success = result.state == 0,
                 ResultData = result.data,

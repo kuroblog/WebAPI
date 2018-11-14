@@ -12,7 +12,7 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
         [Route("api/v1/schedule/query")]
-        public ApiArrayResult<ScheduleQueryResponseModel> ScheduleQuery(ScheduleQueryRequestModel request)
+        public ApiArrayResult<ScheduleQueryResponse> ScheduleQuery(ScheduleQueryRequest request)
         {
             var hisRequest = new HModels.Hosp2003Request
             {
@@ -23,9 +23,9 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
             };
 
             var result =
-                proxyService.Do<HModels.Hosp2003Request, HModels.Hosp2003Response, ScheduleQueryResponseModel[]>(
+                proxyService.Do<HModels.Hosp2003Request, HModels.Hosp2003Response, ScheduleQueryResponse[]>(
                     hisRequest,
-                    (p) => p?.data?.Select(a => new ScheduleQueryResponseModel
+                    (p) => p?.data?.Select(a => new ScheduleQueryResponse
                     {
                         address = a.ADRESS,
                         begTime = a.BEGIN_TIME,
@@ -51,7 +51,7 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
                         week = a.WEEK
                     })?.ToArray());
 
-            return new ApiArrayResult<ScheduleQueryResponseModel>
+            return new ApiArrayResult<ScheduleQueryResponse>
             {
                 Success = result.state == 0,
                 ResultData = result.data?.ToList(),

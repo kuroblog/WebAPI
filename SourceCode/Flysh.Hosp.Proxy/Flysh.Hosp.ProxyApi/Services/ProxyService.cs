@@ -4,9 +4,9 @@ namespace Flysh.Hosp.ProxyApi
 {
     public interface IProxyService
     {
-        (int state, string message, TResult data) Do<THisRequest, THisResponse, TResult>(THisRequest request, Func<THisResponse, TResult> convert)
-            where THisRequest : IHospProxyRequestModel, new()
-            where THisResponse : IHospProxyResponseModel, new();
+        (int state, string message, TResult data) Do<THospRequest, THospResponse, TResult>(THospRequest request, Func<THospResponse, TResult> convert)
+            where THospRequest : IHospProxyRequestModel, new()
+            where THospResponse : IHospProxyResponseModel, new();
     }
 
     public class ProxyService : IProxyService
@@ -18,13 +18,13 @@ namespace Flysh.Hosp.ProxyApi
             this.hospProxyService = hospProxyService;
         }
 
-        public (int state, string message, TResult data) Do<THisRequest, THisResponse, TResult>(THisRequest request, Func<THisResponse, TResult> convert)
-            where THisRequest : IHospProxyRequestModel, new()
-            where THisResponse : IHospProxyResponseModel, new()
+        public (int state, string message, TResult data) Do<THospRequest, THospResponse, TResult>(THospRequest request, Func<THospResponse, TResult> convert)
+            where THospRequest : IHospProxyRequestModel, new()
+            where THospResponse : IHospProxyResponseModel, new()
         {
             try
             {
-                var hisResult = hospProxyService.Invoke<THisRequest, THisResponse>(request);
+                var hisResult = hospProxyService.Invoke<THospRequest, THospResponse>(request);
 
                 if (hisResult == null)
                 {

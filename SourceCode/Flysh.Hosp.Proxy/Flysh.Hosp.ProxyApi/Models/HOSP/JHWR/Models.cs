@@ -41,6 +41,111 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 2008 request
+    /// </summary>
+    [HospTransferCode("2008")]
+    public class Hosp2008Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// String	否	排班编号 专家挂号必填
+        /// </summary>
+        public string shemaId { get; set; }
+
+        /// <summary>
+        /// 患者卡号
+        /// </summary>
+        public string cardNo { get; set; }
+
+        /// <summary>
+        ///患者姓名 
+        /// </summary>
+        public string realName { get; set; }
+
+        /// <summary>
+        /// 是否专家挂号 1 专家  0 不是专家
+        /// </summary>
+        public string isExpert { get; set; }
+
+        /// <summary>
+        /// String	否	科室代码  不是专家必填
+        /// </summary>
+        public string deptCode { get; set; }
+
+        /// <summary>
+        /// 预约时间 yyyy-MM-ddHH:mi:ss
+        /// </summary>
+        public string preTime { get; set; }
+
+        /// <summary>
+        /// 是否支付 0 未支付 1 账户支付 2 已经支付
+        /// </summary>
+        public string isFee { get; set; }
+
+        /// <summary>
+        /// 总费用
+        /// </summary>
+        public string clinicFee { get; set; }
+
+        /// <summary>
+        /// 预约来源 标识厂商
+        /// </summary>
+        public string bookSource { get; set; }
+
+        ///// <summary>
+        ///// 1 预约挂号取号  2 预约挂号直接就诊
+        ///// </summary>
+        //public string bookType { get; set; }
+
+        ///// <summary>
+        ///// 支付方式 CA 现金 ZB 支付宝 WX 微信
+        ///// </summary>
+        //public string feeSource { get; set; }
+
+        ///// <summary>
+        ///// 第三方订单流水号
+        ///// </summary>
+        //public string tradeNo { get; set; }
+
+        ///// <summary>
+        ///// 取号验证码
+        ///// </summary>
+        //public string IdentifyCode { get; set; }
+
+        ///// <summary>
+        ///// 操作员
+        ///// </summary>
+        //public string operCode { get; set; }
+
+        ///// <summary>
+        ///// 自助机终端号
+        ///// </summary>
+        //public string termId { get; set; }
+    }
+
+    public class Hosp2008ResponseData
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; }
+
+        /// <summary>
+        /// 就诊唯一号 
+        /// </summary>
+        public string clinicNo { get; set; }
+
+        /// <summary>
+        /// 就诊序号
+        /// </summary>
+        public string seeNo { get; set; }
+    }
+
+    /// <summary>
+    /// 2008 response
+    /// </summary>
+    public class Hosp2008Response : HospResponseModelBase<Hosp2008ResponseData> { }
+
+    /// <summary>
     /// 3005 request
     /// </summary>
     [HospTransferCode("3005")]
@@ -57,15 +162,15 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
         public string operCode { get; set; }
     }
 
-    /// <summary>
-    /// 3005 response
-    /// </summary>
-    public class Hosp3005Response : HospResponseModelBase<Hosp3005ResponseData> { }
-
     public class Hosp3005ResponseData
     {
         public int state { get; set; } = 0;
     }
+
+    /// <summary>
+    /// 3005 response
+    /// </summary>
+    public class Hosp3005Response : HospResponseModelBase<Hosp3005ResponseData> { }
 
     /// <summary>
     /// 2003 request
@@ -94,11 +199,6 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
         public string isPre { get; set; } = string.Empty;
     }
 
-    public class Hosp2003Response : HospResponseModelBase<Hosp2003ResponseData[]> { }
-
-    /// <summary>
-    /// 2003 response
-    /// </summary>
     public class Hosp2003ResponseData
     {
         /// <summary>
@@ -209,4 +309,9 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
         /// </summary>
         public string HASREG { get; set; } = string.Empty;
     }
+
+    /// <summary>
+    /// 2003 response
+    /// </summary>
+    public class Hosp2003Response : HospResponseModelBase<Hosp2003ResponseData[]> { }
 }

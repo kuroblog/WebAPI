@@ -1,6 +1,10 @@
 ﻿namespace Flysh.Hosp.ProxyApi.Models
 {
-    public class ScheduleQueryRequestModel : ProxyRequestModelBase, IProxyRequestModel
+    /// <summary>
+    /// schedule query request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2003Request"/>
+    public class ScheduleQueryRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
         /// 开始时间 yyyy-MM-dd
@@ -23,7 +27,11 @@
         public string isPre { get; set; } = string.Empty;
     }
 
-    public class ScheduleQueryResponseModel : IProxyResponseModel
+    /// <summary>
+    /// schedule query response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2003ResponseData"/>
+    public class ScheduleQueryResponse : IProxyResponseModel
     {
         /// <summary>
         /// string	是	排班ID
