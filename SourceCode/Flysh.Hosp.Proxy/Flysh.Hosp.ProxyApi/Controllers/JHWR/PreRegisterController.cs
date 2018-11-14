@@ -10,7 +10,7 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
-        [Route("api/v1/pre/cancel")]
+        [Route("api/v1/pre/do")]
         public ApiResult<PreDoResponse> PreDo(PreDoRequest request)
         {
             var hisRequest = new HModels.Hosp2011Request
