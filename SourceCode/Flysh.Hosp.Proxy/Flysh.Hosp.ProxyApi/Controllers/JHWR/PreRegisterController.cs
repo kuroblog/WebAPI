@@ -11,6 +11,37 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
         [Route("api/v1/pre/cancel")]
+        public ApiResult<PreDoResponse> PreDo(PreDoRequest request)
+        {
+            var hisRequest = new HModels.Hosp2011Request
+            {
+                bookingNo = request.preNo,
+                clinicFee = request.preCost,
+                feeSource = request.source,
+                operCode = request.operCode,
+                pactCode = request.pactCode,
+                tradeNo = request.tradeNo
+            };
+
+            var result = proxyService.Do<HModels.Hosp2011Request, HModels.Hosp2011Response, PreDoResponse>(
+                hisRequest,
+                (p) => new PreDoResponse
+                {
+                    clinicNo = p.data?.clinicNo
+                });
+
+            return new ApiResult<PreDoResponse>
+            {
+                Success = result.state == 0,
+                ResultData = result.data,
+                Status = new OperatorStatus
+                {
+                    ClientMessage = result.message
+                }
+            };
+        }
+
+        [Route("api/v1/pre/cancel")]
         public ApiResult<PreCancelResponse> PreCancel(PreCancelRequest request)
         {
             var hisRequest = new HModels.Hosp2007Request

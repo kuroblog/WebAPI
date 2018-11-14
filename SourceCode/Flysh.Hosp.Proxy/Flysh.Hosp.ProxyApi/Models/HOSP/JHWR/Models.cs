@@ -41,6 +41,55 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 预约取号入参
+    /// </summary>
+    public class Hosp2011Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号费用（单位:元）
+        /// </summary>
+        public string clinicFee { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 自费医保病人标识
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付方式 ZB 支付宝WX 微信CA 现金CD 银行卡
+        /// </summary>
+        public string feeSource { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付流水号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 云端默认用户就诊卡号
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+    }
+
+    public class Hosp2011ResponseData
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 预约取号返参
+    /// </summary>
+    public class Hosp2011Response : HospResponseModelBase<Hosp2011ResponseData> { }
+
+    /// <summary>
     /// 挂号支付回调入参
     /// </summary>
     public class HospRegCallbackRequest : HospRequestModelBase
@@ -89,7 +138,13 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
     /// <summary>
     /// 挂号支付回调返参
     /// </summary>
-    public class HospRegCallbackResponse : HospResponseModelBase<HospRegCallbackResponseData> { }
+    public class HospRegCallbackResponse : HospResponseModelBase<HospRegCallbackResponseData>
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+    }
 
     /// <summary>
     /// 3004 request

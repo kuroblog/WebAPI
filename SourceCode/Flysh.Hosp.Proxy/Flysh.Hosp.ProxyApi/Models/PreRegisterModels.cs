@@ -1,6 +1,55 @@
 ﻿namespace Flysh.Hosp.ProxyApi.Models
 {
     /// <summary>
+    /// pre register do request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2011Request"/>
+    public class PreDoRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string preNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号费用（单位:元）
+        /// </summary>
+        public string preCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 自费医保病人标识
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付方式 ZB 支付宝WX 微信CA 现金CD 银行卡
+        /// </summary>
+        public string source { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付流水号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 云端默认用户就诊卡号
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// pre register do response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2011ResponseData"/>
+    public class PreDoResponse : IProxyResponseModel
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
     /// pre cancel request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp2007Request"/>
