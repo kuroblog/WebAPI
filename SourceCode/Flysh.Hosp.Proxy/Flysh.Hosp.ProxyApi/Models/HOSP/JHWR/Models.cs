@@ -41,6 +41,84 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 挂号支付回调入参
+    /// </summary>
+    public class HospRegCallbackRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付流水号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 第三方订单号
+        /// </summary>
+        public string thirdOrderNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付方式 (支付必填)ZB 支付宝 WX 微信 CA 现金 CD 银行卡
+        /// </summary>
+        public string feeSource { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 是否支付 0未支付 1账户支付 2已经支付
+        /// </summary>
+        public string isFee { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付费用
+        /// </summary>
+        public string payFee { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医保结算参数多个#分隔
+        /// </summary>
+        public string siInfo { get; set; } = string.Empty;
+    }
+
+    public class HospRegCallbackResponseData
+    {
+        public int state { get; set; } = 0;
+    }
+
+    /// <summary>
+    /// 挂号支付回调返参
+    /// </summary>
+    public class HospRegCallbackResponse : HospResponseModelBase<HospRegCallbackResponseData> { }
+
+    /// <summary>
+    /// 2007 request
+    /// </summary>
+    [HospTransferCode("2007")]
+    public class Hosp2007Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// String	是	预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	操作员
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+    }
+
+    public class Hosp2007ResponseData
+    {
+        public int state { get; set; } = 0;
+    }
+
+    /// <summary>
+    /// 2007 response
+    /// </summary>
+    public class Hosp2007Response : HospResponseModelBase<Hosp2007ResponseData> { }
+
+    /// <summary>
     /// 2008 request
     /// </summary>
     [HospTransferCode("2008")]
@@ -49,47 +127,47 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// String	否	排班编号 专家挂号必填
         /// </summary>
-        public string shemaId { get; set; }
+        public string shemaId { get; set; } = string.Empty;
 
         /// <summary>
         /// 患者卡号
         /// </summary>
-        public string cardNo { get; set; }
+        public string cardNo { get; set; } = string.Empty;
 
         /// <summary>
         ///患者姓名 
         /// </summary>
-        public string realName { get; set; }
+        public string realName { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否专家挂号 1 专家  0 不是专家
         /// </summary>
-        public string isExpert { get; set; }
+        public string isExpert { get; set; } = string.Empty;
 
         /// <summary>
         /// String	否	科室代码  不是专家必填
         /// </summary>
-        public string deptCode { get; set; }
+        public string deptCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 预约时间 yyyy-MM-ddHH:mi:ss
         /// </summary>
-        public string preTime { get; set; }
+        public string preTime { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否支付 0 未支付 1 账户支付 2 已经支付
         /// </summary>
-        public string isFee { get; set; }
+        public string isFee { get; set; } = string.Empty;
 
         /// <summary>
         /// 总费用
         /// </summary>
-        public string clinicFee { get; set; }
+        public string clinicFee { get; set; } = string.Empty;
 
         /// <summary>
         /// 预约来源 标识厂商
         /// </summary>
-        public string bookSource { get; set; }
+        public string bookSource { get; set; } = string.Empty;
 
         ///// <summary>
         ///// 1 预约挂号取号  2 预约挂号直接就诊
@@ -127,17 +205,17 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// 预约唯一号
         /// </summary>
-        public string bookingNo { get; set; }
+        public string bookingNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 就诊唯一号 
         /// </summary>
-        public string clinicNo { get; set; }
+        public string clinicNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 就诊序号
         /// </summary>
-        public string seeNo { get; set; }
+        public string seeNo { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -154,12 +232,12 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// String	是	挂号唯一号（his）
         /// </summary>
-        public string clinicNo { get; set; }
+        public string clinicNo { get; set; } = string.Empty;
 
         /// <summary>
         /// string	是	操作员工号
         /// </summary>
-        public string operCode { get; set; }
+        public string operCode { get; set; } = string.Empty;
     }
 
     public class Hosp3005ResponseData

@@ -10,6 +10,33 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
+        [Route("api/v1/pre/cancel")]
+        public ApiResult<PreCancelResponse> PreCancel(PreCancelRequest request)
+        {
+            var hisRequest = new HModels.Hosp2007Request
+            {
+                bookingNo = request.preNo,
+                operCode = request.operCode
+            };
+
+            var result = proxyService.Do<HModels.Hosp2007Request, HModels.Hosp2007Response, PreCancelResponse>(
+                hisRequest,
+                (p) => new PreCancelResponse
+                {
+                    state = p.data == null ? 0 : p.data.state
+                });
+
+            return new ApiResult<PreCancelResponse>
+            {
+                Success = result.state == 0,
+                ResultData = result.data,
+                Status = new OperatorStatus
+                {
+                    ClientMessage = result.message
+                }
+            };
+        }
+
         [Route("api/v1/pre/register")]
         public ApiResult<PreRegisterResponse> PreRegister(PreRegisterRequest request)
         {

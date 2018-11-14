@@ -10,6 +10,38 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
+        [Route("api/v1/register/callback")]
+        public ApiResult<RegisterCallbackResponse> RegisterCallback(RegisterCallbackRequest request)
+        {
+            var hisRequest = new HModels.HospRegCallbackRequest
+            {
+                clinicNo = request.clinicNo,
+                feeSource = request.source,
+                isFee = request.isFee,
+                payFee = request.cost,
+                siInfo = request.siInfo,
+                thirdOrderNo = request.thirdNo,
+                tradeNo = request.tradeNo
+            };
+
+            var result = proxyService.Do<HModels.HospRegCallbackRequest, HModels.HospRegCallbackResponse, RegisterCallbackResponse>(
+                hisRequest,
+                (p) => new RegisterCallbackResponse
+                {
+                    state = p.data == null ? 0 : p.data.state
+                });
+
+            return new ApiResult<RegisterCallbackResponse>
+            {
+                Success = result.state == 0,
+                ResultData = result.data,
+                Status = new OperatorStatus
+                {
+                    ClientMessage = result.message
+                }
+            };
+        }
+
         [Route("api/v1/register/cancel")]
         public ApiResult<RegisterCancelResponse> RegisterCancel(RegisterCancelRequest request)
         {
