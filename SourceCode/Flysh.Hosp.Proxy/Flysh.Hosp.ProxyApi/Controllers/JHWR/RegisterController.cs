@@ -2,6 +2,7 @@ using Agebull.Common.Ioc;
 using Agebull.ZeroNet.ZeroApi;
 using Flysh.Hosp.ProxyApi.Models;
 using Gboxt.Common.DataModel;
+using System.Linq;
 using HModels = Flysh.Hosp.ProxyApi.Models.HOSP.JHWR;
 
 namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
@@ -9,6 +10,47 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
     public class RegisterController : ApiController
     {
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
+
+        [Route("api/v1/register/query")]
+        public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request)
+        {
+            var hisRequest = new HModels.HospRegisterQueryRequest
+            {
+                beginDate = request.begDate,
+                cardNo = request.cardNo,
+                endDate = request.endDate
+            };
+
+            var result =
+                proxyService.Do<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryResponse[]>(
+                    hisRequest,
+                    (p) => p?.data?.Select(a => new RegisterQueryResponse
+                    {
+                        cardNo = a.idCardNo,
+                        clinicNo = a.clinicNo,
+                        cost = a.total,
+                        deptName = a.deptName,
+                        doctName = a.doctName,
+                        doctTitle = a.doctTitle,
+                        name = a.idCardName,
+                        regDate = a.date,
+                        regType = a.regType,
+                        seeNo = a.seeNo,
+                        state = a.state,
+                        visistDate = a.visistDate,
+                        visitingTime = a.visitingTime
+                    })?.ToArray());
+
+            return new ApiArrayResult<RegisterQueryResponse>
+            {
+                Success = result.state == 0,
+                ResultData = result.data?.ToList(),
+                Status = new OperatorStatus
+                {
+                    ClientMessage = result.message
+                }
+            };
+        }
 
         [Route("api/v1/register/do")]
         public ApiResult<RegisterDoResponse> RegisterDo(RegisterDoRequest request)

@@ -1,6 +1,100 @@
 ﻿namespace Flysh.Hosp.ProxyApi.Models
 {
     /// <summary>
+    /// register query request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.HospRegisterQueryRequest"/>
+    public class RegisterQueryRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 开始时间yyyy-MM-dd
+        /// </summary>
+        public string begDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 结束时间yyyy-MM-dd
+        /// </summary>
+        public string endDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人卡号
+        /// </summary>
+        public string cardNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// register query response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.HospRegisterQueryResponseData"/>
+    public class RegisterQueryResponse : IProxyResponseModel
+    {
+        /// <summary>
+        /// 状态：1预约2取消预约3预约转挂号
+        /// </summary>
+        public string state { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 科室名称
+        /// </summary>
+        public string deptName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约类型/1、专家号/2、普通号
+        /// </summary>
+        public string regType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约日期
+        /// </summary>
+        public string visistDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约时间段
+        /// </summary>
+        public string visitingTime { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医生姓名
+        /// </summary>
+        public string doctName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医生职称
+        /// </summary>
+        public string doctTitle { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 总费用
+        /// </summary>
+        public string cost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人卡号
+        /// </summary>
+        public string cardNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人姓名
+        /// </summary>
+        public string name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 提交时间
+        /// </summary>
+        public string regDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 看诊序号
+        /// </summary>
+        public string seeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
     /// register do request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp3004Request"/>

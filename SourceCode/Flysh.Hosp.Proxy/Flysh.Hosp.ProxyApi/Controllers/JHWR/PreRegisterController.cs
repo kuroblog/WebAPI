@@ -2,6 +2,7 @@ using Agebull.Common.Ioc;
 using Agebull.ZeroNet.ZeroApi;
 using Flysh.Hosp.ProxyApi.Models;
 using Gboxt.Common.DataModel;
+using System.Linq;
 using HModels = Flysh.Hosp.ProxyApi.Models.HOSP.JHWR;
 
 namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
@@ -10,8 +11,50 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
+        [Route("api/v1/pre/query")]
+        public ApiArrayResult<PreRegisterQueryResponse> PreRegisterQuery(PreRegisterQueryRequest request)
+        {
+            var hisRequest = new HModels.HospPreRegisterQueryRequest
+            {
+                beginDate = request.begDate,
+                cardNo = request.cardNo,
+                endDate = request.endDate
+            };
+
+            var result =
+                proxyService.Do<HModels.HospPreRegisterQueryRequest, HModels.HospPreRegisterQueryResponse, PreRegisterQueryResponse[]>(
+                    hisRequest,
+                    (p) => p?.data?.Select(a => new PreRegisterQueryResponse
+                    {
+                        cardNo = a.idCardNo,
+                        clinicNo = a.clinicNo,
+                        cost = a.total,
+                        deptName = a.deptName,
+                        doctName = a.doctName,
+                        doctTitle = a.doctTitle,
+                        name = a.idCardName,
+                        preNo = a.bookingNo,
+                        regDate = a.date,
+                        regType = a.regType,
+                        seeNo = a.seeNo,
+                        state = a.state,
+                        visistDate = a.visistDate,
+                        visitingTime = a.visitingTime
+                    })?.ToArray());
+
+            return new ApiArrayResult<PreRegisterQueryResponse>
+            {
+                Success = result.state == 0,
+                ResultData = result.data?.ToList(),
+                Status = new OperatorStatus
+                {
+                    ClientMessage = result.message
+                }
+            };
+        }
+
         [Route("api/v1/pre/do")]
-        public ApiResult<PreDoResponse> PreDo(PreDoRequest request)
+        public ApiResult<PreRegisterDoResponse> PreRegisterDo(PreRegisterDoRequest request)
         {
             var hisRequest = new HModels.Hosp2011Request
             {
@@ -23,14 +66,14 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
                 tradeNo = request.tradeNo
             };
 
-            var result = proxyService.Do<HModels.Hosp2011Request, HModels.Hosp2011Response, PreDoResponse>(
+            var result = proxyService.Do<HModels.Hosp2011Request, HModels.Hosp2011Response, PreRegisterDoResponse>(
                 hisRequest,
-                (p) => new PreDoResponse
+                (p) => new PreRegisterDoResponse
                 {
                     clinicNo = p.data?.clinicNo
                 });
 
-            return new ApiResult<PreDoResponse>
+            return new ApiResult<PreRegisterDoResponse>
             {
                 Success = result.state == 0,
                 ResultData = result.data,
@@ -42,7 +85,7 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
         }
 
         [Route("api/v1/pre/cancel")]
-        public ApiResult<PreCancelResponse> PreCancel(PreCancelRequest request)
+        public ApiResult<PreRegisterCancelResponse> PreRegisterCancel(PreRegisterCancelRequest request)
         {
             var hisRequest = new HModels.Hosp2007Request
             {
@@ -50,14 +93,14 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
                 operCode = request.operCode
             };
 
-            var result = proxyService.Do<HModels.Hosp2007Request, HModels.Hosp2007Response, PreCancelResponse>(
+            var result = proxyService.Do<HModels.Hosp2007Request, HModels.Hosp2007Response, PreRegisterCancelResponse>(
                 hisRequest,
-                (p) => new PreCancelResponse
+                (p) => new PreRegisterCancelResponse
                 {
                     state = p.data == null ? 0 : p.data.state
                 });
 
-            return new ApiResult<PreCancelResponse>
+            return new ApiResult<PreRegisterCancelResponse>
             {
                 Success = result.state == 0,
                 ResultData = result.data,
