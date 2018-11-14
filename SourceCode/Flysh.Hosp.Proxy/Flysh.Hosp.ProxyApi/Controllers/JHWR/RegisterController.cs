@@ -10,6 +10,49 @@ namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
 
+        [Route("api/v1/register/do")]
+        public ApiResult<RegisterDoResponse> RegisterDo(RegisterDoRequest request)
+        {
+            var hisRequest = new HModels.Hosp3004Request
+            {
+                clinicFee = request.cost,
+                departmentCode = request.deptCode,
+                departmentName = request.deptName,
+                doctorCode = request.doctCode,
+                doctorName = request.doctName,
+                isFee = request.isFee,
+                operCode = request.operCode,
+                pactCode = request.pactCode,
+                patientCard = request.cardNo,
+                realName = request.name,
+                registrationDate = request.regDate,
+                registrationLevel = request.regCode,
+                registrationNoonCode = request.regNoonCode,
+                registrationTime = request.regTime,
+                registrationType = request.regType,
+                shemaId = request.id,
+                termId = request.termId
+            };
+
+            var result = proxyService.Do<HModels.Hosp3004Request, HModels.Hosp3004Response, RegisterDoResponse>(
+                hisRequest,
+                (p) => new RegisterDoResponse
+                {
+                    clinicNo = p.data?.clinicNo,
+                    seeNo = p.data?.seeNo
+                });
+
+            return new ApiResult<RegisterDoResponse>
+            {
+                Success = result.state == 0,
+                ResultData = result.data,
+                Status = new OperatorStatus
+                {
+                    ClientMessage = result.message
+                }
+            };
+        }
+
         [Route("api/v1/register/callback")]
         public ApiResult<RegisterCallbackResponse> RegisterCallback(RegisterCallbackRequest request)
         {

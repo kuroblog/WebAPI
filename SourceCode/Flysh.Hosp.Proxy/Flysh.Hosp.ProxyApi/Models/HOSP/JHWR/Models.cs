@@ -92,6 +92,176 @@ namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
     public class HospRegCallbackResponse : HospResponseModelBase<HospRegCallbackResponseData> { }
 
     /// <summary>
+    /// 3004 request
+    /// </summary>
+    public class Hosp3004Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 是	排班编号（可为空）专家号必填
+        /// </summary>
+        public string shemaId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人真实姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        ///// <summary>
+        ///// 就诊人卡号
+        ///// </summary>
+        //public string mCardNo { get; set; }
+
+        public string patientCard { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号科室名称
+        /// </summary>
+        public string departmentName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号科室编号
+        /// </summary>
+        public string departmentCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医生名称
+        /// </summary>
+        public string doctorName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医生编号
+        /// </summary>
+        public string doctorCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号级别
+        /// </summary>
+        public string registrationLevel { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号午别
+        /// </summary>
+        public string registrationNoonCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 门诊类型  PT 普通门诊  ZJ 专家门诊
+        /// </summary>
+        public string registrationType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号日期 yyyy-MM-dd
+        /// </summary>
+        public string registrationDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号时间段 08:00 如果挂号不到时间点 默认为空
+        /// </summary>
+        public string registrationTime { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 挂号费用（单位:元）
+        /// </summary>
+        public string clinicFee { get; set; } = string.Empty;
+
+        //public string totCost { get; set; }
+
+        //public string pubCost { get; set; }
+
+        //public string payCost { get; set; }
+
+        //public string ownCost { get; set; }
+
+        /// <summary>
+        /// 自费医保病人标识
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 自助机机器编号
+        /// </summary>
+        public string termId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 操作员工号
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 是否支付 0未支付 1账户支付 2已经支付
+        /// </summary>
+        public string isFee { get; set; } = string.Empty;
+
+        ///// <summary>
+        ///// 支付方式 （支付必填）ZB 支付宝WX 微信 CA 现金 CD 银行卡
+        ///// </summary>
+        //public string feeSource { get; set; }
+
+        ///// <summary>
+        ///// 支付流水号
+        ///// </summary>
+        //public string tradeNo { get; set; }
+
+        ///// <summary>
+        ///// 医保结算参数 多个#分隔
+        ///// </summary>
+        //public string siInfo { get; set; }
+
+        ///// <summary>
+        ///// 社保卡基本信息
+        ///// </summary>
+        //public string siCardInfo { get; set; }
+
+        ///// <summary>
+        ///// 社保卡余额
+        ///// </summary>
+        //public string siBalanceInfo { get; set; }
+
+        //public string siReg { get; set; }
+
+        //public string siRegInfo { get; set; }
+
+        ///// <summary>
+        ///// 32位的社会保障卡号
+        ///// </summary>
+        //public string siCode { get; set; }
+
+        //public string idCard { get; set; }
+    }
+
+    public class Hosp3004ResponseData
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+
+        //public string hisRegisterId { get; set; }
+
+        //public string registerId { get; set; }
+
+        ///// <summary>
+        ///// HIS交易发票号
+        ///// </summary>
+        //public string tradeNo { get; set; }
+
+        //public string vancy { get; set; }
+
+        /// <summary>
+        /// 就诊序号
+        /// </summary>
+        public string seeNo { get; set; } = string.Empty;
+
+        //public string address { get; set; }
+
+        //public string deptname { get; set; }
+    }
+
+    /// <summary>
+    /// 3004 response
+    /// </summary>
+    public class Hosp3004Response : HospResponseModelBase<Hosp3004ResponseData> { }
+
+    /// <summary>
     /// 2007 request
     /// </summary>
     [HospTransferCode("2007")]
