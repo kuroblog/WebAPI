@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public static class PropertySupport
     {

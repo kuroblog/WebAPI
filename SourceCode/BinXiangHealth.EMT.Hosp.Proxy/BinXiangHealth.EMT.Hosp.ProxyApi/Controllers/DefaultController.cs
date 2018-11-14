@@ -1,7 +1,7 @@
 using Agebull.ZeroNet.ZeroApi;
 using System;
 
-namespace Flysh.Hosp.ProxyApi.Controllers
+namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
 {
     public class DefaultController : ApiController
     {

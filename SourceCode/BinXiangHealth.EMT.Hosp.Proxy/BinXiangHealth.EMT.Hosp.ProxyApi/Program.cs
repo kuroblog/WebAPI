@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public interface IProxyService
     {

@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public class Startup
     {

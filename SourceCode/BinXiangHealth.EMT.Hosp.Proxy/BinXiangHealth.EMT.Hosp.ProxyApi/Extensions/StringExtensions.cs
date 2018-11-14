@@ -1,4 +1,4 @@
-﻿namespace Flysh.Hosp.ProxyApi
+﻿namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public static class StringExtensions
     {

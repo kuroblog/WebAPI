@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public static class ExceptionExtensions
     {

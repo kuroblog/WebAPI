@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Flysh.Hosp.ProxyApi": {
+    "BinXiangHealth.EMT.Hosp.ProxyApi": {
       "commandName": "Project",
       "launchUrl": "api/values",
       "environmentVariables": {

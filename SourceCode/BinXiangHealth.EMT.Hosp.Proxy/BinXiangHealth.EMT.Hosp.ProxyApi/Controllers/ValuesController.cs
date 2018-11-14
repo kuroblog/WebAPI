@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Flysh.Hosp.ProxyApi.Controllers
+namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,10 +1,10 @@
 using Agebull.Common.Ioc;
 using Agebull.ZeroNet.ZeroApi;
-using Flysh.Hosp.ProxyApi.Models;
+using BinXiangHealth.EMT.Hosp.ProxyApi.Models;
 using Gboxt.Common.DataModel;
-using HModels = Flysh.Hosp.ProxyApi.Models.HOSP.JHWR;
+using HModels = BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR;
 
-namespace Flysh.Hosp.ProxyApi.Controllers.JHWR
+namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
 {
     public class CardController : ApiController
     {

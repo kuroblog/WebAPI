@@ -1,4 +1,4 @@
-﻿namespace Flysh.Hosp.ProxyApi.Models
+﻿namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models
 {
     /// <summary>
     /// register query request

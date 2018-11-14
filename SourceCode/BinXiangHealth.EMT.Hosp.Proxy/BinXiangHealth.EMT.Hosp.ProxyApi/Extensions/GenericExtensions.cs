@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 //using System.Collections.Generic;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public static class GenericExtensions
     {

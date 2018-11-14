@@ -1,6 +1,6 @@
 using System.ComponentModel.Composition;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     [Export(typeof(Agebull.ZeroNet.ZeroApi.IAutoRegister))]
     [ExportMetadata("Symbol", '%')]

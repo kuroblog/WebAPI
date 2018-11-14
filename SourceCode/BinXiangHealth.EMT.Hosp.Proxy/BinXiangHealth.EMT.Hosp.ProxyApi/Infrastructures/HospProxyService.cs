@@ -4,7 +4,7 @@ using System;
 using System.ServiceModel;
 using System.Xml;
 
-namespace Flysh.Hosp.ProxyApi
+namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public interface IHospProxyService
     {

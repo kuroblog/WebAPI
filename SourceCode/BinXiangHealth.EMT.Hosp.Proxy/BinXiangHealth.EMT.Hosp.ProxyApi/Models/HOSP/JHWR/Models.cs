@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-namespace Flysh.Hosp.ProxyApi.Models.HOSP.JHWR
+namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
 {
     public abstract class HospRequestModelBase : IHospProxyRequestModel//<(string code, string json)>
     {
