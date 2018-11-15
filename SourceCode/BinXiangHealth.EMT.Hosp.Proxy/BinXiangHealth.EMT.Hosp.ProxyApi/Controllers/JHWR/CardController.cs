@@ -8,44 +8,34 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
 {
     public class CardController : ApiController
     {
-        private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
+        private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
         [Route("api/v1/card/query")]
         public ApiResult<CardQueryResponse> CardQuery(CardQueryRequest request)
         {
-            var hisRequest = new HModels.Hosp1002Request
-            {
-                idCard = request.idCard,
-                mCardNo = request.cardNo,
-                mType = request.cardType,
-                queryType = request.queryType,
-                realName = request.name
-            };
-
-            var result = proxyService.Do<HModels.Hosp1002Request, HModels.Hosp1002Response, CardQueryResponse>(
-                hisRequest,
-                (p) => new CardQueryResponse
-                {
-                    birthday = p.data?.birthday,
-                    cardNo = p.data?.cardNo,
-                    linkmanAdd = p.data?.linkman_add,
-                    linkmanName = p.data?.linkman_name,
-                    linkmanTel = p.data?.linkman_tel,
-                    name = p.data?.name,
-                    pactCode = p.data?.pactCode,
-                    sex = p.data?.sex,
-                    vacancy = p.data?.vacancy
-                });
-
-            return new ApiResult<CardQueryResponse>
-            {
-                Success = result.state == 0,
-                ResultData = result.data,
-                Status = new OperatorStatus
-                {
-                    ClientMessage = result.message
-                }
-            };
+            return this.DoApiResult(
+                proxyService.DoTrans<HModels.Hosp1002Request, HModels.Hosp1002Response, CardQueryRequest, CardQueryResponse>(
+                    request,
+                    p => new HModels.Hosp1002Request
+                    {
+                        idCard = p.idCard,
+                        mCardNo = p.cardNo,
+                        mType = p.cardType,
+                        queryType = p.queryType,
+                        realName = p.name
+                    },
+                    p => new CardQueryResponse
+                    {
+                        birthday = p.data?.birthday,
+                        cardNo = p.data?.cardNo,
+                        linkmanAdd = p.data?.linkman_add,
+                        linkmanName = p.data?.linkman_name,
+                        linkmanTel = p.data?.linkman_tel,
+                        name = p.data?.name,
+                        pactCode = p.data?.pactCode,
+                        sex = p.data?.sex,
+                        vacancy = p.data?.vacancy
+                    }));
         }
     }
 }

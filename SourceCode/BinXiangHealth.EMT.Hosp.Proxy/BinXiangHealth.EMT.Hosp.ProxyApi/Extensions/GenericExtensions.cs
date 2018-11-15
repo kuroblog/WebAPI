@@ -5,9 +5,9 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public static class GenericExtensions
     {
-        public static string ToJson<TObj>(this TObj obj, Formatting format = Formatting.Indented)
+        public static string ToJson<TObj>(this TObj obj, bool isIndented = false)
         {
-            return JsonConvert.SerializeObject(obj, format);
+            return JsonConvert.SerializeObject(obj, isIndented ? Formatting.Indented : Formatting.None);
         }
 
         //public static string ToJson<TObj>(IEnumerable<TObj> obj, Formatting format = Formatting.Indented)

@@ -5,7 +5,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
 {
     public class DefaultController : ApiController
     {
-        private readonly ITestService tService = Agebull.Common.Ioc.IocHelper.CreateScope<ITestService>();
+        private readonly ITestService tService = Agebull.Common.Ioc.IocHelper.Create<ITestService>();
 
         [Route("api/default/hello")]
         public Gboxt.Common.DataModel.ApiResult Hello()

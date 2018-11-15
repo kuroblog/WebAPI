@@ -9,23 +9,22 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
 {
     public class ScheduleController : ApiController
     {
-        private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
+        private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
         [Route("api/v1/schedule/query")]
         public ApiArrayResult<ScheduleQueryResponse> ScheduleQuery(ScheduleQueryRequest request)
         {
-            var hisRequest = new HModels.Hosp2003Request
-            {
-                beginDate = request.begDate,
-                deptCode = request.deptCode,
-                endDate = request.endDate,
-                isPre = request.isPre
-            };
-
-            var result =
-                proxyService.Do<HModels.Hosp2003Request, HModels.Hosp2003Response, ScheduleQueryResponse[]>(
-                    hisRequest,
-                    (p) => p?.data?.Select(a => new ScheduleQueryResponse
+            return this.DoApiArrayResult(
+                proxyService.DoTrans<HModels.Hosp2003Request, HModels.Hosp2003Response, ScheduleQueryRequest, ScheduleQueryResponse[]>(
+                    request,
+                    p => new HModels.Hosp2003Request
+                    {
+                        beginDate = p.begDate,
+                        deptCode = p.deptCode,
+                        endDate = p.endDate,
+                        isPre = p.isPre
+                    },
+                    p => p.data?.Select(a => new ScheduleQueryResponse
                     {
                         address = a.ADRESS,
                         begTime = a.BEGIN_TIME,
@@ -49,17 +48,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                         regType = a.REGISTRATION_TYPE,
                         sortId = a.SORTID,
                         week = a.WEEK
-                    })?.ToArray());
-
-            return new ApiArrayResult<ScheduleQueryResponse>
-            {
-                Success = result.state == 0,
-                ResultData = result.data?.ToList(),
-                Status = new OperatorStatus
-                {
-                    ClientMessage = result.message
-                }
-            };
+                    })?.ToArray()));
         }
     }
 }

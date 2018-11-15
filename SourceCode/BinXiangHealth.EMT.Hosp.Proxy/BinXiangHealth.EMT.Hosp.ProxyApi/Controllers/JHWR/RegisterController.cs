@@ -9,22 +9,21 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
 {
     public class RegisterController : ApiController
     {
-        private readonly IProxyService proxyService = IocHelper.CreateScope<IProxyService>();
+        private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
         [Route("api/v1/register/query")]
         public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request)
         {
-            var hisRequest = new HModels.HospRegisterQueryRequest
-            {
-                beginDate = request.begDate,
-                cardNo = request.cardNo,
-                endDate = request.endDate
-            };
-
-            var result =
-                proxyService.Do<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryResponse[]>(
-                    hisRequest,
-                    (p) => p?.data?.Select(a => new RegisterQueryResponse
+            return this.DoApiArrayResult(
+                proxyService.DoTrans<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryRequest, RegisterQueryResponse[]>(
+                    request,
+                    p => new HModels.HospRegisterQueryRequest
+                    {
+                        beginDate = p.begDate,
+                        cardNo = p.cardNo,
+                        endDate = p.endDate
+                    },
+                    p => p.data?.Select(a => new RegisterQueryResponse
                     {
                         cardNo = a.idCardNo,
                         clinicNo = a.clinicNo,
@@ -39,119 +38,79 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                         state = a.state,
                         visistDate = a.visistDate,
                         visitingTime = a.visitingTime
-                    })?.ToArray());
-
-            return new ApiArrayResult<RegisterQueryResponse>
-            {
-                Success = result.state == 0,
-                ResultData = result.data?.ToList(),
-                Status = new OperatorStatus
-                {
-                    ClientMessage = result.message
-                }
-            };
+                    })?.ToArray()));
         }
 
         [Route("api/v1/register/do")]
         public ApiResult<RegisterDoResponse> RegisterDo(RegisterDoRequest request)
         {
-            var hisRequest = new HModels.Hosp3004Request
-            {
-                clinicFee = request.cost,
-                departmentCode = request.deptCode,
-                departmentName = request.deptName,
-                doctorCode = request.doctCode,
-                doctorName = request.doctName,
-                isFee = request.isFee,
-                operCode = request.operCode,
-                pactCode = request.pactCode,
-                patientCard = request.cardNo,
-                realName = request.name,
-                registrationDate = request.regDate,
-                registrationLevel = request.regCode,
-                registrationNoonCode = request.regNoonCode,
-                registrationTime = request.regTime,
-                registrationType = request.regType,
-                shemaId = request.id,
-                termId = request.termId
-            };
-
-            var result = proxyService.Do<HModels.Hosp3004Request, HModels.Hosp3004Response, RegisterDoResponse>(
-                hisRequest,
-                (p) => new RegisterDoResponse
-                {
-                    clinicNo = p.data?.clinicNo,
-                    seeNo = p.data?.seeNo
-                });
-
-            return new ApiResult<RegisterDoResponse>
-            {
-                Success = result.state == 0,
-                ResultData = result.data,
-                Status = new OperatorStatus
-                {
-                    ClientMessage = result.message
-                }
-            };
+            return this.DoApiResult(
+                proxyService.DoTrans<HModels.Hosp3004Request, HModels.Hosp3004Response, RegisterDoRequest, RegisterDoResponse>(
+                    request,
+                    p => new HModels.Hosp3004Request
+                    {
+                        clinicFee = p.cost,
+                        departmentCode = p.deptCode,
+                        departmentName = p.deptName,
+                        doctorCode = p.doctCode,
+                        doctorName = p.doctName,
+                        isFee = p.isFee,
+                        operCode = p.operCode,
+                        pactCode = p.pactCode,
+                        patientCard = p.cardNo,
+                        realName = p.name,
+                        registrationDate = p.regDate,
+                        registrationLevel = p.regCode,
+                        registrationNoonCode = p.regNoonCode,
+                        registrationTime = p.regTime,
+                        registrationType = p.regType,
+                        shemaId = p.id,
+                        termId = p.termId
+                    },
+                    p => new RegisterDoResponse
+                    {
+                        clinicNo = p.data?.clinicNo,
+                        seeNo = p.data?.seeNo
+                    }));
         }
 
         [Route("api/v1/register/callback")]
         public ApiResult<RegisterCallbackResponse> RegisterCallback(RegisterCallbackRequest request)
         {
-            var hisRequest = new HModels.HospRegCallbackRequest
-            {
-                clinicNo = request.clinicNo,
-                feeSource = request.source,
-                isFee = request.isFee,
-                payFee = request.cost,
-                siInfo = request.siInfo,
-                thirdOrderNo = request.thirdNo,
-                tradeNo = request.tradeNo
-            };
-
-            var result = proxyService.Do<HModels.HospRegCallbackRequest, HModels.HospRegCallbackResponse, RegisterCallbackResponse>(
-                hisRequest,
-                (p) => new RegisterCallbackResponse
-                {
-                    state = p.data == null ? 0 : p.data.state
-                });
-
-            return new ApiResult<RegisterCallbackResponse>
-            {
-                Success = result.state == 0,
-                ResultData = result.data,
-                Status = new OperatorStatus
-                {
-                    ClientMessage = result.message
-                }
-            };
+            return this.DoApiResult(
+                proxyService.DoTrans<HModels.HospRegCallbackRequest, HModels.HospRegCallbackResponse, RegisterCallbackRequest, RegisterCallbackResponse>(
+                    request,
+                    p => new HModels.HospRegCallbackRequest
+                    {
+                        clinicNo = p.clinicNo,
+                        feeSource = p.source,
+                        isFee = p.isFee,
+                        payFee = p.cost,
+                        siInfo = p.siInfo,
+                        thirdOrderNo = p.thirdNo,
+                        tradeNo = p.tradeNo
+                    },
+                    p => new RegisterCallbackResponse
+                    {
+                        state = p.data == null ? 0 : p.data.state
+                    }));
         }
 
         [Route("api/v1/register/cancel")]
         public ApiResult<RegisterCancelResponse> RegisterCancel(RegisterCancelRequest request)
         {
-            var hisRequest = new HModels.Hosp3005Request
-            {
-                clinicNo = request.clinicNo,
-                operCode = request.operCode
-            };
-
-            var result = proxyService.Do<HModels.Hosp3005Request, HModels.Hosp3005Response, RegisterCancelResponse>(
-                hisRequest,
-                (p) => new RegisterCancelResponse
-                {
-                    state = p.data == null ? 0 : p.data.state
-                });
-
-            return new ApiResult<RegisterCancelResponse>
-            {
-                Success = result.state == 0,
-                ResultData = result.data,
-                Status = new OperatorStatus
-                {
-                    ClientMessage = result.message
-                }
-            };
+            return this.DoApiResult(
+                proxyService.DoTrans<HModels.Hosp3005Request, HModels.Hosp3005Response, RegisterCancelRequest, RegisterCancelResponse>(
+                    request,
+                    p => new HModels.Hosp3005Request
+                    {
+                        clinicNo = p.clinicNo,
+                        operCode = p.operCode
+                    },
+                    p => new RegisterCancelResponse
+                    {
+                        state = p.data == null ? 0 : p.data.state
+                    }));
         }
     }
 }

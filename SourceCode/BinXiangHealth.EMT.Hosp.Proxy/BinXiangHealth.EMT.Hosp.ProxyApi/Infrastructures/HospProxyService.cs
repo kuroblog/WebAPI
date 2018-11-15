@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Agebull.Common.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
+using System.Reflection;
 using System.ServiceModel;
 using System.Xml;
 
@@ -8,7 +10,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public interface IHospProxyService
     {
-        TResponse Invoke<TRequest, TResponse>(TRequest request)
+        TResponse DoTrans<TRequest, TResponse>(TRequest request)
             where TRequest : IHospProxyRequestModel, new()
             where TResponse : IHospProxyResponseModel, new();
     }
@@ -22,27 +24,32 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
             url = proxySettings.Value.Url;
         }
 
-        public TResponse Invoke<TRequest, TResponse>(TRequest request)
+        public TResponse DoTrans<TRequest, TResponse>(TRequest request)
             where TRequest : IHospProxyRequestModel, new()
             where TResponse : IHospProxyResponseModel, new()
         {
-            var soapRequest = request.ConvertToHospRequest();
-#if DEBUG
-            Console.WriteLine(soapRequest);
-#endif
+            try
+            {
+                using (MonitorScope.CreateScope(MethodBase.GetCurrentMethod().Name))
+                {
+                    var soapRequest = request.ConvertToHospRequest();
+                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
 
-            var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
-            var soapResult = soapClient.DoTransAsync(soapRequest.code, soapRequest.json).Result;
-#if DEBUG
-            Console.WriteLine(soapResult);
-#endif
+                    var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
+                    var soapResult = soapClient.DoTransAsync(soapRequest.code, soapRequest.json).Result;
 
-            var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
-#if DEBUG
-            Console.WriteLine(result);
-#endif
+                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
 
-            return result;
+                    var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
+                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doFormatResult = soapResult }.ToJson());
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private TSoapProxyService GenerateSoapClient<TSoapProxyService>()

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Agebull.Common.Logging;
+using System;
+using System.Reflection;
 
 namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public interface IProxyService
     {
-        (int state, string message, TResult data) Do<THospRequest, THospResponse, TResult>(THospRequest request, Func<THospResponse, TResult> convert)
+        (int state, string message, TResponse data) DoTrans<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
             where THospRequest : IHospProxyRequestModel, new()
             where THospResponse : IHospProxyResponseModel, new();
     }
@@ -18,28 +20,56 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
             this.hospProxyService = hospProxyService;
         }
 
-        public (int state, string message, TResult data) Do<THospRequest, THospResponse, TResult>(THospRequest request, Func<THospResponse, TResult> convert)
+        public (int state, string message, TResponse data) DoTrans<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
             where THospRequest : IHospProxyRequestModel, new()
             where THospResponse : IHospProxyResponseModel, new()
         {
+            return Do(
+                MethodBase.GetCurrentMethod().Name,
+                () =>
+                {
+                    LogRecorder.MonitorTrace(request.ToJson());
+                    var hospRequest = requestParser(request);
+
+                    var hospResult = hospProxyService.DoTrans<THospRequest, THospResponse>(hospRequest);
+
+                    (int state, string message, TResponse data) response;
+                    if (hospResult == null)
+                    {
+                        response = (-1, "hosp result is null.", default(TResponse));
+                    }
+                    else if (hospResult.IsSuccess == false)
+                    {
+                        response = (hospResult.GetResponseCode(), hospResult.GetResponseMessage(), default(TResponse));
+                    }
+
+                    response = (0, string.Empty, hospResponseParser.Invoke(hospResult));
+
+                    LogRecorder.MonitorTrace(new
+                    {
+                        response.state,
+                        response.message,
+                        response.data
+                    }.ToJson());
+
+                    return response;
+                });
+        }
+
+        private (int state, string message, TResult data) Do<TResult>(string methodName, Func<(int state, string message, TResult data)> func)
+        {
             try
             {
-                var hisResult = hospProxyService.Invoke<THospRequest, THospResponse>(request);
-
-                if (hisResult == null)
+                using (MonitorScope.CreateScope(methodName))
                 {
-                    return (-1, "no his data.", default(TResult));
+                    return func.Invoke();
                 }
-                else if (hisResult.IsSuccess == false)
-                {
-                    return (hisResult.GetResponseCode(), hisResult.GetResponseMessage(), default(TResult));
-                }
-
-                return (0, string.Empty, convert.Invoke(hisResult));
             }
             catch (Exception ex)
             {
                 var error = ex.GetErrorMessages().ToJson();
+
+                LogRecorder.Error(error);
 
                 return (-9, ex.GetErrorMessages().ToJson(), default(TResult));
             }

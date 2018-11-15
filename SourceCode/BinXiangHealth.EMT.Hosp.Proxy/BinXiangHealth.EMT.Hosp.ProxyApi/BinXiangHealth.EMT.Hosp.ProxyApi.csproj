@@ -7,10 +7,13 @@
 
   <ItemGroup>
     <Folder Include="logs\20181114\" />
+    <Folder Include="logs\20181115\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Agebull.Rpc.Flysh" Version="1.0.0.2" />
+    <PackageReference Include="Agebull.WebApi.ModelBase" Version="2.3.2.69" />
     <PackageReference Include="Agebull.ZeroNet.Core" Version="1.2.0.60" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
