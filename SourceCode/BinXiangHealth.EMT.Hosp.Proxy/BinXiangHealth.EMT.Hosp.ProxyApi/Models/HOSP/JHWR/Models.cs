@@ -303,6 +303,138 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
 
     /// <summary>
+    /// 4004 request
+    /// </summary>
+    public class Hosp4004Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// String 	是	唯一号 多个 | 分隔
+        /// </summary>
+        public string recipe_Key { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	就诊人姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	门诊流水号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	缴费操作员
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	支付方式
+        /// </summary>
+        public string feeSource { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	总费用
+        /// </summary>
+        public string totCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	报销费用
+        /// </summary>
+        public string pubCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	个人卡内费用
+        /// </summary>
+        public string payCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// }String	是	自费费用
+        /// </summary>
+        public string ownCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	交易流水号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	是	设备编号
+        /// </summary>
+        public string termId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	否	医保结算参数 多个#分隔
+        /// </summary>
+        public string siInfo { get; set; } = string.Empty;
+
+        ///// <summary>
+        ///// 医保卡信息
+        ///// </summary>
+        //public string siCardInfo { get; set; }
+
+        //public string siBalanceInfo { get; set; }
+
+        //public string recipeSeq { get; set; }
+
+        ///// <summary>
+        ///// 最后组成的字符传(拆分)
+        ///// </summary>
+        //public string Recipe_CF { get; set; }
+
+        ///// <summary>
+        ///// 合同单位
+        ///// </summary>
+        //public string pactCode { get; set; }
+
+        ///// <summary>
+        ///// 身份证号
+        ///// </summary>
+        //public string idCard { get; set; }
+    }
+
+    public class Hosp4004ResponseData
+    {
+        /// <summary>
+        /// 取药窗口
+        /// </summary>
+        public string windowNo { get; set; } = string.Empty;
+
+        ///// <summary>
+        ///// 发票号
+        ///// </summary>
+        //public string invoiceNo { get; set; }
+
+        ///// <summary>
+        ///// 发票序号
+        ///// </summary>
+        //public string invoiceSeq { get; set; }
+
+        ///// <summary>
+        ///// 社保卡交易流水号
+        ///// </summary>
+
+        //public string siTradeNo { get; set; }
+
+        ///// <summary>
+        ///// 余额
+        ///// </summary>
+        //public string vancy { get; set; }
+
+        ///// <summary>
+        ///// 执行科室
+        ///// </summary>
+        //public string deptname { get; set; }
+
+        //public string FeeItemList { get; set; }
+    }
+
+    /// <summary>
+    /// 4004 response
+    /// </summary>
+    public class Hosp4004Response : HospResponseModelBase<Hosp4004ResponseData> { }
+
+
+    /// <summary>
     /// 4002 request
     /// </summary>
     public class Hosp4002Request : HospRequestModelBase
@@ -325,50 +457,50 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// String	是	唯一号
         /// </summary>
-        public string Recipe_Key { get; set; }
+        public string Recipe_Key { get; set; } = string.Empty;
 
         ///String	是	处方号
-        public string Recipe_No { get; set; }
+        public string Recipe_No { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	处方内序号
         /// </summary>
-        public string SeqNo { get; set; }
+        public string SeqNo { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	交易类型
         /// </summary>
-        public string Trans_Type { get; set; }
+        public string Trans_Type { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	最小费用代码
         /// </summary>
-        public string Fee_Code { get; set; }
+        public string Fee_Code { get; set; } = string.Empty;
 
         /// <summary>
         /// 	String	是	是否是药品
         /// </summary>
-        public string Drug_Flag { get; set; }
+        public string Drug_Flag { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	项目编码
         /// </summary>
-        public string Item_Code { get; set; }
+        public string Item_Code { get; set; } = string.Empty;
 
         /// <summary>
         ///String	是	项目名称
         /// </summary>
-        public string Item_Name { get; set; }
+        public string Item_Name { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	医保项目相关参数 多个#分隔
         /// </summary>
-        public string Yb_Item_Info { get; set; }
+        public string Yb_Item_Info { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	数量
         /// </summary>
-        public string Qty { get; set; }
+        public string Qty { get; set; } = string.Empty;
 
         ///// <summary>
         ///// 规格
@@ -397,22 +529,22 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// String	是	单位
         /// </summary>
-        public string UNIT { get; set; }
+        public string UNIT { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	单价
         /// </summary>
-        public string Unit_Price { get; set; }
+        public string Unit_Price { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	总额
         /// </summary>
-        public string Tot_Cost { get; set; }
+        public string Tot_Cost { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	开方医生
         /// </summary>
-        public string Doc_Name { get; set; }
+        public string Doc_Name { get; set; } = string.Empty;
 
         ///// <summary>
         ///// 开单科室医生编号
@@ -426,27 +558,27 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// String	是	开方医生所在科室
         /// </summary>
-        public string DocDept_Name { get; set; }
+        public string DocDept_Name { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	执行科室
         /// </summary>
-        public string Exec_DeptCode { get; set; }
+        public string Exec_DeptCode { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	执行科室名称
         /// </summary>
-        public string Exec_DeptName { get; set; }
+        public string Exec_DeptName { get; set; } = string.Empty;
 
         /// <summary>
         /// String	是	开立时间
         /// </summary>
-        public string Mo_Date { get; set; }
+        public string Mo_Date { get; set; } = string.Empty;
 
         /// <summary>
         /// 	String	是	是否收费
         /// </summary>
-        public string Pay_Flag { get; set; }
+        public string Pay_Flag { get; set; } = string.Empty;
 
         ///// <summary>
         ///// String	是	发票号

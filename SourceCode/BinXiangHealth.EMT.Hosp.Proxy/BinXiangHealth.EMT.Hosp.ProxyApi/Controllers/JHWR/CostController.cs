@@ -11,6 +11,33 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
+        [Route("api/v1/cost/settle")]
+        public ApiResult<CostSettleResponse> CostSettle(CostSettleRequest request)
+        {
+            return this.DoApiResult(
+                proxyService.DoTrans<HModels.Hosp4004Request, HModels.Hosp4004Response, CostSettleRequest, CostSettleResponse>(
+                    request,
+                    p => new HModels.Hosp4004Request
+                    {
+                        clinicNo = p.clinicNo,
+                        feeSource = p.source,
+                        operCode = p.operCode,
+                        ownCost = p.ownCost,
+                        payCost = p.payCost,
+                        pubCost = p.pubCost,
+                        realName = p.name,
+                        recipe_Key = p.recipeKey,
+                        siInfo = p.siInfo,
+                        termId = p.termId,
+                        totCost = p.totCost,
+                        tradeNo = p.tradeNo
+                    },
+                    p => new CostSettleResponse
+                    {
+                        windowNo = p.data?.windowNo
+                    }));
+        }
+
         [Route("api/v1/cost/list")]
         public ApiArrayResult<CostListResponse> CostList(CostListRequest request)
         {
@@ -51,21 +78,21 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
         {
             return this.DoApiResult(
                 proxyService.DoTrans<HModels.Hosp4003Request, HModels.Hosp4003Response, CostPreSettleRequest, CostPreSettleResponse>(
-                request,
-                p => new HModels.Hosp4003Request
-                {
-                    clinicNo = p.clinicNo,
-                    operCode = p.operCode,
-                    realName = p.name,
-                    recipe_Key = p.recipeKey
-                },
-                p => new CostPreSettleResponse
-                {
-                    ownCost = p.data?.ownCost,
-                    payCost = p.data?.payCost,
-                    pubCost = p.data?.pubCost,
-                    totCost = p.data?.totCost
-                }));
+                    request,
+                    p => new HModels.Hosp4003Request
+                    {
+                        clinicNo = p.clinicNo,
+                        operCode = p.operCode,
+                        realName = p.name,
+                        recipe_Key = p.recipeKey
+                    },
+                    p => new CostPreSettleResponse
+                    {
+                        ownCost = p.data?.ownCost,
+                        payCost = p.data?.payCost,
+                        pubCost = p.data?.pubCost,
+                        totCost = p.data?.totCost
+                    }));
         }
     }
 }
