@@ -41,6 +41,60 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 检查报告入参
+    /// </summary>
+    public class HospReportQueryRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string queryId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 1-检验 2-检查
+        /// </summary>
+        public string checkType { get; set; } = string.Empty;
+    }
+
+    public class HospReportQueryResponseData
+    {
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string sex { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查日期
+        /// </summary>
+        public string checkDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 报告类型
+        /// </summary>
+        public string type { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查所见
+        /// </summary>
+        public string reportMessage { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查结论
+        /// </summary>
+        public string repostResult { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 检查报告返参
+    /// </summary>
+    public class HospReportQueryResponse : HospResponseModelBase<HospReportQueryResponseData> { }
+
+    /// <summary>
     /// 检验报告详情入参
     /// </summary>
     public class HospReportDetailRequest : HospRequestModelBase

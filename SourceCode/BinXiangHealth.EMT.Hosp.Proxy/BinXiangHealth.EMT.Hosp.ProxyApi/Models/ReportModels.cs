@@ -1,7 +1,61 @@
 ﻿namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models
 {
     /// <summary>
-    /// register do request
+    /// report query request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.HospReportQueryRequest"/>
+    public class ReportQueryRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string id { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 1-检验 2-检查
+        /// </summary>
+        public string type { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// report query response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.HospReportQueryResponseData"/>
+    public class ReportQueryResponse : IProxyResponseModel
+    {
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string sex { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查日期
+        /// </summary>
+        public string checkDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 报告类型
+        /// </summary>
+        public string type { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查所见
+        /// </summary>
+        public string result { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查结论
+        /// </summary>
+        public string conclusion { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// report detail request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.HospReportDetailRequest"/>
     public class ReportDetailRequest : ProxyRequestModelBase, IProxyRequestModel
@@ -18,7 +72,7 @@
     }
 
     /// <summary>
-    /// register do response
+    /// report detail response
     /// </summary>
     /// <seealso cref="HOSP.JHWR.HospReportDetailResponseData"/>
     public class ReportDetailResponse : IProxyResponseModel

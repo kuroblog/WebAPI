@@ -149,7 +149,7 @@
     }
 
     /// <summary>
-    /// pre cancel request
+    /// pre register cancel request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp2007Request"/>
     public class PreRegisterCancelRequest : ProxyRequestModelBase, IProxyRequestModel
@@ -166,7 +166,7 @@
     }
 
     /// <summary>
-    /// pre cancel response
+    /// pre register cancel response
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp2007Response"/>
     public class PreRegisterCancelResponse : IProxyResponseModel

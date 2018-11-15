@@ -1,7 +1,7 @@
 ﻿namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models
 {
     /// <summary>
-    /// register do request
+    /// card query request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp1002Request"/>
     public class CardQueryRequest : ProxyRequestModelBase, IProxyRequestModel
@@ -33,7 +33,7 @@
     }
 
     /// <summary>
-    /// register do response
+    /// card query response
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp1002ResponseData"/>
     public class CardQueryResponse : IProxyResponseModel
