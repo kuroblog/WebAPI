@@ -41,6 +41,75 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 检验报告详情入参
+    /// </summary>
+    public class HospReportDetailRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string queryId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 1-检验 2-检查
+        /// </summary>
+        public string checkType { get; set; } = string.Empty;
+    }
+
+    public class HospReportDetailResponseData
+    {
+        /// <summary>
+        /// 报告名称
+        /// </summary>
+        public string itemName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string sex { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查日期
+        /// </summary>
+        public string checkDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 报告类型
+        /// </summary>
+        public string type { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 样本
+        /// </summary>
+        public string sample { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 实际值
+        /// </summary>
+        public string realResult { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 参考值
+        /// </summary>
+        public string referprint { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 结论
+        /// </summary>
+        public string conclusion { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 检验报告详情返参
+    /// </summary>
+    public class HospReportDetailResponse : HospResponseModelBase<HospReportDetailResponseData[]> { }
+
+    /// <summary>
     /// 挂号列表查询入参
     /// </summary>
     public class HospRegisterQueryRequest : HospRequestModelBase
@@ -232,6 +301,238 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     /// 预约挂号列表查询返参
     /// </summary>
     public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
+
+    /// <summary>
+    /// 4002 request
+    /// </summary>
+    public class Hosp4002Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// String	是	门诊挂号流水号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// String	否	就诊人卡号
+        /// </summary>
+        public string patientCard { get; set; } = string.Empty;
+
+        //public string TradeCode { get; set; }
+    }
+
+    public class Hosp4002ResponseData
+    {
+        /// <summary>
+        /// String	是	唯一号
+        /// </summary>
+        public string Recipe_Key { get; set; }
+
+        ///String	是	处方号
+        public string Recipe_No { get; set; }
+
+        /// <summary>
+        /// String	是	处方内序号
+        /// </summary>
+        public string SeqNo { get; set; }
+
+        /// <summary>
+        /// String	是	交易类型
+        /// </summary>
+        public string Trans_Type { get; set; }
+
+        /// <summary>
+        /// String	是	最小费用代码
+        /// </summary>
+        public string Fee_Code { get; set; }
+
+        /// <summary>
+        /// 	String	是	是否是药品
+        /// </summary>
+        public string Drug_Flag { get; set; }
+
+        /// <summary>
+        /// String	是	项目编码
+        /// </summary>
+        public string Item_Code { get; set; }
+
+        /// <summary>
+        ///String	是	项目名称
+        /// </summary>
+        public string Item_Name { get; set; }
+
+        /// <summary>
+        /// String	是	医保项目相关参数 多个#分隔
+        /// </summary>
+        public string Yb_Item_Info { get; set; }
+
+        /// <summary>
+        /// String	是	数量
+        /// </summary>
+        public string Qty { get; set; }
+
+        ///// <summary>
+        ///// 规格
+        ///// </summary>
+        //public string Spec { get; set; }
+
+        //public string Dose { get; set; }
+
+        ///// <summary>
+        ///// 包装数量
+        ///// </summary>
+        //public string PackQty { get; set; }
+
+        ///// <summary>
+        ///// 天数
+        ///// </summary>
+        //public string Days { get; set; }
+
+        ///// <summary>
+        ///// 复方标识
+        ///// </summary>
+        //public string Ff { get; set; }
+
+        //public string Center_Code { get; set; }
+
+        /// <summary>
+        /// String	是	单位
+        /// </summary>
+        public string UNIT { get; set; }
+
+        /// <summary>
+        /// String	是	单价
+        /// </summary>
+        public string Unit_Price { get; set; }
+
+        /// <summary>
+        /// String	是	总额
+        /// </summary>
+        public string Tot_Cost { get; set; }
+
+        /// <summary>
+        /// String	是	开方医生
+        /// </summary>
+        public string Doc_Name { get; set; }
+
+        ///// <summary>
+        ///// 开单科室医生编号
+        ///// </summary>
+        //public string Doc_Code { get; set; }
+
+        //public string OnceDose { get; set; }
+
+        //public string Frequency { get; set; }
+
+        /// <summary>
+        /// String	是	开方医生所在科室
+        /// </summary>
+        public string DocDept_Name { get; set; }
+
+        /// <summary>
+        /// String	是	执行科室
+        /// </summary>
+        public string Exec_DeptCode { get; set; }
+
+        /// <summary>
+        /// String	是	执行科室名称
+        /// </summary>
+        public string Exec_DeptName { get; set; }
+
+        /// <summary>
+        /// String	是	开立时间
+        /// </summary>
+        public string Mo_Date { get; set; }
+
+        /// <summary>
+        /// 	String	是	是否收费
+        /// </summary>
+        public string Pay_Flag { get; set; }
+
+        ///// <summary>
+        ///// String	是	发票号
+        ///// </summary>
+        //public string InvoiceNo { get; set; }
+
+        ////public string Moder { get; set; }
+
+        ///// <summary>
+        ///// 挂号流水号
+        ///// </summary>
+        //public string ClinicCode { get; set; }
+
+        //public string SysClass { get; set; }
+
+        //public string Lab_Type { get; set; }
+
+        //public string IsEmergency { get; set; }
+
+        //public string hypo_test { get; set; }
+
+        //public string combo { get; set; }
+
+        //public string subcomb_no { get; set; }
+
+        //public string usage_code { get; set; }
+
+        //public string pact_name { get; set; }
+
+        ///// <summary>
+        ///// 物理卡号
+        ///// </summary>
+        //public string markno { get; set; }
+
+        //public string price_unit { get; set; }
+
+        //public string item_class { get; set; }
+
+        //public string name { get; set; }
+
+        //public string patientid { get; set; }
+
+        //public string sex_code { get; set; }
+
+        ///// <summary>
+        ///// 分方
+        ///// </summary>
+        //public string recipeSeq { get; set; }
+
+        ///// <summary>
+        ///// 特慢病标识(0 普通 1特病  2 慢病)
+        ///// </summary>
+        //public string icdType { get; set; }
+
+        ///// <summary>
+        ///// 诊断编码
+        ///// </summary>
+        //public string icdCode { get; set; }
+
+        ///// <summary>
+        ///// 0  普通(不可报销)  1  可报销
+        ///// </summary>
+        //public string HasSaved { get; set; }
+
+        ///// <summary>
+        ///// 病种审批单号
+        ///// </summary>
+        //public string proCode { get; set; }
+
+        ///// <summary>
+        ///// 诊断名称
+        ///// </summary>
+        //public string icdName { get; set; }
+
+        ///// <summary>
+        ///// 值为PCC,是草药
+        ///// </summary>
+        //public string classCode { get; set; }
+
+        //public string MinUnit { get; set; }
+    }
+
+    /// <summary>
+    /// 4002 response
+    /// </summary>
+    public class Hosp4002Response : HospResponseModelBase<Hosp4002ResponseData[]> { }
 
     /// <summary>
     /// 4003 request
