@@ -357,6 +357,65 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
 
     /// <summary>
+    /// 5001 request
+    /// </summary>
+    public class Hosp5001Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人卡号
+        /// </summary>
+        public string patientCard { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 开始时间
+        /// </summary>
+        public string beginDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 结束时间
+        /// </summary>
+        public string endDate { get; set; } = string.Empty;
+    }
+
+    public class Hosp5001ResponseData
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string queryId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 项目名称
+        /// </summary>
+        public string itemName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 1-检验 2-检查
+        /// </summary>
+        public string checkType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 0-检查中1-检查完成
+        /// </summary>
+        public string status { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 5001 response
+    /// </summary>
+    public class Hosp5001Response : HospResponseModelBase<Hosp5001ResponseData[]> { }
+
+    /// <summary>
     /// 4004 request
     /// </summary>
     public class Hosp4004Request : HospRequestModelBase

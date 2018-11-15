@@ -11,6 +11,29 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
+        [Route("api/v1/report/list")]
+        public ApiArrayResult<ReportListResponse> ReportList(ReportListRequest request)
+        {
+            return this.DoApiArrayResult(
+                proxyService.DoTrans<HModels.Hosp5001Request, HModels.Hosp5001Response, ReportListRequest, ReportListResponse[]>(
+                    request,
+                    p => new HModels.Hosp5001Request
+                    {
+                        beginDate = p.begDate,
+                        endDate = p.endDate,
+                        patientCard = p.cardNo,
+                        realName = p.name
+                    },
+                    p => p.data?.Select(a => new ReportListResponse
+                    {
+                        checkType = a.checkType,
+                        id = a.queryId,
+                        itemName = a.itemName,
+                        name = a.realName,
+                        status = a.status
+                    })?.ToArray()));
+        }
+
         [Route("api/v1/report/query")]
         public ApiResult<ReportQueryResponse> ReportQuery(ReportQueryRequest request)
         {
