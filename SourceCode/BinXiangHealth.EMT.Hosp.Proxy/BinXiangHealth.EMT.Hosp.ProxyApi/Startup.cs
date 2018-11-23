@@ -25,10 +25,18 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region standard api
+            services.AddOptions();
+            services.Configure<HospProxySettings>(Configuration.GetSection(nameof(HospProxySettings)));
+            services.AddScoped<ITestService, TestService>();
+            //IocHelper.AddScoped<IHospProxyService, HospWebProxyService>();
+            //IocHelper.AddScoped<IProxyService, ProxyService>();
+            #endregion
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            #region zmq api
             IocHelper.ServiceCollection.Configure<HospProxySettings>(Configuration.GetSection(nameof(HospProxySettings)));
-
             IocHelper.AddScoped<ITestService, TestService>();
             IocHelper.AddScoped<IHospProxyService, HospWebProxyService>();
             IocHelper.AddScoped<IProxyService, ProxyService>();
@@ -38,6 +46,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
             var iar = new AutoRegister();
             iar.Initialize();
             iar.AutoRegist();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
