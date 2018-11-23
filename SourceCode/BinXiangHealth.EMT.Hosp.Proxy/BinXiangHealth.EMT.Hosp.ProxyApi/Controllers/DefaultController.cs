@@ -1,4 +1,5 @@
 using Agebull.ZeroNet.ZeroApi;
+using BinXiangHealth.EMT.Hosp.ProxyApi.Services;
 using System;
 
 namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
@@ -15,15 +16,5 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
                 ResultData = tService.Hello
             };
         }
-    }
-
-    public interface ITestService
-    {
-        string Hello { get; }
-    }
-
-    public class TestService : ITestService
-    {
-        public string Hello => $"{Guid.NewGuid()}: hello, world!";
     }
 }

@@ -13,6 +13,8 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
         TResponse DoTrans<TRequest, TResponse>(TRequest request)
             where TRequest : IHospProxyRequestModel, new()
             where TResponse : IHospProxyResponseModel, new();
+
+        (string result, string json, string error) Test(string code, string json);
     }
 
     public class HospWebProxyService : IHospProxyService
@@ -49,6 +51,23 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public (string result, string json, string error) Test(string code, string json)
+        {
+            try
+            {
+                var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
+                var soapResult = soapClient.DoTransAsync(code, json).Result;
+
+                var result = soapResult.FormatHospResult();
+
+                return (soapResult, result, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                return (string.Empty, string.Empty, ex.GetErrorMessages().ToJson());
             }
         }
 

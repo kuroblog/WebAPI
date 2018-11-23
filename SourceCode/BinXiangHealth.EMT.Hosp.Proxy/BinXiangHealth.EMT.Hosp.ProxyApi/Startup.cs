@@ -1,5 +1,6 @@
 ﻿using Agebull.Common.Ioc;
 using Agebull.ZeroNet.Core;
+using BinXiangHealth.EMT.Hosp.ProxyApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
 
             IocHelper.ServiceCollection.Configure<HospProxySettings>(Configuration.GetSection(nameof(HospProxySettings)));
 
-            IocHelper.AddScoped<Controllers.ITestService, Controllers.TestService>();
+            IocHelper.AddScoped<ITestService, TestService>();
             IocHelper.AddScoped<IHospProxyService, HospWebProxyService>();
             IocHelper.AddScoped<IProxyService, ProxyService>();
 
