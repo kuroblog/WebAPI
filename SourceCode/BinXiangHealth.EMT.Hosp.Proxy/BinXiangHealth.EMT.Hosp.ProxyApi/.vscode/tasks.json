@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Flysh.Hosp.ProxyApi.csproj"
+                "${workspaceFolder}/BinXiangHealth.EMT.Hosp.ProxyApi.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
