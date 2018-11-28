@@ -29,6 +29,14 @@ public interface AppServiceCommonSoap
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ExChangeEmployeeInfo", ReplyAction="*")]
     [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
     System.Threading.Tasks.Task<string> ExChangeEmployeeInfoAsync(string inJsonString);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetDepartmentTree", ReplyAction="*")]
+    [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+    System.Threading.Tasks.Task<string> GetDepartmentTreeAsync(string inJsonString);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetRegisterList", ReplyAction="*")]
+    [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+    System.Threading.Tasks.Task<string> GetRegisterListAsync(string inJsonString);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.4")]
@@ -92,6 +100,16 @@ public partial class AppServiceCommonSoapClient : System.ServiceModel.ClientBase
     public System.Threading.Tasks.Task<string> ExChangeEmployeeInfoAsync(string inJsonString)
     {
         return base.Channel.ExChangeEmployeeInfoAsync(inJsonString);
+    }
+    
+    public System.Threading.Tasks.Task<string> GetDepartmentTreeAsync(string inJsonString)
+    {
+        return base.Channel.GetDepartmentTreeAsync(inJsonString);
+    }
+    
+    public System.Threading.Tasks.Task<string> GetRegisterListAsync(string inJsonString)
+    {
+        return base.Channel.GetRegisterListAsync(inJsonString);
     }
     
     public virtual System.Threading.Tasks.Task OpenAsync()

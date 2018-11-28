@@ -20,6 +20,17 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
             var result = testService.Test(dto.code, dto.param);
             return Ok(result);
         }
+
+
+        [HttpGet]
+        public ActionResult<(string result, string json, string error)> Get([FromQuery]string cardNo)
+        {
+            var result = testService.GetRegisters(new
+            {
+                cardNo
+            });
+            return Ok(result);
+        }
     }
 
     public class TestRequestDto
