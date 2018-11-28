@@ -357,6 +357,77 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
 
     /// <summary>
+    /// 0000 数据字典查询 入参
+    /// </summary>
+    public class Hosp0000Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 字典类型
+        /// </summary>
+        /// <value>EMPLOYEE|DEPARTMENT|REGLEVEL|PACTUNITINFO|NOON|PAYKIND</value>
+        public string dicType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 字典编码
+        /// </summary>
+        /// <value></value>
+        public string dicCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 字典类型为 EMPLOYEE 时使用
+        /// </summary>
+        /// <value>0 挂号|1 预约</value>
+        public string isPre { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 分院区
+        /// </summary>
+        /// <value>01 广州路|02 河西</value>
+        public string branchcode { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 0000
+    /// </summary>
+    public class Hosp0000ResponseData
+    {
+        /// <summary>
+        /// 编码
+        /// </summary>
+        /// <value></value>
+        public string code { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 名称
+        /// </summary>
+        /// <value></value>
+        public string name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        /// <value></value>
+        public string spellCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        /// <value></value>
+        public string wbCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        /// <value></value>
+        public string memo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 0000 数据字典查询 返参
+    /// </summary>
+    public class Hosp0000Response : HospResponseModelBase<Hosp0000ResponseData> { }
+
+    /// <summary>
     /// 5001 request
     /// </summary>
     public class Hosp5001Request : HospRequestModelBase
