@@ -24,13 +24,14 @@
         /// <summary>
         /// 建档卡号类型
         /// </summary>
-        /// <value>0 自费|1 物理卡号</value>
+        /// <value>1 物理卡|5 身份证|6 医保卡|7 银行卡</value>
         public string cardType { get; set; } = string.Empty;
 
         /// <summary>
         /// 查询方式
         /// </summary>
-        public string queryType { get; set; } = string.Empty;
+        /// <value>0 自费|1 物理卡号</value>
+        public string queryMode { get; set; } = string.Empty;
     }
 
     /// <summary>

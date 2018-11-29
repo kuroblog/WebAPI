@@ -198,19 +198,19 @@
         /// 科室
         /// </summary>
         /// <value></value>
-        public string detpName { get; set; }
+        public string detpName { get; set; } = string.Empty;
 
         /// <summary>
         /// 科室地址
         /// </summary>
         /// <value></value>
-        public string address { get; set; }
+        public string address { get; set; } = string.Empty;
 
         /// <summary>
         /// HIS 交易流水号
         /// </summary>
         /// <value></value>
-        public string tradeNo { get; set; }
+        public string tradeNo { get; set; } = string.Empty;
     }
 
     /// <summary>

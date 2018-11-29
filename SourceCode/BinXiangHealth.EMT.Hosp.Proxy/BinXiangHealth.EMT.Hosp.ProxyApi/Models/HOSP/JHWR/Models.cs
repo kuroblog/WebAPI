@@ -812,50 +812,50 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// 支付方式
         /// </summary>
         /// <value>ZB 支付宝|WX 微信|CA 现金|CD 银行卡</value>
-        public string feeSource { get; set; }
+        public string feeSource { get; set; } = string.Empty;
 
         /// <summary>
         /// 第三方交易流水号
         /// </summary>
-        public string tradeNo { get; set; }
+        public string tradeNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 医保结算参数 使用 # 分隔
         /// </summary>
-        public string siInfo { get; set; }
+        public string siInfo { get; set; } = string.Empty;
 
         /// <summary>
         /// 医保卡信息
         /// </summary>
-        public string siCardInfo { get; set; }
+        public string siCardInfo { get; set; } = string.Empty;
 
         /// <summary>
         /// 医保卡余额
         /// </summary>
-        public string siBalanceInfo { get; set; }
+        public string siBalanceInfo { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
         /// <value></value>
-        public string siReg { get; set; }
+        public string siReg { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
         /// <value></value>
-        public string siRegInfo { get; set; }
+        public string siRegInfo { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string siCode { get; set; }
+        public string siCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 身份证
         /// </summary>
         /// <value></value>
-        public string idCard { get; set; }
+        public string idCard { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -867,24 +867,24 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// 就诊唯一号
         /// </summary>
         /// <value></value>
-        public string hisRegisterId { get; set; }
+        public string hisRegisterId { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
         /// <value></value>
-        public string registerId { get; set; }
+        public string registerId { get; set; } = string.Empty;
 
         /// <summary>
         /// HIS 交易发票号
         /// </summary>
-        public string tradeNo { get; set; }
+        public string tradeNo { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
         /// <value></value>
-        public string vancy { get; set; }
+        public string vancy { get; set; } = string.Empty;
 
         /// <summary>
         /// 就诊序号
@@ -895,13 +895,13 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// 科室地址
         /// </summary>
         /// <value></value>
-        public string address { get; set; }
+        public string address { get; set; } = string.Empty;
 
         /// <summary>
         /// 科室
         /// </summary>
         /// <value></value>
-        public string deptname { get; set; }
+        public string deptname { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -1005,32 +1005,32 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// 规格
         /// </summary>
-        public string Spec { get; set; }
+        public string Spec { get; set; } = string.Empty;
 
         /// <summary>
         /// 用量
         /// </summary>
-        public string Dose { get; set; }
+        public string Dose { get; set; } = string.Empty;
 
         /// <summary>
         /// 包装数量
         /// </summary>
-        public string Pack_Qty { get; set; }
+        public string Pack_Qty { get; set; } = string.Empty;
 
         /// <summary>
         /// 天数
         /// </summary>
-        public string Days { get; set; }
+        public string Days { get; set; } = string.Empty;
 
         /// <summary>
         /// 复方标识
         /// </summary>
-        public string Ff { get; set; }
+        public string Ff { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string Center_Code { get; set; }
+        public string Center_Code { get; set; } = string.Empty;
 
         /// <summary>
         /// 单位
@@ -1055,14 +1055,14 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// 开方医生编码
         /// </summary>
-        public string Doc_Code { get; set; }
+        public string Doc_Code { get; set; } = string.Empty;
 
         /// <summary>
         /// 单次用量
         /// </summary>
-        public string OnceDose { get; set; }
+        public string OnceDose { get; set; } = string.Empty;
 
-        public string Frequency { get; set; }
+        public string Frequency { get; set; } = string.Empty;
 
         /// <summary>
         /// 开方医生所在科室
@@ -1092,139 +1092,285 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// 发票号
         /// </summary>
-        public string InvoiceNo { get; set; }
+        public string InvoiceNo { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string Moder { get; set; }
+        public string Moder { get; set; } = string.Empty;
 
         /// <summary>
         /// 挂号流水号
         /// </summary>
-        public string ClinicCode { get; set; }
+        public string ClinicCode { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string SysClass { get; set; }
+        public string SysClass { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string Lab_Type { get; set; }
+        public string Lab_Type { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string IsEmergency { get; set; }
+        public string IsEmergency { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string hypo_test { get; set; }
+        public string hypo_test { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string combo { get; set; }
+        public string combo { get; set; } = string.Empty;
 
         /// <summary>
         /// 包装数量
         /// </summary>
-        public string PackQty { get; set; }
+        public string PackQty { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string subcomb_no { get; set; }
+        public string subcomb_no { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string usage_code { get; set; }
+        public string usage_code { get; set; } = string.Empty;
 
         /// <summary>
         /// unkonwn
         /// </summary>
-        public string pact_name { get; set; }
+        public string pact_name { get; set; } = string.Empty;
 
         /// <summary>
         /// 物理卡号
         /// </summary>
-        public string markno { get; set; }
+        public string markno { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string price_unit { get; set; }
+        public string price_unit { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string item_class { get; set; }
+        public string item_class { get; set; } = string.Empty;
 
         /// <summary>
         /// 项目名称
         /// </summary>
-        public string name { get; set; }
+        public string name { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string patientid { get; set; }
+        public string patientid { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string sex_code { get; set; }
+        public string sex_code { get; set; } = string.Empty;
 
         /// <summary>
         /// 分方
         /// </summary>
-        public string recipeSeq { get; set; }
+        public string recipeSeq { get; set; } = string.Empty;
 
         /// <summary>
         /// 特慢病标识
         /// </summary>
         /// <value>0 普通/不能报销|1 可报销|2 慢病</value>
-        public string icdType { get; set; }
+        public string icdType { get; set; } = string.Empty;
 
         /// <summary>
         /// 诊断编码
         /// </summary>
-        public string icdCode { get; set; }
+        public string icdCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 0 普通/不可报销| 1 可报销
         /// </summary>
-        public string HasSaved { get; set; }
+        public string HasSaved { get; set; } = string.Empty;
 
         /// <summary>
         /// 病种审批单号
         /// </summary>
-        public string proCode { get; set; }
+        public string proCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 诊断名称
         /// </summary>
-        public string icdName { get; set; }
+        public string icdName { get; set; } = string.Empty;
 
         /// <summary>
         /// 值 PCC 是草药
         /// </summary>
-        public string classCode { get; set; }
+        public string classCode { get; set; } = string.Empty;
 
         /// <summary>
         /// unknown
         /// </summary>
-        public string MinUnit { get; set; }
+        public string MinUnit { get; set; } = string.Empty;
     }
 
     /// <summary>
     /// 4002 待缴费列表 返参
     /// </summary>
     public class Hosp4002Response : HospResponseModelBase<Hosp4002ResponseData[]> { }
+    #endregion
+
+    #region 4004
+    /// <summary>
+    /// 4004 门诊结算 入参
+    /// </summary>
+    [HospTransferCode("4004")]
+    public class Hosp4004Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 唯一号 使用 | 分隔
+        /// </summary>
+        public string recipe_Key { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 操作编码 由 HIS 提供
+        /// </summary>
+        public string operCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付方式
+        /// </summary>
+        /// <value>ZB 支付宝|WX 微信|CA 现金|CD 银行卡</value>
+        public string feeSource { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 总费用
+        /// </summary>
+        public string totCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 报销费用
+        /// </summary>
+        public string pubCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 个人卡内费用
+        /// </summary>
+        public string payCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 自费费用
+        /// </summary>
+        public string ownCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 第三方交易流水号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 自助机编号
+        /// </summary>
+        public string termId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医保结算参数 使用 # 分隔
+        /// </summary>
+        public string siInfo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医保卡信息
+        /// </summary>
+        public string siCardInfo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医保卡余额
+        /// </summary>
+        public string siBalanceInfo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 分方
+        /// </summary>
+        public string recipeSeq { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 最后组成的字符传(拆分)
+        /// </summary>
+        public string Recipe_CF { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 合同单位编码
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 身份证
+        /// </summary>
+        public string idCard { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 4004 data
+    /// </summary>
+    public class Hosp4004ResponseData
+    {
+        /// <summary>
+        /// 取药窗口
+        /// </summary>
+        public string windowNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 发票号
+        /// </summary>
+        public string invoiceNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 发票序号
+        /// </summary>
+        public string invoiceSeq { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医保卡交易流水号
+        /// </summary>
+        public string siTradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 余额
+        /// </summary>
+        public string vancy { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 执行科室
+        /// </summary>
+        public string deptname { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 费用详细列表(应该是个类,暂时不用)
+        /// </summary>
+        public string FeeItemList { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 4004 门诊结算 返参
+    /// </summary>
+    public class Hosp4004Response : HospResponseModelBase<Hosp4004ResponseData> { }
     #endregion
 
     /// <summary>
@@ -1285,137 +1431,6 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     /// 5001 response
     /// </summary>
     public class Hosp5001Response : HospResponseModelBase<Hosp5001ResponseData[]> { }
-
-    /// <summary>
-    /// 4004 request
-    /// </summary>
-    public class Hosp4004Request : HospRequestModelBase
-    {
-        /// <summary>
-        /// String 	是	唯一号 多个 | 分隔
-        /// </summary>
-        public string recipe_Key { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	就诊人姓名
-        /// </summary>
-        public string realName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	门诊流水号
-        /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	缴费操作员
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	支付方式
-        /// </summary>
-        public string feeSource { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	总费用
-        /// </summary>
-        public string totCost { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	报销费用
-        /// </summary>
-        public string pubCost { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	个人卡内费用
-        /// </summary>
-        public string payCost { get; set; } = string.Empty;
-
-        /// <summary>
-        /// }String	是	自费费用
-        /// </summary>
-        public string ownCost { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	交易流水号
-        /// </summary>
-        public string tradeNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	设备编号
-        /// </summary>
-        public string termId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	否	医保结算参数 多个#分隔
-        /// </summary>
-        public string siInfo { get; set; } = string.Empty;
-
-        ///// <summary>
-        ///// 医保卡信息
-        ///// </summary>
-        //public string siCardInfo { get; set; }
-
-        //public string siBalanceInfo { get; set; }
-
-        //public string recipeSeq { get; set; }
-
-        ///// <summary>
-        ///// 最后组成的字符传(拆分)
-        ///// </summary>
-        //public string Recipe_CF { get; set; }
-
-        ///// <summary>
-        ///// 合同单位
-        ///// </summary>
-        //public string pactCode { get; set; }
-
-        ///// <summary>
-        ///// 身份证号
-        ///// </summary>
-        //public string idCard { get; set; }
-    }
-
-    public class Hosp4004ResponseData
-    {
-        /// <summary>
-        /// 取药窗口
-        /// </summary>
-        public string windowNo { get; set; } = string.Empty;
-
-        ///// <summary>
-        ///// 发票号
-        ///// </summary>
-        //public string invoiceNo { get; set; }
-
-        ///// <summary>
-        ///// 发票序号
-        ///// </summary>
-        //public string invoiceSeq { get; set; }
-
-        ///// <summary>
-        ///// 社保卡交易流水号
-        ///// </summary>
-
-        //public string siTradeNo { get; set; }
-
-        ///// <summary>
-        ///// 余额
-        ///// </summary>
-        //public string vancy { get; set; }
-
-        ///// <summary>
-        ///// 执行科室
-        ///// </summary>
-        //public string deptname { get; set; }
-
-        //public string FeeItemList { get; set; }
-    }
-
-    /// <summary>
-    /// 4004 response
-    /// </summary>
-    public class Hosp4004Response : HospResponseModelBase<Hosp4004ResponseData> { }
 
     /// <summary>
     /// 4003 request

@@ -19,7 +19,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     idCard = req.idCard,
                     mCardNo = req.cardNo,
                     mType = req.cardType,
-                    queryType = req.queryType,
+                    queryType = req.queryMode,
                     realName = req.name
                 },
                 res => new CardQueryResponse

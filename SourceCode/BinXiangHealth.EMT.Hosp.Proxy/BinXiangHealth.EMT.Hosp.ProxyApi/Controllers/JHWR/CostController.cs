@@ -43,31 +43,32 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 })?.ToArray()));
 
         [Route("api/v1/cost/settle")]
-        public ApiResult<CostSettleResponse> CostSettle(CostSettleRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp4004Request, HModels.Hosp4004Response, CostSettleRequest, CostSettleResponse>(
-                    request,
-                    p => new HModels.Hosp4004Request
-                    {
-                        clinicNo = p.clinicNo,
-                        feeSource = p.source,
-                        operCode = p.operCode,
-                        ownCost = p.ownCost,
-                        payCost = p.payCost,
-                        pubCost = p.pubCost,
-                        realName = p.name,
-                        recipe_Key = p.recipeKey,
-                        siInfo = p.siInfo,
-                        termId = p.termId,
-                        totCost = p.totCost,
-                        tradeNo = p.tradeNo
-                    },
-                    p => new CostSettleResponse
-                    {
-                        windowNo = p.data?.windowNo
-                    }));
-        }
+        public ApiResult<CostSettleResponse> CostSettle(CostSettleRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp4004Request, HModels.Hosp4004Response, CostSettleRequest, CostSettleResponse>(
+                request,
+                req => new HModels.Hosp4004Request
+                {
+                    clinicNo = req.clinicNo,
+                    feeSource = req.source,
+                    operCode = req.operCode,
+                    ownCost = req.ownCost,
+                    payCost = req.payCost,
+                    pubCost = req.pubCost,
+                    realName = req.name,
+                    recipe_Key = req.recipeKey,
+                    totCost = req.totCost,
+                    tradeNo = req.tradeNo
+                },
+                res => new CostSettleResponse
+                {
+                    windowNo = res.data?.windowNo,
+                    invoiceNo = res.data?.invoiceNo,
+                    invoiceSeq = res.data?.invoiceSeq,
+                    siTradeNo = res.data?.siTradeNo,
+                    vancy = res.data?.vancy,
+                    deptName = res.data?.deptname,
+                    feeItems = res.data?.FeeItemList
+                }));
 
         [Route("api/v1/cost/pre")]
         public ApiResult<CostPreSettleResponse> CostPreSettle(CostPreSettleRequest request)

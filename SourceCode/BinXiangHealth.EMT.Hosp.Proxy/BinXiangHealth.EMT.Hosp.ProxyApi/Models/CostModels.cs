@@ -26,92 +26,92 @@
         /// <summary>
         /// 唯一号
         /// </summary>
-        public string recipeKey { get; set; }
+        public string recipeKey { get; set; } = string.Empty;
 
         /// <summary>
         /// 处方号
         /// </summary>
-        public string recipeNo { get; set; }
+        public string recipeNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 处方内序号
         /// </summary>
-        public string seqNo { get; set; }
+        public string seqNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 交易类型
         /// </summary>
-        public string transType { get; set; }
+        public string transType { get; set; } = string.Empty;
 
         /// <summary>
         /// 最小费用代码
         /// </summary>
-        public string costCode { get; set; }
+        public string costCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否是药品
         /// </summary>
-        public string drugFlag { get; set; }
+        public string drugFlag { get; set; } = string.Empty;
 
         /// <summary>
         /// 项目编码
         /// </summary>
-        public string itemCode { get; set; }
+        public string itemCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 项目名称
         /// </summary>
-        public string itemName { get; set; }
+        public string itemName { get; set; } = string.Empty;
 
         /// <summary>
         /// 数量
         /// </summary>
-        public string qty { get; set; }
+        public string qty { get; set; } = string.Empty;
 
         /// <summary>
         /// 单位
         /// </summary>
-        public string unit { get; set; }
+        public string unit { get; set; } = string.Empty;
 
         /// <summary>
         /// 单价
         /// </summary>
-        public string unitPrice { get; set; }
+        public string unitPrice { get; set; } = string.Empty;
 
         /// <summary>
         /// 总额
         /// </summary>
-        public string totCost { get; set; }
+        public string totCost { get; set; } = string.Empty;
 
         /// <summary>
         /// 开方医生
         /// </summary>
-        public string docName { get; set; }
+        public string docName { get; set; } = string.Empty;
 
         /// <summary>
         /// 开方医生所在科室
         /// </summary>
-        public string docDeptName { get; set; }
+        public string docDeptName { get; set; } = string.Empty;
 
         /// <summary>
         /// 执行科室编码
         /// </summary>
-        public string execDeptCode { get; set; }
+        public string execDeptCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 执行科室
         /// </summary>
-        public string execDeptName { get; set; }
+        public string execDeptName { get; set; } = string.Empty;
 
         /// <summary>
         /// 开立时间
         /// </summary>
-        public string moDate { get; set; }
+        public string moDate { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否收费
         /// </summary>
-        public string payFlag { get; set; }
+        public string payFlag { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -121,64 +121,55 @@
     public class CostSettleRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
-        /// String 	是	唯一号 多个 | 分隔
+        /// 唯一号 使用 | 分隔
         /// </summary>
         public string recipeKey { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	就诊人姓名
+        /// 姓名
         /// </summary>
         public string name { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	门诊流水号
+        /// 就诊唯一号
         /// </summary>
         public string clinicNo { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	缴费操作员
+        /// 操作编码 由 HIS 提供
         /// </summary>
         public string operCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	支付方式
+        /// 支付方式
         /// </summary>
+        /// <value>ZB 支付宝|WX 微信|CA 现金|CD 银行卡</value>
         public string source { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	总费用
+        /// 总费用
         /// </summary>
         public string totCost { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	报销费用
+        /// 报销费用
         /// </summary>
         public string pubCost { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	个人卡内费用
+        /// 个人卡内费用
         /// </summary>
         public string payCost { get; set; } = string.Empty;
 
         /// <summary>
-        /// }String	是	自费费用
+        /// 自费费用
         /// </summary>
         public string ownCost { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	交易流水号
+        /// 第三方交易流水号
         /// </summary>
         public string tradeNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	设备编号
-        /// </summary>
-        public string termId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	否	医保结算参数 多个#分隔
-        /// </summary>
-        public string siInfo { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -191,6 +182,36 @@
         /// 取药窗口
         /// </summary>
         public string windowNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 发票号
+        /// </summary>
+        public string invoiceNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 发票序号
+        /// </summary>
+        public string invoiceSeq { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医保卡交易流水号
+        /// </summary>
+        public string siTradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 余额
+        /// </summary>
+        public string vancy { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 执行科室
+        /// </summary>
+        public string deptName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 费用详细列表(应该是个类,暂时不用)
+        /// </summary>
+        public string feeItems { get; set; } = string.Empty;
     }
 
     /// <summary>
