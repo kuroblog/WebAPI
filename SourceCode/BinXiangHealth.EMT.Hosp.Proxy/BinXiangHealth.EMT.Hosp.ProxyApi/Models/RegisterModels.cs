@@ -7,17 +7,7 @@
     public class RegisterQueryRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
-        /// 开始时间yyyy-MM-dd
-        /// </summary>
-        public string begDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 结束时间yyyy-MM-dd
-        /// </summary>
-        public string endDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊人卡号
+        /// 10位就诊卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
     }
@@ -29,32 +19,29 @@
     public class RegisterQueryResponse : IProxyResponseModel
     {
         /// <summary>
-        /// 状态：1预约2取消预约3预约转挂号
+        /// 支付状态
         /// </summary>
+        /// <value>1 已支付|2 未支付|3 已取消|4 已失效</value>
         public string state { get; set; } = string.Empty;
 
         /// <summary>
-        /// 科室名称
+        /// 科室
         /// </summary>
         public string deptName { get; set; } = string.Empty;
 
         /// <summary>
-        /// 预约类型/1、专家号/2、普通号
+        /// 预约类型
         /// </summary>
+        /// <value>1 专家号|2 普通号</value>
         public string regType { get; set; } = string.Empty;
 
         /// <summary>
-        /// 预约日期
+        /// 就诊日期
         /// </summary>
-        public string visistDate { get; set; } = string.Empty;
+        public string regDate { get; set; } = string.Empty;
 
         /// <summary>
-        /// 预约时间段
-        /// </summary>
-        public string visitingTime { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 医生姓名
+        /// 医生
         /// </summary>
         public string doctName { get; set; } = string.Empty;
 
@@ -66,22 +53,22 @@
         /// <summary>
         /// 总费用
         /// </summary>
-        public string cost { get; set; } = string.Empty;
+        public string total { get; set; } = string.Empty;
 
         /// <summary>
-        /// 就诊人卡号
+        /// 10位就诊卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
 
         /// <summary>
-        /// 就诊人姓名
+        /// 姓名
         /// </summary>
         public string name { get; set; } = string.Empty;
 
         /// <summary>
         /// 提交时间
         /// </summary>
-        public string regDate { get; set; } = string.Empty;
+        public string operDate { get; set; } = string.Empty;
 
         /// <summary>
         /// 看诊序号
@@ -95,7 +82,7 @@
     }
 
     /// <summary>
-    /// register do request
+    /// /// register do request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp3004Request"/>
     public class RegisterDoRequest : ProxyRequestModelBase, IProxyRequestModel

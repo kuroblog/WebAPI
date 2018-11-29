@@ -20,26 +20,26 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     clinicNo = req.id,
                     patientCard = req.cardNo
                 },
-                res => res.data?.Select(a => new CostListResponse
+                res => res.data?.Select(p => new CostListResponse
                 {
-                    costCode = a.Fee_Code,
-                    docDeptName = a.DocDept_Name,
-                    docName = a.Doc_Name,
-                    drugFlag = a.Drug_Flag,
-                    execDeptCode = a.Exec_DeptCode,
-                    execDeptName = a.Exec_DeptName,
-                    itemCode = a.Item_Code,
-                    itemName = a.Item_Name,
-                    moDate = a.Mo_Date,
-                    payFlag = a.Pay_Flag,
-                    qty = a.Qty,
-                    recipeKey = a.Recipe_Key,
-                    recipeNo = a.Recipe_No,
-                    seqNo = a.SeqNo,
-                    totCost = a.Tot_Cost,
-                    transType = a.Trans_Type,
-                    unit = a.UNIT,
-                    unitPrice = a.Unit_Price
+                    costCode = p.Fee_Code,
+                    docDeptName = p.DocDept_Name,
+                    docName = p.Doc_Name,
+                    drugFlag = p.Drug_Flag,
+                    execDeptCode = p.Exec_DeptCode,
+                    execDeptName = p.Exec_DeptName,
+                    itemCode = p.Item_Code,
+                    itemName = p.Item_Name,
+                    moDate = p.Mo_Date,
+                    payFlag = p.Pay_Flag,
+                    qty = p.Qty,
+                    recipeKey = p.Recipe_Key,
+                    recipeNo = p.Recipe_No,
+                    seqNo = p.SeqNo,
+                    totCost = p.Tot_Cost,
+                    transType = p.Trans_Type,
+                    unit = p.UNIT,
+                    unitPrice = p.Unit_Price
                 })?.ToArray()));
 
         [Route("api/v1/cost/settle")]

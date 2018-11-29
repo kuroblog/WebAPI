@@ -56,34 +56,28 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 }));
 
         [Route("api/v1/register/query")]
-        public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request)
-        {
-            return this.DoApiArrayResult(
-                proxyService.DoTrans<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryRequest, RegisterQueryResponse[]>(
-                    request,
-                    p => new HModels.HospRegisterQueryRequest
-                    {
-                        beginDate = p.begDate,
-                        cardNo = p.cardNo,
-                        endDate = p.endDate
-                    },
-                    p => p.data?.Select(a => new RegisterQueryResponse
-                    {
-                        cardNo = a.idCardNo,
-                        clinicNo = a.clinicNo,
-                        cost = a.total,
-                        deptName = a.deptName,
-                        doctName = a.doctName,
-                        doctTitle = a.doctTitle,
-                        name = a.idCardName,
-                        regDate = a.date,
-                        regType = a.regType,
-                        seeNo = a.seeNo,
-                        state = a.state,
-                        visistDate = a.visistDate,
-                        visitingTime = a.visitingTime
-                    })?.ToArray()));
-        }
+        public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request) => this.DoApiArrayResult(
+            proxyService.DoTrans<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryRequest, RegisterQueryResponse[]>(
+                request,
+                req => new HModels.HospRegisterQueryRequest
+                {
+                    cardNo = req.cardNo
+                },
+                res => res.data?.Select(p => new RegisterQueryResponse
+                {
+                    cardNo = p.cardNo,
+                    clinicNo = p.clinicNo,
+                    total = p.total,
+                    deptName = p.deptName,
+                    doctName = p.doctName,
+                    doctTitle = p.doctTitle,
+                    name = p.name,
+                    regDate = p.visistDate,
+                    regType = p.regType,
+                    seeNo = p.seeNo,
+                    state = p.state,
+                    operDate = p.operDate
+                })?.ToArray()));
 
         [Route("api/v1/register/callback")]
         public ApiResult<RegisterCallbackResponse> RegisterCallback(RegisterCallbackRequest request)

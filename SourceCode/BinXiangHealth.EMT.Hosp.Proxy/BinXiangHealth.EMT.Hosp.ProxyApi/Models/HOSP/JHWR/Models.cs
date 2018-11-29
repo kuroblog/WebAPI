@@ -40,179 +40,47 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         }
     }
 
+    #region 挂号列表查询
     /// <summary>
-    /// 检查报告入参
-    /// </summary>
-    public class HospReportQueryRequest : HospRequestModelBase
-    {
-        /// <summary>
-        /// 主键
-        /// </summary>
-        public string queryId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 1-检验 2-检查
-        /// </summary>
-        public string checkType { get; set; } = string.Empty;
-    }
-
-    public class HospReportQueryResponseData
-    {
-        /// <summary>
-        /// 姓名
-        /// </summary>
-        public string realName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 性别
-        /// </summary>
-        public string sex { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 检查日期
-        /// </summary>
-        public string checkDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 报告类型
-        /// </summary>
-        public string type { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 检查所见
-        /// </summary>
-        public string reportMessage { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 检查结论
-        /// </summary>
-        public string repostResult { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// 检查报告返参
-    /// </summary>
-    public class HospReportQueryResponse : HospResponseModelBase<HospReportQueryResponseData> { }
-
-    /// <summary>
-    /// 检验报告详情入参
-    /// </summary>
-    public class HospReportDetailRequest : HospRequestModelBase
-    {
-        /// <summary>
-        /// 主键
-        /// </summary>
-        public string queryId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 1-检验 2-检查
-        /// </summary>
-        public string checkType { get; set; } = string.Empty;
-    }
-
-    public class HospReportDetailResponseData
-    {
-        /// <summary>
-        /// 报告名称
-        /// </summary>
-        public string itemName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 姓名
-        /// </summary>
-        public string realName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 性别
-        /// </summary>
-        public string sex { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 检查日期
-        /// </summary>
-        public string checkDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 报告类型
-        /// </summary>
-        public string type { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 样本
-        /// </summary>
-        public string sample { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 实际值
-        /// </summary>
-        public string realResult { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 参考值
-        /// </summary>
-        public string referprint { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 结论
-        /// </summary>
-        public string conclusion { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// 检验报告详情返参
-    /// </summary>
-    public class HospReportDetailResponse : HospResponseModelBase<HospReportDetailResponseData[]> { }
-
-    /// <summary>
-    /// 挂号列表查询入参
+    /// 挂号列表查询 入参
     /// </summary>
     public class HospRegisterQueryRequest : HospRequestModelBase
     {
         /// <summary>
-        /// 开始时间yyyy-MM-dd
-        /// </summary>
-        public string beginDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 结束时间yyyy-MM-dd
-        /// </summary>
-        public string endDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊人卡号
+        /// 10位就诊卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
     }
 
+    /// <summary>
+    /// 挂号列表查询 data
+    /// </summary>
     public class HospRegisterQueryResponseData
     {
         /// <summary>
-        /// 状态：1预约2取消预约3预约转挂号
+        /// 支付状态
         /// </summary>
+        /// <value>1 已支付|2 未支付|3 已取消|4 已失效</value>
         public string state { get; set; } = string.Empty;
 
         /// <summary>
-        /// 科室名称
+        /// 科室
         /// </summary>
         public string deptName { get; set; } = string.Empty;
 
         /// <summary>
-        /// 预约类型/1、专家号/2、普通号
+        /// 预约类型
         /// </summary>
+        /// <value>1 专家号|2 普通号</value>
         public string regType { get; set; } = string.Empty;
 
         /// <summary>
-        /// 预约日期
+        /// 就诊日期
         /// </summary>
         public string visistDate { get; set; } = string.Empty;
 
         /// <summary>
-        /// 预约时间段
-        /// </summary>
-        public string visitingTime { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 医生姓名
+        /// 医生
         /// </summary>
         public string doctName { get; set; } = string.Empty;
 
@@ -227,123 +95,24 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         public string total { get; set; } = string.Empty;
 
         /// <summary>
-        /// 就诊人卡号
-        /// </summary>
-        public string idCardNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊人姓名
-        /// </summary>
-        public string idCardName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 提交时间
-        /// </summary>
-        public string date { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 看诊序号
-        /// </summary>
-        public string seeNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊唯一号
-        /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// 挂号列表查询返参
-    /// </summary>
-    public class HospRegisterQueryResponse : HospResponseModelBase<HospRegisterQueryResponseData[]> { }
-
-    /// <summary>
-    /// 预约挂号列表查询入参
-    /// </summary>
-    public class HospPreRegisterQueryRequest : HospRequestModelBase
-    {
-        /// <summary>
-        /// 开始时间yyyy-MM-dd
-        /// </summary>
-        public string beginDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 结束时间yyyy-MM-dd
-        /// </summary>
-        public string endDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊人卡号
+        /// 10位就诊卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
-    }
-
-    public class HospPreRegisterQueryResponseData
-    {
-        /// <summary>
-        /// 状态：1预约2取消预约3预约转挂号
-        /// </summary>
-        public string state { get; set; } = string.Empty;
 
         /// <summary>
-        /// 科室名称
+        /// 姓名
         /// </summary>
-        public string deptName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约类型/1、专家号/2、普通号
-        /// </summary>
-        public string regType { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约日期
-        /// </summary>
-        public string visistDate { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约时间段
-        /// </summary>
-        public string visitingTime { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 医生姓名
-        /// </summary>
-        public string doctName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 医生职称
-        /// </summary>
-        public string doctTitle { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 总费用
-        /// </summary>
-        public string total { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊人卡号
-        /// </summary>
-        public string idCardNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊人姓名
-        /// </summary>
-        public string idCardName { get; set; } = string.Empty;
+        public string name { get; set; } = string.Empty;
 
         /// <summary>
         /// 提交时间
         /// </summary>
-        public string date { get; set; } = string.Empty;
+        public string operDate { get; set; } = string.Empty;
 
         /// <summary>
         /// 看诊序号
         /// </summary>
         public string seeNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约唯一号
-        /// </summary>
-        public string bookingNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 就诊唯一号
@@ -352,9 +121,13 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
-    /// 预约挂号列表查询返参
+    /// 挂号列表查询 返参
     /// </summary>
-    public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
+    public class HospRegisterQueryResponse : HospResponseModelBase<HospRegisterQueryResponseData[]> { }
+    #endregion
+
+    #region xxxx dept-tree
+    #endregion
 
     #region 0000
     /// <summary>
@@ -1372,6 +1145,228 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     /// </summary>
     public class Hosp4004Response : HospResponseModelBase<Hosp4004ResponseData> { }
     #endregion
+
+    /// <summary>
+    /// 检查报告入参
+    /// </summary>
+    public class HospReportQueryRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string queryId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 1-检验 2-检查
+        /// </summary>
+        public string checkType { get; set; } = string.Empty;
+    }
+
+    public class HospReportQueryResponseData
+    {
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string sex { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查日期
+        /// </summary>
+        public string checkDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 报告类型
+        /// </summary>
+        public string type { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查所见
+        /// </summary>
+        public string reportMessage { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查结论
+        /// </summary>
+        public string repostResult { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 检查报告返参
+    /// </summary>
+    public class HospReportQueryResponse : HospResponseModelBase<HospReportQueryResponseData> { }
+
+    /// <summary>
+    /// 检验报告详情入参
+    /// </summary>
+    public class HospReportDetailRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string queryId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 1-检验 2-检查
+        /// </summary>
+        public string checkType { get; set; } = string.Empty;
+    }
+
+    public class HospReportDetailResponseData
+    {
+        /// <summary>
+        /// 报告名称
+        /// </summary>
+        public string itemName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 性别
+        /// </summary>
+        public string sex { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 检查日期
+        /// </summary>
+        public string checkDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 报告类型
+        /// </summary>
+        public string type { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 样本
+        /// </summary>
+        public string sample { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 实际值
+        /// </summary>
+        public string realResult { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 参考值
+        /// </summary>
+        public string referprint { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 结论
+        /// </summary>
+        public string conclusion { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 检验报告详情返参
+    /// </summary>
+    public class HospReportDetailResponse : HospResponseModelBase<HospReportDetailResponseData[]> { }
+
+    /// <summary>
+    /// 预约挂号列表查询入参
+    /// </summary>
+    public class HospPreRegisterQueryRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 开始时间yyyy-MM-dd
+        /// </summary>
+        public string beginDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 结束时间yyyy-MM-dd
+        /// </summary>
+        public string endDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人卡号
+        /// </summary>
+        public string cardNo { get; set; } = string.Empty;
+    }
+
+    public class HospPreRegisterQueryResponseData
+    {
+        /// <summary>
+        /// 状态：1预约2取消预约3预约转挂号
+        /// </summary>
+        public string state { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 科室名称
+        /// </summary>
+        public string deptName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约类型/1、专家号/2、普通号
+        /// </summary>
+        public string regType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约日期
+        /// </summary>
+        public string visistDate { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约时间段
+        /// </summary>
+        public string visitingTime { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医生姓名
+        /// </summary>
+        public string doctName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 医生职称
+        /// </summary>
+        public string doctTitle { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 总费用
+        /// </summary>
+        public string total { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人卡号
+        /// </summary>
+        public string idCardNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊人姓名
+        /// </summary>
+        public string idCardName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 提交时间
+        /// </summary>
+        public string date { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 看诊序号
+        /// </summary>
+        public string seeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string clinicNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 预约挂号列表查询返参
+    /// </summary>
+    public class HospPreRegisterQueryResponse : HospResponseModelBase<HospPreRegisterQueryResponseData[]> { }
 
     /// <summary>
     /// 5001 request
