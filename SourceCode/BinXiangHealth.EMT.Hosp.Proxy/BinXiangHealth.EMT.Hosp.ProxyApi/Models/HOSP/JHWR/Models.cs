@@ -387,7 +387,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
-    /// 0000
+    /// 0000 data
     /// </summary>
     public class Hosp0000ResponseData
     {
@@ -425,7 +425,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     /// <summary>
     /// 0000 数据字典查询 返参
     /// </summary>
-    public class Hosp0000Response : HospResponseModelBase<Hosp0000ResponseData> { }
+    public class Hosp0000Response : HospResponseModelBase<Hosp0000ResponseData[]> { }
 
     /// <summary>
     /// 5001 request
