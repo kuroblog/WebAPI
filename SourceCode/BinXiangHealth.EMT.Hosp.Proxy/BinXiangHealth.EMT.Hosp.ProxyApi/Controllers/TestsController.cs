@@ -21,13 +21,24 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
             return Ok(result);
         }
 
-
+        [Route("reg")]
         [HttpGet]
         public ActionResult<(string result, string json, string error)> Get([FromQuery]string cardNo)
         {
             var result = testService.GetRegisters(new
             {
                 cardNo
+            });
+            return Ok(result);
+        }
+
+        [Route("dept")]
+        [HttpGet]
+        public ActionResult<(string result, string json, string error)> GetDeptTree([FromQuery]string deptCode)
+        {
+            var result = testService.GetDeptTree(new
+            {
+                deptCode
             });
             return Ok(result);
         }
