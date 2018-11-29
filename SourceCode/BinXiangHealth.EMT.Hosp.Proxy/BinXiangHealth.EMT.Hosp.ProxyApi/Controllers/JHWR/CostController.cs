@@ -33,9 +33,9 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     moDate = p.Mo_Date,
                     payFlag = p.Pay_Flag,
                     qty = p.Qty,
-                    recipeKey = p.Recipe_Key,
+                    id = p.Recipe_Key,
                     recipeNo = p.Recipe_No,
-                    seqNo = p.SeqNo,
+                    recipeSeqNo = p.SeqNo,
                     totCost = p.Tot_Cost,
                     transType = p.Trans_Type,
                     unit = p.UNIT,
@@ -55,9 +55,10 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     payCost = req.payCost,
                     pubCost = req.pubCost,
                     realName = req.name,
-                    recipe_Key = req.recipeKey,
+                    recipe_Key = req.id,
                     totCost = req.totCost,
-                    tradeNo = req.tradeNo
+                    tradeNo = req.tradeNo,
+                    Recipe_CF = req.recipeKeys
                 },
                 res => new CostSettleResponse
                 {

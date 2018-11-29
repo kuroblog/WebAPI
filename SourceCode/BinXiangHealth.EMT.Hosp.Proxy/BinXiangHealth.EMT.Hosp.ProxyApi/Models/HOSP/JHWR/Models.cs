@@ -127,7 +127,65 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class HospRegisterQueryResponse : HospResponseModelBase<HospRegisterQueryResponseData[]> { }
     #endregion
 
-    #region xxxx dept-tree
+    #region 科室列表查询
+    /// <summary>
+    /// 科室列表查询 入参
+    /// </summary>
+    [HospTransferCode("xxxx")]
+    public class HospDeptTreeQueryRequest : HospRequestModelBase
+    {
+        /// <summary>
+        /// 科室编码
+        /// </summary>
+        public string deptCode { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 科室列表查询 data
+    /// </summary>
+    public class HospDeptTreeQueryResponseData
+    {
+        /// <summary>
+        /// 一级科室编码
+        /// </summary>
+        public string ParentCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 科室
+        /// </summary>
+        public string ParentName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 二级科室列表
+        /// </summary>
+        public HospDeptTreeQueryResponseItem[] childrenList { get; set; } = new HospDeptTreeQueryResponseItem[] { };
+    }
+
+    /// <summary>
+    /// 科室列表查询 item
+    /// </summary>
+    public class HospDeptTreeQueryResponseItem
+    {
+        /// <summary>
+        /// 二级科室编码
+        /// </summary>
+        public string DeptCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 二级科室
+        /// </summary>
+        public string DeptName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string SimpleName { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 科室列表查询 返参
+    /// </summary>
+    public class HospDeptTreeQueryResponse : HospResponseModelBase<HospDeptTreeQueryResponseData[]> { }
     #endregion
 
     #region 0000
@@ -630,6 +688,17 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// </summary>
         /// <value></value>
         public string idCard { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 支付标识
+        /// </summary>
+        /// <value>>0 未支付<br></value>
+        /// <remark>
+        /// his 业务逻辑
+        /// 为 0 时会在待缴费列表中增加待缴费的挂号项目
+        /// 其它时会走原来的逻辑，不添加待缴费的挂号项目
+        /// </remark>
+        public string flag { get; set; } = "0";
     }
 
     /// <summary>
@@ -1085,7 +1154,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         public string recipeSeq { get; set; } = string.Empty;
 
         /// <summary>
-        /// 最后组成的字符传(拆分)
+        /// 最后组成的字符串(拆分) 
         /// </summary>
         public string Recipe_CF { get; set; } = string.Empty;
 

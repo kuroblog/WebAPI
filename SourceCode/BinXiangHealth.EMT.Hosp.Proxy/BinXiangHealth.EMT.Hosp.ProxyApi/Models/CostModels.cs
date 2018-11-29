@@ -26,7 +26,7 @@
         /// <summary>
         /// 唯一号
         /// </summary>
-        public string recipeKey { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
 
         /// <summary>
         /// 处方号
@@ -36,7 +36,7 @@
         /// <summary>
         /// 处方内序号
         /// </summary>
-        public string seqNo { get; set; } = string.Empty;
+        public string recipeSeqNo { get; set; } = string.Empty;
 
         /// <summary>
         /// 交易类型
@@ -123,7 +123,7 @@
         /// <summary>
         /// 唯一号 使用 | 分隔
         /// </summary>
-        public string recipeKey { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
 
         /// <summary>
         /// 姓名
@@ -170,6 +170,11 @@
         /// 第三方交易流水号
         /// </summary>
         public string tradeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 处方号|处方内序号,处方号|处方内序号
+        /// </summary>
+        public string recipeKeys { get; set; } = string.Empty;
     }
 
     /// <summary>

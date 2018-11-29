@@ -201,6 +201,27 @@
     }
 
     /// <summary>
+    /// register cancel request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp3005Response"/>
+    public class RegisterCancelRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string id { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// register cancel response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp3005ResponseData"/>
+    public class RegisterCancelResponse : IProxyResponseModel
+    {
+        public int state { get; set; } = 0;
+    }
+
+    /// <summary>
     /// register callback request
     /// </summary>
     ///<seealso cref="HOSP.JHWR.HospRegCallbackRequest"/>
@@ -247,27 +268,6 @@
     /// </summary>
     ///<seealso cref="HOSP.JHWR.HospRegCallbackResponseData"/>
     public class RegisterCallbackResponse : IProxyResponseModel
-    {
-        public int state { get; set; } = 0;
-    }
-
-    /// <summary>
-    /// register cancel request
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp3005Response"/>
-    public class RegisterCancelRequest : ProxyRequestModelBase, IProxyRequestModel
-    {
-        /// <summary>
-        /// 就诊唯一号
-        /// </summary>
-        public string id { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// register cancel response
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp3005ResponseData"/>
-    public class RegisterCancelResponse : IProxyResponseModel
     {
         public int state { get; set; } = 0;
     }
