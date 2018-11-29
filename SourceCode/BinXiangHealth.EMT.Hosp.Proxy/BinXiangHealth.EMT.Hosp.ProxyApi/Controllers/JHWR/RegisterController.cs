@@ -11,6 +11,37 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
+        [Route("api/v1/register/do")]
+        public ApiResult<RegisterDoResponse> RegisterDo(RegisterDoRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp3004Request, HModels.Hosp3004Response, RegisterDoRequest, RegisterDoResponse>(
+                request,
+                req => new HModels.Hosp3004Request
+                {
+                    clinicFee = req.cost,
+                    departmentCode = req.deptCode,
+                    departmentName = req.deptName,
+                    doctorCode = req.doctCode,
+                    doctorName = req.doctName,
+                    operCode = req.operCode,
+                    pactCode = req.pactCode,
+                    patientCard = req.cardNo,
+                    realName = req.name,
+                    registrationDate = req.regDate,
+                    registrationLevel = req.regLevelCode,
+                    registrationNoonCode = req.regNoonCode,
+                    registrationTime = req.regTime,
+                    registrationType = req.regType,
+                    shemaId = req.id
+                },
+                res => new RegisterDoResponse
+                {
+                    id = res.data?.hisRegisterId,
+                    seeNo = res.data?.seeNo,
+                    detpName = res.data?.deptname,
+                    address = res.data?.address,
+                    tradeNo = res.data?.tradeNo
+                }));
+
         [Route("api/v1/register/query")]
         public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request)
         {
@@ -39,39 +70,6 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                         visistDate = a.visistDate,
                         visitingTime = a.visitingTime
                     })?.ToArray()));
-        }
-
-        [Route("api/v1/register/do")]
-        public ApiResult<RegisterDoResponse> RegisterDo(RegisterDoRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp3004Request, HModels.Hosp3004Response, RegisterDoRequest, RegisterDoResponse>(
-                    request,
-                    p => new HModels.Hosp3004Request
-                    {
-                        clinicFee = p.cost,
-                        departmentCode = p.deptCode,
-                        departmentName = p.deptName,
-                        doctorCode = p.doctCode,
-                        doctorName = p.doctName,
-                        isFee = p.isFee,
-                        operCode = p.operCode,
-                        pactCode = p.pactCode,
-                        patientCard = p.cardNo,
-                        realName = p.name,
-                        registrationDate = p.regDate,
-                        registrationLevel = p.regCode,
-                        registrationNoonCode = p.regNoonCode,
-                        registrationTime = p.regTime,
-                        registrationType = p.regType,
-                        shemaId = p.id,
-                        termId = p.termId
-                    },
-                    p => new RegisterDoResponse
-                    {
-                        clinicNo = p.data?.clinicNo,
-                        seeNo = p.data?.seeNo
-                    }));
         }
 
         [Route("api/v1/register/callback")]

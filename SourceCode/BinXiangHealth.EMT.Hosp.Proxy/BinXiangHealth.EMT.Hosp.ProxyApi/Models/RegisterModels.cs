@@ -101,50 +101,55 @@
     public class RegisterDoRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
-        /// 是	排班编号（可为空）专家号必填
+        /// 排班编号
         /// </summary>
         public string id { get; set; } = string.Empty;
 
         /// <summary>
-        /// 就诊人真实姓名
+        /// 姓名
         /// </summary>
         public string name { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 10位就诊卡号
+        /// </summary>
+        /// <value></value>
         public string cardNo { get; set; } = string.Empty;
 
         /// <summary>
-        /// 挂号科室名称
+        /// 科室
         /// </summary>
         public string deptName { get; set; } = string.Empty;
 
         /// <summary>
-        /// 挂号科室编号
+        /// 科室编码
         /// </summary>
         public string deptCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// 医生名称
+        /// 医生
         /// </summary>
         public string doctName { get; set; } = string.Empty;
 
         /// <summary>
-        /// 医生编号
+        /// 医生编码
         /// </summary>
         public string doctCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// 挂号级别
+        /// 挂号级别编码
         /// </summary>
-        public string regCode { get; set; } = string.Empty;
+        public string regLevelCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// 挂号午别
+        /// 挂号午别编码
         /// </summary>
         public string regNoonCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// 门诊类型  PT 普通门诊  ZJ 专家门诊
+        /// 挂号类型
         /// </summary>
+        /// <value>PT 普通|ZJ 专家</value>
         public string regType { get; set; } = string.Empty;
 
         /// <summary>
@@ -153,34 +158,24 @@
         public string regDate { get; set; } = string.Empty;
 
         /// <summary>
-        /// 挂号时间段 08:00 如果挂号不到时间点 默认为空
+        /// 挂号时间段 HH:mm
         /// </summary>
         public string regTime { get; set; } = string.Empty;
 
         /// <summary>
-        /// 挂号费用（单位:元）
+        /// 挂号费用
         /// </summary>
         public string cost { get; set; } = string.Empty;
 
         /// <summary>
-        /// 自费医保病人标识
+        /// 合同单位编码
         /// </summary>
         public string pactCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// 自助机机器编号
-        /// </summary>
-        public string termId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 操作员工号
+        /// 操作编码 由 HIS 提供
         /// </summary>
         public string operCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 是否支付 0未支付 1账户支付 2已经支付
-        /// </summary>
-        public string isFee { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -192,12 +187,30 @@
         /// <summary>
         /// 就诊唯一号
         /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
 
         /// <summary>
-        /// 就诊序号
+        /// 看诊序号
         /// </summary>
         public string seeNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 科室
+        /// </summary>
+        /// <value></value>
+        public string detpName { get; set; }
+
+        /// <summary>
+        /// 科室地址
+        /// </summary>
+        /// <value></value>
+        public string address { get; set; }
+
+        /// <summary>
+        /// HIS 交易流水号
+        /// </summary>
+        /// <value></value>
+        public string tradeNo { get; set; }
     }
 
     /// <summary>

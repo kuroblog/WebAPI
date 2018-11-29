@@ -12,43 +12,39 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
         [Route("api/v1/schedule/query")]
-        public ApiArrayResult<ScheduleQueryResponse> ScheduleQuery(ScheduleQueryRequest request)
-        {
-            return this.DoApiArrayResult(
-                proxyService.DoTrans<HModels.Hosp2003Request, HModels.Hosp2003Response, ScheduleQueryRequest, ScheduleQueryResponse[]>(
-                    request,
-                    p => new HModels.Hosp2003Request
-                    {
-                        beginDate = p.begDate,
-                        deptCode = p.deptCode,
-                        endDate = p.endDate,
-                        isPre = p.isPre
-                    },
-                    p => p.data?.Select(a => new ScheduleQueryResponse
-                    {
-                        address = a.ADRESS,
-                        begTime = a.BEGIN_TIME,
-                        costCode = a.ITEMCODE,
-                        date = a.SEE_DATE,
-                        deptCode = a.DEPT_CODE,
-                        deptDesc = "",
-                        deptName = a.DEPT_NAME,
-                        doctCode = a.DOCT_CODE,
-                        doctDesc = "",
-                        doctName = a.DOCT_NAME,
-                        endTime = a.END_TIME,
-                        id = a.ID,
-                        limit = a.BOOKING_LMT,
-                        noonCode = a.NOONCODE,
-                        noonName = a.NOONNAME,
-                        regCode = a.REGLEVL_CODE,
-                        regCost = a.TOT_COST,
-                        registered = a.TEL_REGED,
-                        regName = a.REGLEVL_NAME,
-                        regType = a.REGISTRATION_TYPE,
-                        sortId = a.SORTID,
-                        week = a.WEEK
-                    })?.ToArray()));
-        }
+        public ApiArrayResult<ScheduleQueryResponse> ScheduleQuery(ScheduleQueryRequest request) => this.DoApiArrayResult(
+            proxyService.DoTrans<HModels.Hosp2003Request, HModels.Hosp2003Response, ScheduleQueryRequest, ScheduleQueryResponse[]>(
+                request,
+                req => new HModels.Hosp2003Request
+                {
+                    beginDate = req.begDate,
+                    deptCode = req.deptCode,
+                    endDate = req.endDate,
+                    isPre = req.isPre
+                },
+                res => res.data?.Select(p => new ScheduleQueryResponse
+                {
+                    address = p.ADRESS,
+                    begTime = p.BEGIN_TIME,
+                    costCode = p.ITEMCODE,
+                    date = p.SEE_DATE,
+                    deptCode = p.DEPT_CODE,
+                    deptName = p.DEPT_NAME,
+                    doctCode = p.DOCT_CODE,
+                    doctName = p.DOCT_NAME,
+                    endTime = p.END_TIME,
+                    id = p.ID,
+                    limitMax = p.BOOKING_LMT,
+                    noonCode = p.NOONCODE,
+                    noonName = p.NOONNAME,
+                    regCode = p.REGLEVL_CODE,
+                    cost = p.TOT_COST,
+                    limitReged = p.TEL_REGED,
+                    regName = p.REGLEVL_NAME,
+                    regType = p.REGISTRATION_TYPE,
+                    sortId = p.SORTID,
+                    week = p.WEEK,
+                    limitHave = p.HASREG
+                })?.ToArray()));
     }
 }

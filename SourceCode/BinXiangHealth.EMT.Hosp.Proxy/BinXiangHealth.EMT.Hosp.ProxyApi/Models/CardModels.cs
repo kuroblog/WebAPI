@@ -7,27 +7,28 @@
     public class CardQueryRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
-        /// String	否	就诊人姓名
+        /// 姓名
         /// </summary>
         public string name { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	否	就诊人身份证
-        /// </summary>
-        public string idCard { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	否	建档卡号
+        /// 建档卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	否	建档卡号类型 5身份证 6医保卡  7银行卡
+        /// 身份证
         /// </summary>
+        public string idCard { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 建档卡号类型
+        /// </summary>
+        /// <value>0 自费|1 物理卡号</value>
         public string cardType { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	是	查询方式 0 自费患者查询  姓名和身份证  1 物理卡号查询
+        /// 查询方式
         /// </summary>
         public string queryType { get; set; } = string.Empty;
     }
@@ -39,47 +40,42 @@
     public class CardQueryResponse : IProxyResponseModel
     {
         /// <summary>
-        /// 0000096874
+        /// 10位就诊卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
 
         /// <summary>
-        /// 毛萍
+        /// 姓名
         /// </summary>
         public string name { get; set; } = string.Empty;
 
         /// <summary>
-        /// Vacancy
-        /// </summary>
-        public string vacancy { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 女
+        /// 性别
         /// </summary>
         public string sex { get; set; } = string.Empty;
 
         /// <summary>
-        /// 1988-07-09
+        /// 生日
         /// </summary>
         public string birthday { get; set; } = string.Empty;
 
         /// <summary>
-        /// Linkman_name
+        /// 联系人
         /// </summary>
-        public string linkmanName { get; set; } = string.Empty;
+        public string linkman { get; set; } = string.Empty;
 
         /// <summary>
-        /// Linkman_add
+        /// 联系人地址
         /// </summary>
-        public string linkmanAdd { get; set; } = string.Empty;
+        public string linkmanAddr { get; set; } = string.Empty;
 
         /// <summary>
-        /// Linkman_tel
+        /// 联系人电话
         /// </summary>
         public string linkmanTel { get; set; } = string.Empty;
 
         /// <summary>
-        /// PactCode
+        /// 合同单位编码
         /// </summary>
         public string pactCode { get; set; } = string.Empty;
     }

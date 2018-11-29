@@ -11,31 +11,27 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
         [Route("api/v1/card/query")]
-        public ApiResult<CardQueryResponse> CardQuery(CardQueryRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp1002Request, HModels.Hosp1002Response, CardQueryRequest, CardQueryResponse>(
-                    request,
-                    p => new HModels.Hosp1002Request
-                    {
-                        idCard = p.idCard,
-                        mCardNo = p.cardNo,
-                        mType = p.cardType,
-                        queryType = p.queryType,
-                        realName = p.name
-                    },
-                    p => new CardQueryResponse
-                    {
-                        birthday = p.data?.birthday,
-                        cardNo = p.data?.cardNo,
-                        linkmanAdd = p.data?.linkman_add,
-                        linkmanName = p.data?.linkman_name,
-                        linkmanTel = p.data?.linkman_tel,
-                        name = p.data?.name,
-                        pactCode = p.data?.pactCode,
-                        sex = p.data?.sex,
-                        vacancy = p.data?.vacancy
-                    }));
-        }
+        public ApiResult<CardQueryResponse> CardQuery(CardQueryRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp1002Request, HModels.Hosp1002Response, CardQueryRequest, CardQueryResponse>(
+                request,
+                req => new HModels.Hosp1002Request
+                {
+                    idCard = req.idCard,
+                    mCardNo = req.cardNo,
+                    mType = req.cardType,
+                    queryType = req.queryType,
+                    realName = req.name
+                },
+                res => new CardQueryResponse
+                {
+                    birthday = res.data?.birthday,
+                    cardNo = res.data?.cardNo,
+                    linkmanAddr = res.data?.linkman_add,
+                    linkman = res.data?.linkman_name,
+                    linkmanTel = res.data?.linkman_tel,
+                    name = res.data?.name,
+                    pactCode = res.data?.pactCode,
+                    sex = res.data?.sex
+                }));
     }
 }
