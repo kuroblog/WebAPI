@@ -6,6 +6,14 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public interface IProxyService
     {
+        (int state, string message, TResponse data) GetDepartmentTree<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
+            where THospRequest : IHospProxyRequestModel, new()
+            where THospResponse : IHospProxyResponseModel, new();
+
+        (int state, string message, TResponse data) GetRegisterList<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
+            where THospRequest : IHospProxyRequestModel, new()
+            where THospResponse : IHospProxyResponseModel, new();
+
         (int state, string message, TResponse data) DoTrans<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
             where THospRequest : IHospProxyRequestModel, new()
             where THospResponse : IHospProxyResponseModel, new();
@@ -18,6 +26,78 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
         public ProxyService(IHospProxyService hospProxyService)
         {
             this.hospProxyService = hospProxyService;
+        }
+
+        public (int state, string message, TResponse data) GetDepartmentTree<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
+            where THospRequest : IHospProxyRequestModel, new()
+            where THospResponse : IHospProxyResponseModel, new()
+        {
+            return Do(
+                MethodBase.GetCurrentMethod().Name,
+                () =>
+                {
+                    LogRecorder.MonitorTrace(request.ToJson());
+                    var hospRequest = requestParser(request);
+
+                    var hospResult = hospProxyService.GetDepartmentTree<THospRequest, THospResponse>(hospRequest);
+
+                    (int state, string message, TResponse data) response;
+                    if (hospResult == null)
+                    {
+                        response = (-1, "hosp result is null.", default(TResponse));
+                    }
+                    else if (hospResult.IsSuccess == false)
+                    {
+                        response = (hospResult.GetResponseCode(), hospResult.GetResponseMessage(), default(TResponse));
+                    }
+
+                    response = (0, string.Empty, hospResponseParser.Invoke(hospResult));
+
+                    LogRecorder.MonitorTrace(new
+                    {
+                        response.state,
+                        response.message,
+                        response.data
+                    }.ToJson());
+
+                    return response;
+                });
+        }
+
+        public (int state, string message, TResponse data) GetRegisterList<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)
+            where THospRequest : IHospProxyRequestModel, new()
+            where THospResponse : IHospProxyResponseModel, new()
+        {
+            return Do(
+                MethodBase.GetCurrentMethod().Name,
+                () =>
+                {
+                    LogRecorder.MonitorTrace(request.ToJson());
+                    var hospRequest = requestParser(request);
+
+                    var hospResult = hospProxyService.GetRegisterList<THospRequest, THospResponse>(hospRequest);
+
+                    (int state, string message, TResponse data) response;
+                    if (hospResult == null)
+                    {
+                        response = (-1, "hosp result is null.", default(TResponse));
+                    }
+                    else if (hospResult.IsSuccess == false)
+                    {
+                        response = (hospResult.GetResponseCode(), hospResult.GetResponseMessage(), default(TResponse));
+                    }
+
+                    response = (0, string.Empty, hospResponseParser.Invoke(hospResult));
+
+                    LogRecorder.MonitorTrace(new
+                    {
+                        response.state,
+                        response.message,
+                        response.data
+                    }.ToJson());
+
+                    return response;
+                });
         }
 
         public (int state, string message, TResponse data) DoTrans<THospRequest, THospResponse, TRequest, TResponse>(TRequest request, Func<TRequest, THospRequest> requestParser, Func<THospResponse, TResponse> hospResponseParser)

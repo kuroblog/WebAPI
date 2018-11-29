@@ -56,8 +56,8 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 }));
 
         [Route("api/v1/register/query")]
-        public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request) => this.DoApiArrayResult(
-            proxyService.DoTrans<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryRequest, RegisterQueryResponse[]>(
+        public ApiArrayResult<RegisterQueryResponse> RegisterQuery(RegisterQueryRequest request) => this.DoApiArrayResult(
+            proxyService.GetRegisterList<HModels.HospRegisterQueryRequest, HModels.HospRegisterQueryResponse, RegisterQueryRequest, RegisterQueryResponse[]>(
                 request,
                 req => new HModels.HospRegisterQueryRequest
                 {

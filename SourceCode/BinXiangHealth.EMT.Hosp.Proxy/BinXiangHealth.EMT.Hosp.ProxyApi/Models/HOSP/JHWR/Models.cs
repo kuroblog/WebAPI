@@ -44,6 +44,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     /// <summary>
     /// 挂号列表查询 入参
     /// </summary>
+    [HospTransferCode("xxxx")]
     public class HospRegisterQueryRequest : HospRequestModelBase
     {
         /// <summary>
