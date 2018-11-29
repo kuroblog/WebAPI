@@ -7,12 +7,12 @@
     public class CostListRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
-        /// String	是	门诊挂号流水号
+        /// 就诊唯一号
         /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
 
         /// <summary>
-        /// String	否	就诊人卡号
+        /// 10位就诊卡号
         /// </summary>
         public string cardNo { get; set; } = string.Empty;
     }
@@ -24,95 +24,92 @@
     public class CostListResponse : IProxyResponseModel
     {
         /// <summary>
-        /// String	是	唯一号
+        /// 唯一号
         /// </summary>
         public string recipeKey { get; set; }
 
-        ///String	是	处方号
+        /// <summary>
+        /// 处方号
+        /// </summary>
         public string recipeNo { get; set; }
 
         /// <summary>
-        /// String	是	处方内序号
+        /// 处方内序号
         /// </summary>
         public string seqNo { get; set; }
 
         /// <summary>
-        /// String	是	交易类型
+        /// 交易类型
         /// </summary>
         public string transType { get; set; }
 
         /// <summary>
-        /// String	是	最小费用代码
+        /// 最小费用代码
         /// </summary>
         public string costCode { get; set; }
 
         /// <summary>
-        /// 	String	是	是否是药品
+        /// 是否是药品
         /// </summary>
         public string drugFlag { get; set; }
 
         /// <summary>
-        /// String	是	项目编码
+        /// 项目编码
         /// </summary>
         public string itemCode { get; set; }
 
         /// <summary>
-        ///String	是	项目名称
+        /// 项目名称
         /// </summary>
         public string itemName { get; set; }
 
         /// <summary>
-        /// String	是	医保项目相关参数 多个#分隔
-        /// </summary>
-        public string ybItemInfo { get; set; }
-
-        /// <summary>
-        /// String	是	数量
+        /// 数量
         /// </summary>
         public string qty { get; set; }
 
         /// <summary>
-        /// String	是	单位
+        /// 单位
         /// </summary>
         public string unit { get; set; }
 
         /// <summary>
-        /// String	是	单价
+        /// 单价
         /// </summary>
         public string unitPrice { get; set; }
 
         /// <summary>
-        /// String	是	总额
+        /// 总额
         /// </summary>
         public string totCost { get; set; }
 
         /// <summary>
-        /// String	是	开方医生
+        /// 开方医生
         /// </summary>
         public string docName { get; set; }
 
         /// <summary>
-        /// String	是	开方医生所在科室
+        /// 开方医生所在科室
         /// </summary>
         public string docDeptName { get; set; }
 
         /// <summary>
-        /// String	是	执行科室
+        /// 执行科室编码
         /// </summary>
         public string execDeptCode { get; set; }
 
         /// <summary>
-        /// String	是	执行科室名称
+        /// 执行科室
         /// </summary>
         public string execDeptName { get; set; }
 
         /// <summary>
-        /// String	是	开立时间
+        /// 开立时间
         /// </summary>
         public string moDate { get; set; }
 
         /// <summary>
-        /// 	String	是	是否收费
+        /// 是否收费
         /// </summary>
         public string payFlag { get; set; }
     }

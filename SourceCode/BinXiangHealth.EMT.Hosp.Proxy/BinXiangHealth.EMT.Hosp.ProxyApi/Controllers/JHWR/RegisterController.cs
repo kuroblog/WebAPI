@@ -42,6 +42,19 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     tradeNo = res.data?.tradeNo
                 }));
 
+        [Route("api/v1/register/cancel")]
+        public ApiResult<RegisterCancelResponse> RegisterCancel(RegisterCancelRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp3005Request, HModels.Hosp3005Response, RegisterCancelRequest, RegisterCancelResponse>(
+                request,
+                req => new HModels.Hosp3005Request
+                {
+                    registerId = req.id
+                },
+                res => new RegisterCancelResponse
+                {
+                    state = res.IsSuccess ? 0 : -1
+                }));
+
         [Route("api/v1/register/query")]
         public ApiArrayResult<RegisterQueryResponse> PreRegisterQuery(RegisterQueryRequest request)
         {
@@ -89,23 +102,6 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                         tradeNo = p.tradeNo
                     },
                     p => new RegisterCallbackResponse
-                    {
-                        state = p.data == null ? 0 : p.data.state
-                    }));
-        }
-
-        [Route("api/v1/register/cancel")]
-        public ApiResult<RegisterCancelResponse> RegisterCancel(RegisterCancelRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp3005Request, HModels.Hosp3005Response, RegisterCancelRequest, RegisterCancelResponse>(
-                    request,
-                    p => new HModels.Hosp3005Request
-                    {
-                        clinicNo = p.clinicNo,
-                        operCode = p.operCode
-                    },
-                    p => new RegisterCancelResponse
                     {
                         state = p.data == null ? 0 : p.data.state
                     }));

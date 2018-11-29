@@ -271,14 +271,9 @@
     public class RegisterCancelRequest : ProxyRequestModelBase, IProxyRequestModel
     {
         /// <summary>
-        /// String	是	挂号唯一号（his）
+        /// 就诊唯一号
         /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// string	是	操作员工号
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
+        public string id { get; set; } = string.Empty;
     }
 
     /// <summary>
