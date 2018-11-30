@@ -5,6 +5,8 @@
         public HospProxyModes Mode { get; set; }
 
         public string Url { get; set; }
+
+        public string OperCode { get; set; }
     }
 
     public enum HospProxyModes

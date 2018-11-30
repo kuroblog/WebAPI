@@ -53,7 +53,7 @@
         /// <summary>
         /// 总费用
         /// </summary>
-        public string total { get; set; } = string.Empty;
+        public string cost { get; set; } = string.Empty;
 
         /// <summary>
         /// 10位就诊卡号
@@ -158,11 +158,6 @@
         /// 合同单位编码
         /// </summary>
         public string pactCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 操作编码 由 HIS 提供
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
     }
 
     /// <summary>

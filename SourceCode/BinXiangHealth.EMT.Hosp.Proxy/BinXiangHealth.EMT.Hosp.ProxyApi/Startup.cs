@@ -12,12 +12,16 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
 {
     public class Startup
     {
+        public static string OperCode { get; private set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
             Agebull.Common.Configuration.ConfigurationManager.SetConfiguration(configuration);
             ZeroApplication.CheckOption();
+
+            OperCode = configuration.GetSection(nameof(HospProxySettings)).GetSection(nameof(HospProxySettings.OperCode)).Value;
         }
 
         public IConfiguration Configuration { get; }

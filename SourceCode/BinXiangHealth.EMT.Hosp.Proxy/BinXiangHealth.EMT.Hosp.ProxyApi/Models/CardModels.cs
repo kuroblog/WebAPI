@@ -79,5 +79,10 @@
         /// 合同单位编码
         /// </summary>
         public string pactCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 身份证
+        /// </summary>
+        public string idNo { get; set; }
     }
 }

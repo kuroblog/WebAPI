@@ -22,7 +22,6 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     departmentName = req.deptName,
                     doctorCode = req.doctCode,
                     doctorName = req.doctName,
-                    operCode = req.operCode,
                     pactCode = req.pactCode,
                     patientCard = req.cardNo,
                     realName = req.name,
@@ -67,7 +66,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 {
                     cardNo = p.cardNo,
                     clinicNo = p.clinicNo,
-                    total = p.total,
+                    cost = p.total,
                     deptName = p.deptName,
                     doctName = p.doctName,
                     doctTitle = p.doctTitle,

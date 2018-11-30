@@ -36,7 +36,7 @@
         /// <summary>
         /// 处方内序号
         /// </summary>
-        public string recipeSeqNo { get; set; } = string.Empty;
+        public string recipeSeq { get; set; } = string.Empty;
 
         /// <summary>
         /// 交易类型
@@ -46,7 +46,7 @@
         /// <summary>
         /// 最小费用代码
         /// </summary>
-        public string costCode { get; set; } = string.Empty;
+        public string feeCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 是否是药品
@@ -81,7 +81,7 @@
         /// <summary>
         /// 总额
         /// </summary>
-        public string totCost { get; set; } = string.Empty;
+        public string cost { get; set; } = string.Empty;
 
         /// <summary>
         /// 开方医生
@@ -91,17 +91,12 @@
         /// <summary>
         /// 开方医生所在科室
         /// </summary>
-        public string docDeptName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 执行科室编码
-        /// </summary>
-        public string execDeptCode { get; set; } = string.Empty;
+        public string exeDoctDept { get; set; } = string.Empty;
 
         /// <summary>
         /// 执行科室
         /// </summary>
-        public string execDeptName { get; set; } = string.Empty;
+        public string exeDeptName { get; set; } = string.Empty;
 
         /// <summary>
         /// 开立时间
@@ -112,6 +107,11 @@
         /// 是否收费
         /// </summary>
         public string payFlag { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 发票号
+        /// </summary>
+        public string invoiceNo { get; set; } = string.Empty;
     }
 
     /// <summary>
@@ -123,7 +123,7 @@
         /// <summary>
         /// 唯一号 使用 | 分隔
         /// </summary>
-        public string id { get; set; } = string.Empty;
+        public string keys { get; set; } = string.Empty;
 
         /// <summary>
         /// 姓名
@@ -134,11 +134,6 @@
         /// 就诊唯一号
         /// </summary>
         public string clinicNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 操作编码 由 HIS 提供
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 支付方式
@@ -165,6 +160,11 @@
         /// 自费费用
         /// </summary>
         public string ownCost { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 合同单位编码
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 第三方交易流水号

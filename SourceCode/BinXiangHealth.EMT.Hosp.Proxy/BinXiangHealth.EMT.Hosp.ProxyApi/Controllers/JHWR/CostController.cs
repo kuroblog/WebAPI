@@ -22,12 +22,11 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 },
                 res => res.data?.Select(p => new CostListResponse
                 {
-                    costCode = p.Fee_Code,
-                    docDeptName = p.DocDept_Name,
+                    feeCode = p.Fee_Code,
+                    exeDoctDept = p.DocDept_Name,
                     docName = p.Doc_Name,
                     drugFlag = p.Drug_Flag,
-                    execDeptCode = p.Exec_DeptCode,
-                    execDeptName = p.Exec_DeptName,
+                    exeDeptName = p.Exec_DeptName,
                     itemCode = p.Item_Code,
                     itemName = p.Item_Name,
                     moDate = p.Mo_Date,
@@ -35,11 +34,12 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     qty = p.Qty,
                     id = p.Recipe_Key,
                     recipeNo = p.Recipe_No,
-                    recipeSeqNo = p.SeqNo,
-                    totCost = p.Tot_Cost,
+                    recipeSeq = p.SeqNo,
+                    cost = p.Tot_Cost,
                     transType = p.Trans_Type,
                     unit = p.UNIT,
-                    unitPrice = p.Unit_Price
+                    unitPrice = p.Unit_Price,
+                    invoiceNo = p.InvoiceNo
                 })?.ToArray()));
 
         [Route("api/v1/cost/settle")]
@@ -50,13 +50,13 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 {
                     clinicNo = req.clinicNo,
                     feeSource = req.source,
-                    operCode = req.operCode,
                     ownCost = req.ownCost,
                     payCost = req.payCost,
                     pubCost = req.pubCost,
                     realName = req.name,
-                    recipe_Key = req.id,
+                    recipe_Key = req.keys,
                     totCost = req.totCost,
+                    pactCode = req.pactCode,
                     tradeNo = req.tradeNo,
                     Recipe_CF = req.recipeKeys
                 },

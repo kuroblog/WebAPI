@@ -31,7 +31,8 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     linkmanTel = res.data?.linkman_tel,
                     name = res.data?.name,
                     pactCode = res.data?.pactCode,
-                    sex = res.data?.sex
+                    sex = res.data?.sex,
+                    idNo = res.data?.idno
                 }));
     }
 }

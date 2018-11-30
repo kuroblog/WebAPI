@@ -26,7 +26,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 {
                     address = p.ADRESS,
                     begTime = p.BEGIN_TIME,
-                    costCode = p.ITEMCODE,
+                    itemCode = p.ITEMCODE,
                     date = p.SEE_DATE,
                     deptCode = p.DEPT_CODE,
                     deptName = p.DEPT_NAME,

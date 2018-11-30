@@ -129,7 +129,7 @@
         /// <summary>
         /// HIS 项目编码 对应收费项目(根据此字段1005查询医保中心对应的项目编码和医院的自付比率)
         /// </summary>
-        public string costCode { get; set; } = string.Empty;
+        public string itemCode { get; set; } = string.Empty;
 
         /// <summary>
         /// 排序 Id

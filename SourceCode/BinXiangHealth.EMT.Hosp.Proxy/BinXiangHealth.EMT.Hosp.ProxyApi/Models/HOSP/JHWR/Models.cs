@@ -632,13 +632,13 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// 操作编码 由 HIS 提供
         /// </summary>
-        public string operCode { get; set; } = string.Empty;
+        public string operCode { get; set; } = Startup.OperCode;
 
         /// <summary>
         /// 是否支付 实际支付状态以 clinicFee 为准
         /// </summary>
         /// <value>0 未支付|1 账户支付|2 已支付</value>
-        public string isFee { get; set; } = string.Empty;
+        public string isFee { get; set; } = "0";
 
         /// <summary>
         /// 支付方式
@@ -1095,7 +1095,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// <summary>
         /// 操作编码 由 HIS 提供
         /// </summary>
-        public string operCode { get; set; } = string.Empty;
+        public string operCode { get; set; } = Startup.OperCode;
 
         /// <summary>
         /// 支付方式
