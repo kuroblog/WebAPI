@@ -32,7 +32,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
             url = proxySettings.Value.Url;
         }
 
-        public TResponse GetDepartmentTree<TRequest, TResponse>(TRequest request)
+        private TResponse doService<TRequest, TResponse>(TRequest request, Func<AppServiceCommonSoap, (string code, string json), string> svc)
             where TRequest : IHospProxyRequestModel, new()
             where TResponse : IHospProxyResponseModel, new()
         {
@@ -44,7 +44,8 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
                     LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
 
                     var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
-                    var soapResult = soapClient.GetDepartmentTreeAsync(soapRequest.json).Result;
+                    //var soapResult = soapClient.GetDepartmentTreeAsync(soapRequest.json).Result;
+                    var soapResult = svc.Invoke(soapClient, soapRequest);
 
                     LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
 
@@ -58,62 +59,93 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi
             {
                 throw ex;
             }
+        }
+
+        public TResponse GetDepartmentTree<TRequest, TResponse>(TRequest request)
+            where TRequest : IHospProxyRequestModel, new()
+            where TResponse : IHospProxyResponseModel, new()
+        {
+            return doService<TRequest, TResponse>(request, (soap, req) => soap.GetDepartmentTreeAsync(req.json).Result);
+            // try
+            // {
+            //     using (MonitorScope.CreateScope(MethodBase.GetCurrentMethod().Name))
+            //     {
+            //         var soapRequest = request.ConvertToHospRequest();
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
+
+            //         var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
+            //         var soapResult = soapClient.GetDepartmentTreeAsync(soapRequest.json).Result;
+
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
+
+            //         var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doFormatResult = soapResult }.ToJson());
+
+            //         return result;
+            //     }
+            // }
+            // catch (Exception ex)
+            // {
+            //     throw ex;
+            // }
         }
 
         public TResponse GetRegisterList<TRequest, TResponse>(TRequest request)
             where TRequest : IHospProxyRequestModel, new()
             where TResponse : IHospProxyResponseModel, new()
         {
-            try
-            {
-                using (MonitorScope.CreateScope(MethodBase.GetCurrentMethod().Name))
-                {
-                    var soapRequest = request.ConvertToHospRequest();
-                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
+            return doService<TRequest, TResponse>(request, (soap, req) => soap.GetRegisterListAsync(req.json).Result);
+            // try
+            // {
+            //     using (MonitorScope.CreateScope(MethodBase.GetCurrentMethod().Name))
+            //     {
+            //         var soapRequest = request.ConvertToHospRequest();
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
 
-                    var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
-                    var soapResult = soapClient.GetRegisterListAsync(soapRequest.json).Result;
+            //         var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
+            //         var soapResult = soapClient.GetRegisterListAsync(soapRequest.json).Result;
 
-                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
 
-                    var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
-                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doFormatResult = soapResult }.ToJson());
+            //         var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doFormatResult = soapResult }.ToJson());
 
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //         return result;
+            //     }
+            // }
+            // catch (Exception ex)
+            // {
+            //     throw ex;
+            // }
         }
 
         public TResponse DoTrans<TRequest, TResponse>(TRequest request)
             where TRequest : IHospProxyRequestModel, new()
             where TResponse : IHospProxyResponseModel, new()
         {
-            try
-            {
-                using (MonitorScope.CreateScope(MethodBase.GetCurrentMethod().Name))
-                {
-                    var soapRequest = request.ConvertToHospRequest();
-                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
+            return doService<TRequest, TResponse>(request, (soap, req) => soap.DoTransAsync(req.code, req.json).Result);
+            // try
+            // {
+            //     using (MonitorScope.CreateScope(MethodBase.GetCurrentMethod().Name))
+            //     {
+            //         var soapRequest = request.ConvertToHospRequest();
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doRequest = soapRequest.json }.ToJson());
 
-                    var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
-                    var soapResult = soapClient.DoTransAsync(soapRequest.code, soapRequest.json).Result;
+            //         var soapClient = GenerateSoapClient<AppServiceCommonSoap>();
+            //         var soapResult = soapClient.DoTransAsync(soapRequest.code, soapRequest.json).Result;
 
-                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doResponse = soapResult }.ToJson());
 
-                    var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
-                    LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doFormatResult = soapResult }.ToJson());
+            //         var result = JsonConvert.DeserializeObject<TResponse>(soapResult.FormatHospResult());
+            //         LogRecorder.MonitorTrace(new { doCode = soapRequest.code, doFormatResult = soapResult }.ToJson());
 
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //         return result;
+            //     }
+            // }
+            // catch (Exception ex)
+            // {
+            //     throw ex;
+            // }
         }
 
         private TSoapProxyService GenerateSoapClient<TSoapProxyService>()
