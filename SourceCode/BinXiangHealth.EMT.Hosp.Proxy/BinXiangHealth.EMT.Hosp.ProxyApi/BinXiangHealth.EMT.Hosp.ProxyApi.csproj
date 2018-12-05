@@ -12,6 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="libzmq.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libzmq.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Agebull.Rpc.Flysh" Version="1.0.0.3" />
     <PackageReference Include="Agebull.WebApi.ModelBase" Version="2.3.2.69" />
     <PackageReference Include="Agebull.ZeroNet.Core" Version="1.2.0.60" />

@@ -1,6 +1,30 @@
 ﻿namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models
 {
     /// <summary>
+    /// schedule time request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2004Request"/>
+    public class ScheduleTimeRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 排班编号
+        /// </summary>
+        public string id { get; set; }
+    }
+
+    /// <summary>
+    /// schedule time response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2004Response"/>
+    public class ScheduleTimeResponse : IProxyResponseModel
+    {
+        /// <summary>
+        /// 时间点信息
+        /// </summary>
+        public string[] times { get; set; }
+    }
+
+    /// <summary>
     /// schedule query request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.Hosp2003Request"/>

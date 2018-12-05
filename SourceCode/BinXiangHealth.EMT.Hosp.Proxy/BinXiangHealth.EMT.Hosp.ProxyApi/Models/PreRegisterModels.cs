@@ -1,6 +1,120 @@
 ﻿namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models
 {
     /// <summary>
+    /// pre register do request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2011Request"/>
+    public class PreRegisterDoRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string id { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 合同单位编码
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// pre register do response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2011ResponseData"/>
+    public class PreRegisterDoResponse : IProxyResponseModel
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string id { get; set; } = string.Empty;
+
+        /// <summary>
+        /// HIS 交易发票号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 看诊序号
+        /// </summary>
+        public string seeNo { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 科室地址
+        /// </summary>
+        public string address { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 科室
+        /// </summary>
+        public string deptname { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// pre register cancel request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2007Request"/>
+    public class PreRegisterCancelRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string id { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// pre register cancel response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2007Response"/>
+    public class PreRegisterCancelResponse : IProxyResponseModel
+    {
+        public int state { get; set; } = 0;
+    }
+
+    /// <summary>
+    /// pre register request
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2008Request"/>
+    public class PreRegisterRequest : ProxyRequestModelBase, IProxyRequestModel
+    {
+        /// <summary>
+        /// 排班编号
+        /// </summary>
+        public string id { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string name { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 10位就诊卡号
+        /// </summary>
+        public string cardNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约时间 yyyy-MM-ddHH:mm:ss
+        /// </summary>
+        public string time { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// pre register response
+    /// </summary>
+    /// <seealso cref="HOSP.JHWR.Hosp2008ResponseData"/>
+    public class PreRegisterResponse : IProxyResponseModel
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string preNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// HIS 交易发票号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
     /// pre register query request
     /// </summary>
     /// <seealso cref="HOSP.JHWR.HospPreRegisterQueryRequest"/>
@@ -97,154 +211,5 @@
         /// 就诊唯一号
         /// </summary>
         public string clinicNo { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// pre register do request
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp2011Request"/>
-    public class PreRegisterDoRequest : ProxyRequestModelBase, IProxyRequestModel
-    {
-        /// <summary>
-        /// 预约唯一号
-        /// </summary>
-        public string preNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 挂号费用（单位:元）
-        /// </summary>
-        public string preCost { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 自费医保病人标识
-        /// </summary>
-        public string pactCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 支付方式 ZB 支付宝WX 微信CA 现金CD 银行卡
-        /// </summary>
-        public string source { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 支付流水号
-        /// </summary>
-        public string tradeNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 云端默认用户就诊卡号
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// pre register do response
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp2011ResponseData"/>
-    public class PreRegisterDoResponse : IProxyResponseModel
-    {
-        /// <summary>
-        /// 就诊唯一号
-        /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// pre register cancel request
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp2007Request"/>
-    public class PreRegisterCancelRequest : ProxyRequestModelBase, IProxyRequestModel
-    {
-        /// <summary>
-        /// String	是	预约唯一号
-        /// </summary>
-        public string preNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	操作员
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// pre register cancel response
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp2007Response"/>
-    public class PreRegisterCancelResponse : IProxyResponseModel
-    {
-        public int state { get; set; } = 0;
-    }
-
-    /// <summary>
-    /// pre register request
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp2008Request"/>
-    public class PreRegisterRequest : ProxyRequestModelBase, IProxyRequestModel
-    {
-        /// <summary>
-        /// String	否	排班编号 专家挂号必填
-        /// </summary>
-        public string id { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 患者卡号
-        /// </summary>
-        public string cardNo { get; set; } = string.Empty;
-
-        /// <summary>
-        ///患者姓名 
-        /// </summary>
-        public string name { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 是否专家挂号 1 专家  0 不是专家
-        /// </summary>
-        public string preType { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	否	科室代码  不是专家必填
-        /// </summary>
-        public string deptCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约时间 yyyy-MM-ddHH:mi:ss
-        /// </summary>
-        public string preTime { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 是否支付 0 未支付 1 账户支付 2 已经支付
-        /// </summary>
-        public string isFee { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 总费用
-        /// </summary>
-        public string preCost { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约来源 标识厂商
-        /// </summary>
-        public string preSource { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// pre register response
-    /// </summary>
-    /// <seealso cref="HOSP.JHWR.Hosp2008ResponseData"/>
-    public class PreRegisterResponse : IProxyResponseModel
-    {
-        /// <summary>
-        /// 预约唯一号
-        /// </summary>
-        public string preNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊唯一号 
-        /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊序号
-        /// </summary>
-        public string seeNo { get; set; } = string.Empty;
     }
 }

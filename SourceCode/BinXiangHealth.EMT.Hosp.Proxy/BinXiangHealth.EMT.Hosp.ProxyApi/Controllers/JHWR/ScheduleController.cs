@@ -2,6 +2,7 @@ using Agebull.Common.Ioc;
 using Agebull.ZeroNet.ZeroApi;
 using BinXiangHealth.EMT.Hosp.ProxyApi.Models;
 using Gboxt.Common.DataModel;
+using System;
 using System.Linq;
 using HModels = BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR;
 
@@ -10,6 +11,19 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
     public class ScheduleController : ApiController
     {
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
+
+        [Route("api/v1/schedule/time")]
+        public ApiResult<ScheduleTimeResponse> ScheduleTime(ScheduleTimeRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp2004Request, HModels.Hosp2004Response, ScheduleTimeRequest, ScheduleTimeResponse>(
+                request,
+                req => new HModels.Hosp2004Request
+                {
+                    shemaId = req.id
+                },
+                res => new ScheduleTimeResponse
+                {
+                    times = res.data?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.ToArray()
+                }));
 
         [Route("api/v1/schedule/query")]
         public ApiArrayResult<ScheduleQueryResponse> ScheduleQuery(ScheduleQueryRequest request) => this.DoApiArrayResult(

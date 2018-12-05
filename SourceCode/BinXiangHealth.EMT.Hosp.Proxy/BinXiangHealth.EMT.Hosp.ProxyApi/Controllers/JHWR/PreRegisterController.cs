@@ -11,6 +11,54 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
     {
         private readonly IProxyService proxyService = IocHelper.Create<IProxyService>();
 
+        [Route("api/v1/pre/register/do")]
+        public ApiResult<PreRegisterDoResponse> PreRegisterDo(PreRegisterDoRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp2011Request, HModels.Hosp2011Response, PreRegisterDoRequest, PreRegisterDoResponse>(
+                request,
+                req => new HModels.Hosp2011Request
+                {
+                    bookingNo = req.id,
+                    pactCode = req.pactCode
+                },
+                p => new PreRegisterDoResponse
+                {
+                    deptname = p.data?.deptname,
+                    id = p.data?.hisRegisterId,
+                    tradeNo = p.data?.tradeNo,
+                    seeNo = p.data?.seeNo,
+                    address = p.data?.address
+                }));
+
+        [Route("api/v1/pre/cancel")]
+        public ApiResult<PreRegisterCancelResponse> PreRegisterCancel(PreRegisterCancelRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp2007Request, HModels.Hosp2007Response, PreRegisterCancelRequest, PreRegisterCancelResponse>(
+                request,
+                req => new HModels.Hosp2007Request
+                {
+                    bookingNo = req.id
+                },
+                res => new PreRegisterCancelResponse
+                {
+                    state = res.IsSuccess ? 0 : -1
+                }));
+
+        [Route("api/v1/pre/register")]
+        public ApiResult<PreRegisterResponse> PreRegister(PreRegisterRequest request) => this.DoApiResult(
+            proxyService.DoTrans<HModels.Hosp2008Request, HModels.Hosp2008Response, PreRegisterRequest, PreRegisterResponse>(
+                request,
+                req => new HModels.Hosp2008Request
+                {
+                    cardNo = req.cardNo,
+                    preTime = req.time,
+                    realName = req.name,
+                    shemaId = req.id
+                },
+                res => new PreRegisterResponse
+                {
+                    preNo = res.data?.bookingNo,
+                    tradeNo = res.data?.tradeNo
+                }));
+
         [Route("api/v1/pre/query")]
         public ApiArrayResult<PreRegisterQueryResponse> PreRegisterQuery(PreRegisterQueryRequest request)
         {
@@ -40,70 +88,6 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                         visistDate = a.visistDate,
                         visitingTime = a.visitingTime
                     })?.ToArray()));
-        }
-
-        [Route("api/v1/pre/do")]
-        public ApiResult<PreRegisterDoResponse> PreRegisterDo(PreRegisterDoRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp2011Request, HModels.Hosp2011Response, PreRegisterDoRequest, PreRegisterDoResponse>(
-                    request,
-                    p => new HModels.Hosp2011Request
-                    {
-                        bookingNo = p.preNo,
-                        clinicFee = p.preCost,
-                        feeSource = p.source,
-                        operCode = p.operCode,
-                        pactCode = p.pactCode,
-                        tradeNo = p.tradeNo
-                    },
-                    p => new PreRegisterDoResponse
-                    {
-                        clinicNo = p.data?.clinicNo
-                    }));
-        }
-
-        [Route("api/v1/pre/cancel")]
-        public ApiResult<PreRegisterCancelResponse> PreRegisterCancel(PreRegisterCancelRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp2007Request, HModels.Hosp2007Response, PreRegisterCancelRequest, PreRegisterCancelResponse>(
-                    request,
-                    p => new HModels.Hosp2007Request
-                    {
-                        bookingNo = p.preNo,
-                        operCode = p.operCode
-                    },
-                    p => new PreRegisterCancelResponse
-                    {
-                        state = p.data == null ? 0 : p.data.state
-                    }));
-        }
-
-        [Route("api/v1/pre/register")]
-        public ApiResult<PreRegisterResponse> PreRegister(PreRegisterRequest request)
-        {
-            return this.DoApiResult(
-                proxyService.DoTrans<HModels.Hosp2008Request, HModels.Hosp2008Response, PreRegisterRequest, PreRegisterResponse>(
-                    request,
-                    p => new HModels.Hosp2008Request
-                    {
-                        bookSource = request.preSource,
-                        cardNo = request.cardNo,
-                        clinicFee = request.preCost,
-                        deptCode = request.deptCode,
-                        isExpert = request.preType,
-                        isFee = request.isFee,
-                        preTime = request.preTime,
-                        realName = request.name,
-                        shemaId = request.id
-                    },
-                    p => new PreRegisterResponse
-                    {
-                        clinicNo = p.data?.clinicNo,
-                        preNo = p.data?.bookingNo,
-                        seeNo = p.data?.seeNo
-                    }));
         }
     }
 }

@@ -517,6 +517,180 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class Hosp2003Response : HospResponseModelBase<Hosp2003ResponseData[]> { }
     #endregion
 
+    #region 2004
+    /// <summary>
+    /// 2004 获取预约时间点 入参
+    /// </summary>
+    [HospTransferCode("2004")]
+    public class Hosp2004Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 排班编号
+        /// </summary>
+        public string shemaId { get; set; } = string.Empty;
+    }
+
+    // 2004 data
+
+    /// <summary>
+    /// 2004 获取预约时间点 返参
+    /// </summary>
+    public class Hosp2004Response : HospResponseModelBase<string> { }
+    #endregion
+
+    #region 2007
+    /// <summary>
+    /// 2007 预约取消 入参
+    /// </summary>
+    [HospTransferCode("2007")]
+    public class Hosp2007Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// String	是	预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 2007 data
+    /// </summary>
+    public class Hosp2007ResponseData { }
+
+    /// <summary>
+    /// 2007 预约取消 返参
+    /// </summary>
+    public class Hosp2007Response : HospResponseModelBase<Hosp2007ResponseData> { }
+    #endregion
+
+    #region 2008
+    /// <summary>
+    /// 2008 预约 入参
+    /// </summary>
+    [HospTransferCode("2008")]
+    public class Hosp2008Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 排班编号
+        /// </summary>
+        public string shemaId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string realName { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 10位就诊卡号
+        /// </summary>
+        public string cardNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 预约时间 yyyy-MM-dd HH:mm:ss
+        /// </summary>
+        public string preTime { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 是否支付 0 未支付 1 已支付
+        /// </summary>
+        public string isCharge { get; set; } = "0";
+    }
+
+    /// <summary>
+    /// 2008 data
+    /// </summary>
+    public class Hosp2008ResponseData
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// unknown 
+        /// </summary>
+        public string hisSubscriptionsNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 2008 预约 返参
+    /// </summary>
+    public class Hosp2008Response : HospResponseModelBase<Hosp2008ResponseData> { }
+    #endregion
+
+    #region 2011
+    /// <summary>
+    /// 2011 预约取号 入参
+    /// </summary>
+    public class Hosp2011Request : HospRequestModelBase
+    {
+        /// <summary>
+        /// 预约唯一号
+        /// </summary>
+        public string bookingNo { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 合同单位编码
+        /// </summary>
+        public string pactCode { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 操作编码 由 HIS 提供
+        /// </summary>
+        public string operCode { get; set; } = Startup.OperCode;
+    }
+
+    /// <summary>
+    /// 2011 data
+    /// </summary>
+    public class Hosp2011ResponseData
+    {
+        /// <summary>
+        /// 就诊唯一号
+        /// </summary>
+        public string hisRegisterId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// unknown
+        /// </summary>
+        public string registerId { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// HIS 交易发票号
+        /// </summary>
+        public string tradeNo { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 余额
+        /// </summary>
+        public string vancy { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 看诊序号
+        /// </summary>
+        public string seeNo { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 科室地址
+        /// </summary>
+        public string address { get; set; } = string.Empty;
+        
+        /// <summary>
+        /// 科室
+        /// </summary>
+        public string deptname { get; set; } = string.Empty;
+    }
+
+    /// <summary>
+    /// 2011 预约取号 返参
+    /// </summary>
+    public class Hosp2011Response : HospResponseModelBase<Hosp2011ResponseData> { }
+    #endregion
+
     #region 3004
     /// <summary>
     /// 3004 挂号 入参
@@ -1552,55 +1726,6 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     public class Hosp4003Response : HospResponseModelBase<Hosp4003ResponseData> { }
 
     /// <summary>
-    /// 预约取号入参
-    /// </summary>
-    public class Hosp2011Request : HospRequestModelBase
-    {
-        /// <summary>
-        /// 预约唯一号
-        /// </summary>
-        public string bookingNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 挂号费用（单位:元）
-        /// </summary>
-        public string clinicFee { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 自费医保病人标识
-        /// </summary>
-        public string pactCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 支付方式 ZB 支付宝WX 微信CA 现金CD 银行卡
-        /// </summary>
-        public string feeSource { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 支付流水号
-        /// </summary>
-        public string tradeNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 云端默认用户就诊卡号
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
-    }
-
-    public class Hosp2011ResponseData
-    {
-        /// <summary>
-        /// 就诊唯一号
-        /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// 预约取号返参
-    /// </summary>
-    public class Hosp2011Response : HospResponseModelBase<Hosp2011ResponseData> { }
-
-    /// <summary>
     /// 挂号支付回调入参
     /// </summary>
     public class HospRegCallbackRequest : HospRequestModelBase
@@ -1656,136 +1781,4 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// </summary>
         public string clinicNo { get; set; } = string.Empty;
     }
-
-    /// <summary>
-    /// 2007 request
-    /// </summary>
-    [HospTransferCode("2007")]
-    public class Hosp2007Request : HospRequestModelBase
-    {
-        /// <summary>
-        /// String	是	预约唯一号
-        /// </summary>
-        public string bookingNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	是	操作员
-        /// </summary>
-        public string operCode { get; set; } = string.Empty;
-    }
-
-    public class Hosp2007ResponseData
-    {
-        public int state { get; set; } = 0;
-    }
-
-    /// <summary>
-    /// 2007 response
-    /// </summary>
-    public class Hosp2007Response : HospResponseModelBase<Hosp2007ResponseData> { }
-
-    /// <summary>
-    /// 2008 request
-    /// </summary>
-    [HospTransferCode("2008")]
-    public class Hosp2008Request : HospRequestModelBase
-    {
-        /// <summary>
-        /// String	否	排班编号 专家挂号必填
-        /// </summary>
-        public string shemaId { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 患者卡号
-        /// </summary>
-        public string cardNo { get; set; } = string.Empty;
-
-        /// <summary>
-        ///患者姓名 
-        /// </summary>
-        public string realName { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 是否专家挂号 1 专家  0 不是专家
-        /// </summary>
-        public string isExpert { get; set; } = string.Empty;
-
-        /// <summary>
-        /// String	否	科室代码  不是专家必填
-        /// </summary>
-        public string deptCode { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约时间 yyyy-MM-ddHH:mi:ss
-        /// </summary>
-        public string preTime { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 是否支付 0 未支付 1 账户支付 2 已经支付
-        /// </summary>
-        public string isFee { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 总费用
-        /// </summary>
-        public string clinicFee { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 预约来源 标识厂商
-        /// </summary>
-        public string bookSource { get; set; } = string.Empty;
-
-        ///// <summary>
-        ///// 1 预约挂号取号  2 预约挂号直接就诊
-        ///// </summary>
-        //public string bookType { get; set; }
-
-        ///// <summary>
-        ///// 支付方式 CA 现金 ZB 支付宝 WX 微信
-        ///// </summary>
-        //public string feeSource { get; set; }
-
-        ///// <summary>
-        ///// 第三方订单流水号
-        ///// </summary>
-        //public string tradeNo { get; set; }
-
-        ///// <summary>
-        ///// 取号验证码
-        ///// </summary>
-        //public string IdentifyCode { get; set; }
-
-        ///// <summary>
-        ///// 操作员
-        ///// </summary>
-        //public string operCode { get; set; }
-
-        ///// <summary>
-        ///// 自助机终端号
-        ///// </summary>
-        //public string termId { get; set; }
-    }
-
-    public class Hosp2008ResponseData
-    {
-        /// <summary>
-        /// 预约唯一号
-        /// </summary>
-        public string bookingNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊唯一号 
-        /// </summary>
-        public string clinicNo { get; set; } = string.Empty;
-
-        /// <summary>
-        /// 就诊序号
-        /// </summary>
-        public string seeNo { get; set; } = string.Empty;
-    }
-
-    /// <summary>
-    /// 2008 response
-    /// </summary>
-    public class Hosp2008Response : HospResponseModelBase<Hosp2008ResponseData> { }
 }
