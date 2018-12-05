@@ -37,6 +37,10 @@ public interface AppServiceCommonSoap
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetRegisterList", ReplyAction="*")]
     [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
     System.Threading.Tasks.Task<string> GetRegisterListAsync(string inJsonString);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookingList", ReplyAction="*")]
+    [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+    System.Threading.Tasks.Task<string> GetBookingListAsync(string inJsonString);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("dotnet-svcutil", "1.0.4")]
@@ -112,6 +116,11 @@ public partial class AppServiceCommonSoapClient : System.ServiceModel.ClientBase
         return base.Channel.GetRegisterListAsync(inJsonString);
     }
     
+    public System.Threading.Tasks.Task<string> GetBookingListAsync(string inJsonString)
+    {
+        return base.Channel.GetBookingListAsync(inJsonString);
+    }
+    
     public virtual System.Threading.Tasks.Task OpenAsync()
     {
         return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
@@ -153,11 +162,11 @@ public partial class AppServiceCommonSoapClient : System.ServiceModel.ClientBase
     {
         if ((endpointConfiguration == EndpointConfiguration.AppServiceCommonSoap))
         {
-            return new System.ServiceModel.EndpointAddress("http://192.168.0.186:8085/AppServiceCommon.asmx");
+            return new System.ServiceModel.EndpointAddress("http://192.168.0.186:8081/AppServiceCommon.asmx");
         }
         if ((endpointConfiguration == EndpointConfiguration.AppServiceCommonSoap12))
         {
-            return new System.ServiceModel.EndpointAddress("http://192.168.0.186:8085/AppServiceCommon.asmx");
+            return new System.ServiceModel.EndpointAddress("http://192.168.0.186:8081/AppServiceCommon.asmx");
         }
         throw new System.InvalidOperationException(string.Format("找不到名称为“{0}”的终结点。", endpointConfiguration));
     }

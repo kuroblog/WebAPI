@@ -8,6 +8,8 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Services
 {
     public interface ITestService
     {
+        Controllers.TestResponseDto GetPreRegisters(dynamic param);
+
         Controllers.TestResponseDto GetDeptTree(dynamic param);
 
         Controllers.TestResponseDto GetRegisters(dynamic param);
@@ -66,6 +68,13 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Services
             }
 
             return result;
+        }
+
+        private Func<AppServiceCommonSoap, (string code, string json), string> getPreRegisters = (soap, req) => soap.GetBookingListAsync(req.json).Result;
+
+        public Controllers.TestResponseDto GetPreRegisters(dynamic param)
+        {
+            return doService("", param, getPreRegisters);
         }
 
         private Func<AppServiceCommonSoap, (string code, string json), string> getDeptTree = (soap, req) => soap.GetDepartmentTreeAsync(req.json).Result;

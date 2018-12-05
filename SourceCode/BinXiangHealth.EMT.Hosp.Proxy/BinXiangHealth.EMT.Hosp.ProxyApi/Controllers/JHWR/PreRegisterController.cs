@@ -59,35 +59,29 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                     tradeNo = res.data?.tradeNo
                 }));
 
-        [Route("api/v1/pre/query")]
-        public ApiArrayResult<PreRegisterQueryResponse> PreRegisterQuery(PreRegisterQueryRequest request)
-        {
-            return this.DoApiArrayResult(
-                proxyService.DoTrans<HModels.HospPreRegisterQueryRequest, HModels.HospPreRegisterQueryResponse, PreRegisterQueryRequest, PreRegisterQueryResponse[]>(
-                    request,
-                    p => new HModels.HospPreRegisterQueryRequest
-                    {
-                        beginDate = p.begDate,
-                        cardNo = p.cardNo,
-                        endDate = p.endDate
-                    },
-                    p => p.data?.Select(a => new PreRegisterQueryResponse
-                    {
-                        cardNo = a.idCardNo,
-                        clinicNo = a.clinicNo,
-                        cost = a.total,
-                        deptName = a.deptName,
-                        doctName = a.doctName,
-                        doctTitle = a.doctTitle,
-                        name = a.idCardName,
-                        preNo = a.bookingNo,
-                        regDate = a.date,
-                        regType = a.regType,
-                        seeNo = a.seeNo,
-                        state = a.state,
-                        visistDate = a.visistDate,
-                        visitingTime = a.visitingTime
-                    })?.ToArray()));
-        }
+        [Route("api/v1/pre/list")]
+        public ApiArrayResult<PreRegisterListResponse> PreRegisterList(PreRegisterListRequest request) => this.DoApiArrayResult(
+            proxyService.DoTrans<HModels.HospPreRegisterListRequest, HModels.HospPreRegisterListResponse, PreRegisterListRequest, PreRegisterListResponse[]>(
+                request,
+                req => new HModels.HospPreRegisterListRequest
+                {
+                    cardNo = req.cardNo
+                },
+                res => res.data?.Select(a => new PreRegisterListResponse
+                {
+                    cardNo = a.cardNo,
+                    clinicNo = a.clinicNo,
+                    cost = a.total,
+                    deptName = a.deptName,
+                    doctName = a.docName,
+                    doctTitle = a.docTitle,
+                    name = a.name,
+                    preNo = a.bookingNo,
+                    operDate = a.operDate,
+                    preRegType = a.bookingType,
+                    seeNo = a.seeNo,
+                    state = a.state,
+                    preRegDate = a.bookingDate
+                })?.ToArray()));
     }
 }

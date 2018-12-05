@@ -21,6 +21,17 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers
             return Ok(result);
         }
 
+        [Route("reg/pre")]
+        [HttpGet]
+        public ActionResult<(string result, string json, string error)> Pre([FromQuery]string cardNo)
+        {
+            var result = testService.GetPreRegisters(new
+            {
+                cardNo
+            });
+            return Ok(result); 
+        }
+
         [Route("reg")]
         [HttpGet]
         public ActionResult<(string result, string json, string error)> Get([FromQuery]string cardNo)
