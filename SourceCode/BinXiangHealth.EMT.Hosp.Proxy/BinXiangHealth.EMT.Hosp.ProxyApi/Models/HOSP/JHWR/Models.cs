@@ -53,10 +53,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         public string cardNo { get; set; } = string.Empty;
     }
 
-    /// <summary>
-    /// 预约列表查询 data
-    /// </summary>
-    public class HospPreRegisterListResponseData
+    public class HospPreRegisterListResponseItem
     {
         /// <summary>
         /// 预约状态
@@ -127,9 +124,17 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 预约列表查询 data
+    /// </summary>
+    public class HospPreRegisterListResponseData
+    {
+        public HospPreRegisterListResponseItem[] ListBooking { get; set; }
+    }
+
+    /// <summary>
     /// 预约列表查询 返参
     /// </summary>
-    public class HospPreRegisterListResponse : HospResponseModelBase<HospPreRegisterListResponseData[]> { }
+    public class HospPreRegisterListResponse : HospResponseModelBase<HospPreRegisterListResponseData> { }
     #endregion
 
     #region 挂号列表查询
@@ -145,10 +150,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         public string cardNo { get; set; } = string.Empty;
     }
 
-    /// <summary>
-    /// 挂号列表查询 data
-    /// </summary>
-    public class HospRegisterQueryResponseData
+    public class HospRegisterQueryResponseItem
     {
         /// <summary>
         /// 支付状态
@@ -214,9 +216,17 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
     }
 
     /// <summary>
+    /// 挂号列表查询 data
+    /// </summary>
+    public class HospRegisterQueryResponseData
+    {
+        public HospRegisterQueryResponseItem[] ListRegister { get; set; }
+    }
+
+    /// <summary>
     /// 挂号列表查询 返参
     /// </summary>
-    public class HospRegisterQueryResponse : HospResponseModelBase<HospRegisterQueryResponseData[]> { }
+    public class HospRegisterQueryResponse : HospResponseModelBase<HospRegisterQueryResponseData> { }
     #endregion
 
     #region 科室列表查询

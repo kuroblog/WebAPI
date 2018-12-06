@@ -62,7 +62,7 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Controllers.JHWR
                 {
                     cardNo = req.cardNo
                 },
-                res => res.data?.Select(p => new RegisterQueryResponse
+                res => res.data?.ListRegister?.Select(p => new RegisterQueryResponse
                 {
                     cardNo = p.cardNo,
                     clinicNo = p.clinicNo,
