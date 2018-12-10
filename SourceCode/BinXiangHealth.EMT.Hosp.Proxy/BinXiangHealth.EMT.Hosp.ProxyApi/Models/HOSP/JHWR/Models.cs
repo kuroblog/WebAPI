@@ -1040,6 +1040,11 @@ namespace BinXiangHealth.EMT.Hosp.ProxyApi.Models.HOSP.JHWR
         /// 就诊唯一号
         /// </summary>
         public string registerId { get; set; } = string.Empty;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string flag { get; set; } = "0";
     }
 
     /// <summary>
